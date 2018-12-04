@@ -1,0 +1,10 @@
+Package: spasm
+Type: Package
+Title: Species association measures for various data types
+Version: 0.1
+Date: 2018-09-04
+Author: Petr Keil
+Maintainer: Petr Keil <petr.keil@idiv.de>
+Description: More about what it does (maybe more than one line)
+License: CC-BY
+RoxygenNote: 6.1.1
