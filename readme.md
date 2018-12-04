@@ -9,7 +9,7 @@ the ```devtools``` package:
 
 ```{r}
 library(devtools)
-install_github("petrkeil_spasm")
+install_github("petrkeil/spasm")
 ```
 
 ## What needs to be cited
