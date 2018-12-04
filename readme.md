@@ -1,5 +1,7 @@
 # spasm - **Sp**ecies **as**sociation **m**etrics for various data types
 
+*Petr Keil*
+
 This package contains code for several species association metrics and analyses.
 
 ## Installing spasm
@@ -11,6 +13,32 @@ the ```devtools``` package:
 library(devtools)
 install_github("petrkeil/spasm")
 ```
+
+## Overview
+
+The functions provided here are classified according to the type of ecological
+data that they use. 
+
+### Spatially implicit site x species incidence matrices
+
+These are functions whose names begin with ```C_```. A typical example is Stone & Roberts'
+C-score.
+
+### Spatially implicit site x species abundance matrices
+
+Names of these functions begin with ```CA_```.
+
+### Spatially explicit site x species matrices
+
+So far these are not provided here, but in Dan McGlinn's package ```vario``` [here](https://github.com/dmcglinn/vario).
+
+### Point patterns
+
+The following methods are implemented:
+
+- The P-M classification of point pattern overlap
+- Bivariate pair correlation function 
+
 
 ## What needs to be cited
 
