@@ -35,7 +35,7 @@ CA_Bray <- function(m, lst = FALSE, fun = FALSE)
   return(D)
 }
 
-CA_Bray(t(comm$abund.table))
+# CA_Bray(t(comm$abund.table))
 
 # ------------------------------------------------------------------------------
 
@@ -72,4 +72,4 @@ CA_Ulrich <- function(m, lst = FALSE, fun = FALSE)
   return(D)
 }
 
-CA_Ulrich(t(comm$abund.table))
+# CA_Ulrich(t(comm$abund.table))
