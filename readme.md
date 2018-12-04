@@ -2,8 +2,17 @@
 
 This package contains code for several species association metrics and analyses.
 
+## Installing spasm
 
-# References
+The easiest way to install spasm is using the ```install_github``` function from
+the ```devtools``` package:
+
+```{r}
+library(devtools)
+install_github("petrkeil_spasm")
+```
+
+## What may need to be cited
 
 The package uses some example data, whose source should be credited, if further used. These are:
 
