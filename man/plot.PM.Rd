@@ -4,8 +4,8 @@
 \alias{plot.PM}
 \title{Bivariate nearest neighbor distance function (D) and K-function (K)}
 \usage{
-plot.PM(PM, xlim = NULL, ylim = NULL, labs = FALSE,
-  lab.shift = NULL)
+\method{plot}{PM}(PM, xlim = NULL, ylim = NULL, labs = FALSE,
+  lab.shift = NULL, main = NULL)
 }
 \arguments{
 \item{PM}{A list object returned by the PM.multispec function.}

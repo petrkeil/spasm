@@ -2,7 +2,7 @@
 % Please edit documentation in R/incidence_matrix_measures.r
 \name{C_Sim}
 \alias{C_Sim}
-\title{Pairwise Simpson dissimilarities among species in a community matrix}
+\title{Pairwise Simpson seggregation among species in a community matrix}
 \usage{
 C_Sim(m, lst = FALSE, fun = FALSE)
 }
@@ -20,5 +20,5 @@ to all pairwise values.}
 A list or data.frame objects with the pairwise association values.
 }
 \description{
-Pairwise Simpson dissimilarities among species in a community matrix
+Pairwise Simpson seggregation among species in a community matrix
 }

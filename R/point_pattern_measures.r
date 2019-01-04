@@ -25,8 +25,8 @@
 KD <- function(X, spec.1, spec.2, n.iter, radius)
 {
   # extract the 2 focal species from the marked point pattern
-  X1 <- split(lansing)[[spec.1]]
-  X2 <- split(lansing)[[spec.2]]
+  X1 <- split(X)[[spec.1]]
+  X2 <- split(X)[[spec.2]]
   
   # empty container for the simulation results
   D12.sims <- K12.sims <- list()
@@ -141,7 +141,6 @@ PM.multispec <- function(X, n.iter, radius)
 }
 
 
-
 ################################################################################
 #' Bivariate nearest neighbor distance function (D) and K-function (K)
 #' 
@@ -153,7 +152,9 @@ PM.multispec <- function(X, n.iter, radius)
 #' @export
 #' 
 
-plot.PM <- function(PM, xlim = NULL, ylim = NULL, labs = FALSE, lab.shift = NULL)
+plot.PM <- function(PM, xlim = NULL, ylim = NULL, 
+                    labs = FALSE, lab.shift = NULL,
+                    main = NULL)
 {
   require(ggplot2)
   
@@ -180,6 +181,8 @@ plot.PM <- function(PM, xlim = NULL, ylim = NULL, labs = FALSE, lab.shift = NULL
                            nudge_y = lab.shift)
 
     }
+    
+    if(is.null(main) == FALSE) { pp <- pp + ggtitle(main)  }
     
     if(length(xlim) == 2) { pp <- pp + xlim(xlim[1], xlim[2]) }
     if(length(ylim) == 2) { pp <- pp + ylim(ylim[1], ylim[2]) }
@@ -312,15 +315,7 @@ pcf.r <- function(X, spec.1, spec.2, n.iter, radius.seq)
 
 
 ################################################################################
-#' Bivariate nearest neighbor distance function (D) and K-function (K)
-#' 
-#' @param PM A list object returned by the PM.multispec function.
-#' 
-#' @return A ggplot figure.
-#' @import spatstat
-#' @import ggplot2
-#' @export
-#' 
+
 
 plot.pp.pcf <- function(x)
 {

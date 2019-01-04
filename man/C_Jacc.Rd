@@ -2,7 +2,7 @@
 % Please edit documentation in R/incidence_matrix_measures.r
 \name{C_Jacc}
 \alias{C_Jacc}
-\title{Pairwise Jaccard similarities (proportional overlap) among species community matrix}
+\title{Pairwise Jaccard associations among species in a community matrix}
 \usage{
 C_Jacc(m, lst = FALSE, fun = FALSE)
 }
@@ -20,5 +20,5 @@ to all pairwise values.}
 A list or data.frame objects with the pairwise association values.
 }
 \description{
-Pairwise Jaccard similarities (proportional overlap) among species community matrix
+Pairwise Jaccard associations among species in a community matrix
 }

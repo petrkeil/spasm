@@ -1,4 +1,45 @@
 
+
+
+
+# ------------------------------------------------------------------------------
+CA_Cov_or_Cor <- function(m, lst = FALSE, fun = FALSE, 
+                          transf = "hellinger", 
+                          correlation = TRUE, 
+                          method = "pearson")
+{
+  # eliminate empty rows and columns
+  m <- m[rowSums(m) != 0, ]
+  m <- m[, colSums(m) != 0]
+  
+  if(is.null(transf) == FALSE)
+  {
+    m <- vegan::decostand(m, method = transf)
+  }
+  
+  if(correlation)
+  {
+    D <- as.dist(cor(t(m), method = method))
+  }
+  else
+  {
+    D <- as.dist(cov(t(m), method = method))  
+  }
+  
+    
+  if(lst) D <- dist2list(D)
+  
+  do.fun <- is.function(fun)
+  if(do.fun) D <- fun(D)  
+  
+  return(D)
+}
+
+
+
+
+# ------------------------------------------------------------------------------
+
 CA_Gower <- function(m, lst = FALSE, fun = FALSE)
 {
   # eliminate empty rows and columns
@@ -6,7 +47,7 @@ CA_Gower <- function(m, lst = FALSE, fun = FALSE)
   m <- m[, colSums(m) != 0]
   
   D <- vegan::vegdist(m, 
-                      method = "Gower")
+                      method = "gower")
   
   if(lst) D <- dist2list(D)
   
@@ -68,6 +109,9 @@ CA_Ulrich <- function(m, lst = FALSE, fun = FALSE)
   N <- (n*(n-1))/2
   
   D <- D/N
+  
+  do.fun <- is.function(fun)
+  if(do.fun) D <- fun(D)  
   
   return(D)
 }

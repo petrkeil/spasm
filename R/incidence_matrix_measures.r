@@ -38,10 +38,8 @@ C_Forbes <- function(m, lst = FALSE, fun = FALSE)
 
 
 
-
-
 # ------------------------------------------------------------------------------
-#' Classical 'C-score' metric of Stone -- seggregation among species in a community matrix
+#' 'C-score' metric of Stone & Roberts (1990), and its scaled version
 #' 
 #' @param m Community data matrix with species as rows and sites as columns. Can 
 #' contain either incidences (1/0) or abundances (natural numbers).
@@ -49,42 +47,8 @@ C_Forbes <- function(m, lst = FALSE, fun = FALSE)
 #' as a 'data.frame' (TRUE)?
 #' @param fun Additional function (e.g. log-transformation) to be applied 
 #' to all pairwise values.
-#' 
-#' @return A list or data.frame objects with the pairwise association values.
-#' @import vegan
-#' @references Stone L. & Roberts A. (1990) The checkerboard score and 
-#' species distributions. Oecologia 85: 74-79.
-#' @export
-
-C_Stone <- function(m, lst = FALSE, fun = FALSE)
-{
-  # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
-  
-
-  D <- vegan::designdist(m, 
-                         method = "b*c",
-                         abcd = TRUE, 
-                         terms = "binary")
-
-  if(lst) D <- dist2list(D)
-  
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)  
-  
-  return(D)
-} 
-
-# ------------------------------------------------------------------------------
-#' 'C-score' metric of Stone & Roberts, scaled according to Ulrich & Gotelli 2012
-#' 
-#' @param m Community data matrix with species as rows and sites as columns. Can 
-#' contain either incidences (1/0) or abundances (natural numbers).
-#' @param lst Should the results be returned as a 'dist' object (FALSE), or
-#' as a 'data.frame' (TRUE)?
-#' @param fun Additional function (e.g. log-transformation) to be applied 
-#' to all pairwise values.
+#' @param scale Should the raw metric be scaled using the total number of possible
+#' site combinations?
 #' 
 #' @return A list or data.frame objects with the pairwise association values.
 #' @import vegan
@@ -94,7 +58,57 @@ C_Stone <- function(m, lst = FALSE, fun = FALSE)
 #' reveal spatial scales of plant community structure. Oikos 127: 415-426.
 #' @export
 
-C_Ulrich <- function(m, lst = FALSE, fun = FALSE)
+C_Seg <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
+{
+  # eliminate empty rows and columns
+  m <- m[rowSums(m) != 0, ]
+  m <- m[, colSums(m) != 0]
+  
+
+  D <- vegan::designdist(m, 
+                         method = "b*c",
+                         abcd = TRUE, 
+                         terms = "binary")
+  if(scale)
+  {
+    # standardization by number of possible site combinations
+    # (from Ulrich & Gotelli (2012) and  McNickle et al. (2018)
+    n <- ncol(m) 
+    N <- (n*(n-1))/2
+    D <- D/N
+  }
+
+  if(lst) D <- dist2list(D)
+  
+  do.fun <- is.function(fun)
+  if(do.fun) D <- fun(D)  
+  
+  return(D)
+} 
+
+
+
+# ------------------------------------------------------------------------------
+#' 'Togetherness' metric of Stone & Roberts (1992), and its scaled version
+#' 
+#' @param m Community data matrix with species as rows and sites as columns. Can 
+#' contain either incidences (1/0) or abundances (natural numbers).
+#' @param lst Should the results be returned as a 'dist' object (FALSE), or
+#' as a 'data.frame' (TRUE)?
+#' @param fun Additional function (e.g. log-transformation) to be applied 
+#' to all pairwise values.
+#' @param scale Should the raw metric be scaled using the total number of possible
+#' site combinations?
+#' 
+#' @return A list or data.frame objects with the pairwise association values.
+#' @import vegan
+#' @references Stone L. & Roberts A. (1992) Competitive exclusion, or species
+#' aggregation? An aid in deciding. Oecologia 91: 419-424.
+#' @references Ulrich W. & Gogelli N.J. (2013) Pattern detection in null model
+#' analysis. Oikos 122: 2-18.
+#' @export
+
+C_Tog <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -102,15 +116,18 @@ C_Ulrich <- function(m, lst = FALSE, fun = FALSE)
   
   
   D <- vegan::designdist(m, 
-                         method = "b*c",
+                         method = "a*d",
                          abcd = TRUE, 
                          terms = "binary")
   
-  # standardization by number of sites (from Ulrich & Gotelli 2012)
-  n <- ncol(m) 
-  N <- (n*(n-1))/2
-  
-  D <- D/N
+  if(scale)
+  {
+    # standardization by number of possible site combinations
+    # (from Ulrich & Gotelli (2012) and  McNickle et al. (2018)
+    n <- ncol(m) 
+    N <- (n*(n-1))/2
+    D <- D/N
+  }
   
   if(lst) D <- dist2list(D)
   
@@ -121,8 +138,9 @@ C_Ulrich <- function(m, lst = FALSE, fun = FALSE)
 } 
 
 
+
 # ------------------------------------------------------------------------------
-#' Pairwise Jaccard similarities (proportional overlap) among species community matrix
+#' Pairwise Jaccard associations among species in a community matrix
 #' 
 #' @param m Community data matrix with species as rows and sites as columns. Can 
 #' contain either incidences (1/0) or abundances (natural numbers).
@@ -157,7 +175,7 @@ C_Jacc <- function(m, lst = FALSE, fun = FALSE)
 
 
 # ------------------------------------------------------------------------------
-#' Pairwise Simpson dissimilarities among species in a community matrix
+#' Pairwise Simpson seggregation among species in a community matrix
 #' 
 #' @param m Community data matrix with species as rows and sites as columns. Can 
 #' contain either incidences (1/0) or abundances (natural numbers).
@@ -191,63 +209,33 @@ C_Sim <- function(m, lst = FALSE, fun = FALSE)
 
 
 # ------------------------------------------------------------------------------
-#' Pairwise pearson correlations among species in community matrix
+#' Variance ratio of Schluter 
 #' 
 #' @param m Community data matrix with species as rows and sites as columns. Can 
 #' contain either incidences (1/0) or abundances (natural numbers).
-#' @param lst Should the results be returned as a 'dist' object (FALSE), or
-#' as a 'data.frame' (TRUE)?
-#' @param fun Additional function (e.g. log-transformation) to be applied 
-#' to all pairwise values.
 #' 
-#' @return A list or data.frame objects with the pairwise association values.
+#' @return A single number, the variance ratio.
+#' 
+#' @references Schluter, D. 1984. A variance test for detecting species associations, with some example applications. Ecology 65: 998-1005.
+#' 
 #' @import vegan
 #' @export
 
-# ONLY USES SPECIES THAT OCCUPY LESS THAN ALL SITES
-C_Pearson <- function(m, lst = FALSE, fun = FALSE)
+
+V_ratio <- function (m) 
 {
-  # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
-  
-  m <- m[rowSums(m) < ncol(m),] # remove species that only have 1s
-  
-  D <- as.dist(cor(t(m), 
-          method = "pearson"))
-  if(lst) D <- dist2list(D)
-  
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)  
-  
-  return(D)
+  m <- m[which(rowSums(m) > 0), ]
+  v <- var(colSums(m))/sum(apply(m, 1, var))
+  return(v)
 }
 
-#C_Pearson(Atmar[[265]], lst=FALSE, fun=mean)
 
 
-# ------------------------------------------------------------------------------
 
-#' Conversion of distance matrix to list
-#' @export
 
-# function from package 'spaa' by Jinlong Zhang <jinlongzhang01@gmail.com>:
-dist2list <- function (dist) 
-{
-  if (!class(dist) == "dist") {
-    stop("the input data must be a dist object.")
-  }
-  dat <- as.data.frame(as.matrix(dist))
-  if (is.null(names(dat))) {
-    rownames(dat) <- paste(1:nrow(dat))
-  }
-  value <- stack(dat)$values
-  rnames <- rownames(dat)
-  namecol <- expand.grid(rnames, rnames)
-  colnames(namecol) <- c("col", "row")
-  res <- data.frame(namecol, value)
-  return(res)
-}
+
+
+
 
 
 

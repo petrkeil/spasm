@@ -34,7 +34,7 @@ So far these are not provided here, but in Dan McGlinn's package ```vario``` [he
 
 ### Point patterns
 
-The following methods are implemented:
+The following methods are implemented, togehter with their respective null models:
 
 - The P-M classification of point pattern overlap
 - Bivariate pair correlation function 
