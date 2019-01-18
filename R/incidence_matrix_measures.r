@@ -240,7 +240,7 @@ C_toth <- function(m)
   mean.occ <- mean(rowSums(m))
   N.sites <- ncol(m)
 
-  return(mean.occ / N.sites)
+  return(N.sites/mean.occ)
 }
 
 
