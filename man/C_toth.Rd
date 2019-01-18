@@ -6,6 +6,10 @@
 \usage{
 C_toth(m)
 }
+\arguments{
+\item{m}{Community data matrix with species as rows and sites as columns. Can
+contain either incidences (1/0) or abundances (natural numbers).}
+}
 \value{
 A single number, which is the ratio of mean occupancy and the number of
 }

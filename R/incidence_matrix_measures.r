@@ -42,7 +42,7 @@ C_forbes <- function(m, lst = FALSE, fun = FALSE)
 #' The classical 'C-score' seggregation metric of Stone & Roberts (1990),
 #' and its scaled version
 #'
-#' @inheritParams C_Forbes
+#' @inheritParams C_forbes
 #' @param scale Should the raw metric be scaled using the total number of possible
 #' site combinations?
 #' @return A dist or data.frame objects with the pairwise association values.
@@ -58,7 +58,6 @@ C_seg <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
   m <- m[, colSums(m) != 0]
-
 
   D <- vegan::designdist(m,
                          method = "b*c",
@@ -86,8 +85,8 @@ C_seg <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
 # ------------------------------------------------------------------------------
 #' 'Togetherness' metric of Stone & Roberts (1992), and its scaled version
 #'
-#' @inheritParams C_Forbes
-#' @inheritParams C_Seg
+#' @inheritParams C_forbes
+#' @inheritParams C_seg
 #' @param scale Should the raw metric be scaled using the total number of possible
 #' site combinations?
 #'
@@ -133,7 +132,7 @@ C_tog <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
 # ------------------------------------------------------------------------------
 #' Pairwise Jaccard associations among species in a community matrix
 #'
-#' @inheritParams C_Forbes
+#' @inheritParams C_forbes
 #' @return A dist or data.frame objects with the pairwise association values.
 #' @import vegan
 #' @export
@@ -162,8 +161,7 @@ C_jacc <- function(m, lst = FALSE, fun = FALSE)
 # ------------------------------------------------------------------------------
 #' Pairwise Simpson seggregation among species in a community matrix
 #'
-#'
-#' @inheritParams C_Forbes
+#' @inheritParams C_forbes
 #' @return A dist or data.frame objects with the pairwise association values.
 #' @import vegan
 #' @export
@@ -193,7 +191,7 @@ C_sim <- function(m, lst = FALSE, fun = FALSE)
 #'
 #' This is a metric described on page 147 of Dale (1999).
 #'
-#' @inheritParams C_Forbes
+#' @inheritParams C_forbes
 #' @return A dist or data.frame objects with the pairwise association values.
 #' @import vegan
 #' @references Dale M.T.D (1999) Spatial pattern analysis in plant ecology.
@@ -227,7 +225,7 @@ C_dale <- function(m, lst = FALSE, fun = FALSE)
 #' during a discussion with Aniko Toth at IBS 2019 conference in Malaga, and hence
 #' the name of the metric.
 #'
-#' @inheritParams C_Forbes
+#' @inheritParams C_forbes
 #' @return A single number, which is the ratio of mean occupancy and the number of
 #' @export
 
@@ -236,7 +234,6 @@ C_toth <- function(m)
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
   m <- m[, colSums(m) != 0]
-
   # convert to binary matrix
   m[m > 0] <- 1
 
@@ -250,10 +247,11 @@ C_toth <- function(m)
 # ------------------------------------------------------------------------------
 #' Variance ratio of Schluter (1984)
 #'
-#' @inheritParams C_Forbes
+#' @inheritParams C_forbes
 #' @return A single number, the variance ratio.
 #'
-#' @references Schluter, D. 1984. A variance test for detecting species associations, with some example applications. Ecology 65: 998-1005.
+#' @references Schluter, D. 1984. A variance test for detecting species associations,
+#' with some example applications. Ecology 65: 998-1005.
 #' @export
 
 V_ratio <- function (m)
@@ -261,6 +259,8 @@ V_ratio <- function (m)
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
   m <- m[, colSums(m) != 0]
+  # convert to binary matrix
+  m[m > 0] <- 1
 
   v <- var(colSums(m))/sum(apply(m, 1, var))
   return(v)
@@ -272,7 +272,7 @@ V_ratio <- function (m)
 #' Network connectance, defined as the proportion of all possible links in a network, adopted
 #' from Carsten Dormann's bipartite package.
 #'
-#' @inheritParams C_Forbes
+#' @inheritParams C_forbes
 #' @return A single number, network connectance.
 #' @references Dormann et al. (2009) Indices, graphs and null models: analyzing
 #' bipartite ecological networks. The Open Ecology Journal, 2: 7-24.
@@ -283,6 +283,8 @@ N_connect <- function (m)
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
   m <- m[, colSums(m) != 0]
+  # convert to binary matrix
+  m[m > 0] <- 1
 
   res <- sum(m>0)/(nrow(m)*ncol(m))
   return(res)
@@ -295,7 +297,7 @@ N_connect <- function (m)
 #' This function follows the code from EcoSimR package by Gotelli, Hard and Ellison,
 #' specifically, it re-uses their 'species_combo' function.
 #'
-#' @inheritParams C_Forbes
+#' @inheritParams C_forbes
 #' @return A single number, the number of unique species combinations.
 #' @export
 
@@ -304,6 +306,8 @@ N_combo <- function (m)
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
   m <- m[, colSums(m) != 0]
+  # convert to binary matrix
+  m[m > 0] <- 1
 
   # these two lines are adopted from the 'species_combo' function from EcoSimR:
   res <- ncol(unique(m, MARGIN = 2))
@@ -316,7 +320,7 @@ N_combo <- function (m)
 #' This function follows the code from EcoSimR package by Gotelli, Hard and Ellison,
 #' specifically, it re-uses their 'checker' function.
 #'
-#' @inheritParams C_Forbes
+#' @inheritParams C_forbes
 #' @return A single number, the number of checkerboard species pairs.
 #' @export
 
@@ -325,6 +329,8 @@ N_checker <- function (m)
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
   m <- m[, colSums(m) != 0]
+  # convert to binary matrix
+  m[m > 0] <- 1
 
   # the following code comes from the 'checker' function from EcoSimR:
   pairwise <- cbind(t(combn(nrow(m), 2)), 0)

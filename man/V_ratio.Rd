@@ -6,6 +6,10 @@
 \usage{
 V_ratio(m)
 }
+\arguments{
+\item{m}{Community data matrix with species as rows and sites as columns. Can
+contain either incidences (1/0) or abundances (natural numbers).}
+}
 \value{
 A single number, the variance ratio.
 }
@@ -13,5 +17,6 @@ A single number, the variance ratio.
 Variance ratio of Schluter (1984)
 }
 \references{
-Schluter, D. 1984. A variance test for detecting species associations, with some example applications. Ecology 65: 998-1005.
+Schluter, D. 1984. A variance test for detecting species associations,
+with some example applications. Ecology 65: 998-1005.
 }

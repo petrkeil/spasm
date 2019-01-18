@@ -6,6 +6,10 @@
 \usage{
 N_connect(m)
 }
+\arguments{
+\item{m}{Community data matrix with species as rows and sites as columns. Can
+contain either incidences (1/0) or abundances (natural numbers).}
+}
 \value{
 A single number, network connectance.
 }
