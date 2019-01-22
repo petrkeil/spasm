@@ -5,6 +5,7 @@ Version: 0.1
 Date: 2018-09-04
 Author: Petr Keil
 Maintainer: Petr Keil <petr.keil@idiv.de>
-Description: More about what it does (maybe more than one line)
-License: CC-BY
+Description: This package bundles species association metrics for binary presence-absence site-by-species matrices, abundance matrices, some select point pattern association metrics (relying heavily on R package 'spatstat' machinery), and summary and visualization tools for community variograms (from Dan McGlinn's 'vario' R package).   
+License: GPLv3
 RoxygenNote: 6.1.1
+LazyData: true

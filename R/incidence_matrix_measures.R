@@ -156,6 +156,32 @@ C_jacc <- function(m, lst = FALSE, fun = FALSE)
   return(D)
 }
 
+# ------------------------------------------------------------------------------
+#' Pairwise Sorensen associations among species in a community matrix
+#'
+#' @inheritParams C_forbes
+#' @return A dist or data.frame objects with the pairwise association values.
+#' @import vegan
+#' @export
+
+C_sor <- function(m, lst = FALSE, fun = FALSE)
+{
+  # eliminate empty rows and columns
+  m <- m[rowSums(m) != 0, ]
+  m <- m[, colSums(m) != 0]
+
+  D <- vegan::designdist(m,
+                         method = "(2*a)/(2*a+b+c)",
+                         abcd = TRUE,
+                         terms = "binary")
+
+  if(lst) D <- dist2list(D)
+
+  do.fun <- is.function(fun)
+  if(do.fun) D <- fun(D)
+
+  return(D)
+}
 
 
 # ------------------------------------------------------------------------------
