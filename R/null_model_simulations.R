@@ -1,3 +1,80 @@
+
+
+
+IT.r <- function(m)
+{
+  rsums <- rowSums(m)
+  csums <- colSums(m)
+  N <- sum(m)
+  res <- matrix(0, nrow=nrow(m), ncol=ncol(m))
+
+  rs <- sample(x=1:nrow(m), size=N, replace=TRUE, prob=rsums)
+  cs <- sample(x=1:ncol(m), size=N, replace=TRUE, prob=csums)
+
+  for(i in 1:N)
+  {
+    res[rs[i], cs[i]] <- res[rs[i], cs[i]] + 1
+  }
+
+  return(res)
+}
+
+
+
+################################################################################
+#'Abundance Null model
+#'
+#'@description Uses the IT algorithm by Ulrich & Gotelli (2010)
+#'
+#'@param
+#'@export
+
+null_model_abund_spasm <- function(m,
+                                   metric,
+                                   nReps = 1000,
+                                   summaryF)
+{
+  metric <- get(metric)
+  obs <- summaryF(metric(m))
+
+  #m.rowsums <- rowSums(m)
+  #m.colsums <- colSums(m)
+  #m.nrow <- nrow(m)
+  #m.ncol <- ncol(m)
+  #N <- sum(m)
+
+  sims <- list()
+
+  pb <- txtProgressBar(min = 1, max = nReps, char=">", style=3)
+  for(i in 1:nReps)
+  {
+    # perm.m <- IT(m.rowsums, m.colsums, m.nrow, m.ncol, N)
+    perm.m <- IT.r(m)
+    sims[i] <- summaryF(metric(perm.m))
+    setTxtProgressBar(pb, i)
+  }
+  close(pb)
+
+  sims <- unlist(sims)
+  std_z_score <- (obs - sims)/sd(sims)
+
+  return(list(obs=obs, sims=sims, std_z_score=std_z_score))
+}
+
+# Testing:
+ require(spasm); m <- data.Ulrich[[1]]
+ x <- null_model_abund_spasm(m, "CA_cov_cor", summaryF = mean, nReps = 1000)
+# require(ggplot2)
+
+#  ggplot(data = data.frame(sims=x$std_z_score), aes(x = sims)) + geom_histogram()
+# ggplot(data = data.frame(sims=x$sims), aes(x = sims)) + geom_histogram()  +
+#  geom_vline(xintercept=x$obs, colour="red")
+
+
+
+
+
+################################################################################
 #'Co-Occurrence Null model - modified verstion from EcoSimR
 #'
 #'@description Create a Co-Occurrence null model. This is a modified version of the function
@@ -18,7 +95,7 @@
 #'@import EcoSimR
 #'@export
 
-cooc_null_model_spasm <- function(speciesData,
+null_model_cooc_spasm <- function(speciesData,
                                   algo = "sim9",
                                   metric,
                                   nReps = 1000,
@@ -126,3 +203,5 @@ sim9_spasm <- function (speciesData,
   class(sim9.fast.out) <- "nullmod"
   return(sim9.fast.out)
 }
+
+

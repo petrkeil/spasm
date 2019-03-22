@@ -111,6 +111,7 @@ sim.comm.centered <- function(abund.vect, var.consp, var.intersp)
 #' @param abund.vect vector of (integer) abundances of species in a community
 #' @param var.consp conspecific variance, i.e. spread of points in the master species
 #' @param var.intersp interspecific variance, i.e. width of the density kernel
+#' @import spatstat
 #' @export
 
 sim.comm.jittered <- function(abund.vect, var.consp, var.intersp)
@@ -159,8 +160,6 @@ sim.comm.jittered <- function(abund.vect, var.consp, var.intersp)
 
 fractal.norm.raster <- function(grains = c(64, 32, 16, 8, 4, 2), seed = FALSE)
 {
-  require(raster)
-  require(spatstat)
 
   # block the random number generator
   if(seed){ set.seed(seed)}
