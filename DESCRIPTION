@@ -9,3 +9,6 @@ Description: This package bundles species association metrics for binary presenc
 License: GPLv3
 RoxygenNote: 6.1.1
 LazyData: true
+NeedsCompilation: yes
+LinkingTo: Rcpp, RcppArmadillo
+Imports: Rcpp

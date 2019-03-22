@@ -52,7 +52,7 @@ rpoint.MVN <- function(n, var, x.centr, y.centr)
 # a <- rpoint.MVN(n = 100, var = 1, x.centr=0.5, y.centr=0.5); plot(a)
 
 # ------------------------------------------------------------------------------
-#' Function that simulates a community of several species.
+#' Function that simulates a "centered" community
 
 #' The simulation proceeds in 2 steps:
 #' 1. Genreate set of 'mother points' from the bivariate normal, with a given var.intersp.
@@ -99,7 +99,7 @@ sim.comm.centered <- function(abund.vect, var.consp, var.intersp)
 
 
 # ------------------------------------------------------------------------------
-#' Function that simulates a community of several species.
+#' Function that simulates a "jittered" community
 #'
 #' The simulation proceeds as:
 #' 1. Generate point pattern for the most abundant (master) species,

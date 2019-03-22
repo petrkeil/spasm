@@ -17,7 +17,7 @@
 #' @return A dist or data.frame objects with the pairwise association values.
 #' @import vegan
 #' @export
-#'
+
 CA_cov_cor <- function(m,
                        lst = FALSE,
                        fun = FALSE,
@@ -67,7 +67,6 @@ CA_cov_cor <- function(m,
 #' @references Legendre P. & Legendre L. (2012) Numerical Ecology. Elsevier. pp 265-335.
 #' @import vegan
 #' @export
-#'
 
 CA_hell <- function(m, lst = FALSE, fun = FALSE)
 {
@@ -133,7 +132,6 @@ CA_chi <- function(m, lst = FALSE, fun = FALSE)
 #' data: dissimilarity coefficients and partitioning. Ecology Letters 16: 951-963.
 #' @import vegan
 #' @export
-#'
 
 CA_bray <- function(m, lst = FALSE, fun = FALSE)
 {
@@ -166,7 +164,7 @@ CA_bray <- function(m, lst = FALSE, fun = FALSE)
 #' @import vegan
 #' @export
 
-CA_jacc <- function(m, lst = FALSE, fun = FALSE)
+CA_ruz <- function(m, lst = FALSE, fun = FALSE)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -184,54 +182,4 @@ CA_jacc <- function(m, lst = FALSE, fun = FALSE)
   return(D)
 }
 
-# ------------------------------------------------------------------------------
-#' Abundance-based checkerboard score
-#'
-#' This metric is described in Ulrich & Gotelli (2010).
-#'
-#' @inheritParams CA_cov_cor
-#' @param scale Should the raw metric be scaled using the total number of possible
-#' site combinations?
-#' @references Ulrich & Gotelli (2010) Null model analysis of species associations
-#' using abundance data. 91: 3384-3397.
-#' @import vegan
-#' @export
-
-CA_seg <- function(m, lst = FALSE, fun = FALSE, scale = TRUE)
-{
-  # eliminate empty rows and columns
-  n.spec <- nrow(m)
-  combs <- combn(1:n.spec, m =2)
-
-  D <- matrix(0, nrow = n.spec, ncol=n.spec)
-
-  for(i in 1:ncol(combs))
-  {
-    sub.m <- m[combs[,i], ]
-    A <- sub.m[1,]
-    B <- sub.m[2,]
-    # sites where abundances differ
-    AneqB <- 1*((A == B) == FALSE)
-    # sites where A has lower abundance
-    Amin <- 1*(pmin(A,B) == A) * AneqB
-    # sites where B has lower abundance
-    Bmin <- 1*(pmin(A,B) == B) * AneqB
-    # the distance
-    D.i <- sum(Amin) * sum(Bmin)
-    D[combs[1,i], combs[2,i]] <- D.i
-  }
-
-  D <- as.dist(t(D))
-
-  if(scale){
-    n <- ncol(m)
-    N <- (n*(n-1))/2
-    D <- D/N
-  }
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
-
-  return(D)
-}
 

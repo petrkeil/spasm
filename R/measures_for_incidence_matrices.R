@@ -157,10 +157,46 @@ C_jacc <- function(m, lst = FALSE, fun = FALSE)
 }
 
 # ------------------------------------------------------------------------------
-#' Pairwise Sorensen associations among species in a community matrix
+#' Pearson tetrachoric correaltions for binary data
 #'
 #' @inheritParams C_forbes
 #' @return A dist or data.frame objects with the pairwise association values.
+#' @references Hubalek Z. (1982) Coefficients of association and similarity, based
+#' on binary (presence-absence) data: an evaluation. Biol. Rev. 57: 669-689.
+#' @import vegan
+#' @export
+
+C_pears <- function(m, lst = FALSE, fun = FALSE)
+{
+  # eliminate empty rows and columns
+  m <- m[rowSums(m) != 0, ]
+  m <- m[, colSums(m) != 0]
+
+  D <- vegan::designdist(m,
+                         method = "(a*d-b*c)/(((a+b)*(c+d)*(a+c)*(b+d))^0.5)",
+                         abcd = TRUE,
+                         terms = "binary")
+  if(lst) D <- dist2list(D)
+
+  do.fun <- is.function(fun)
+  if(do.fun) D <- fun(D)
+
+  return(D)
+}
+
+
+
+# ------------------------------------------------------------------------------
+#' Pairwise Sorensen associations among species in a community matrix
+#'
+#' Arita (2017) also quotes this to be the "index of co-incidence" of Dice (1945)
+#'
+#' @inheritParams C_forbes
+#' @return A dist or data.frame objects with the pairwise association values.
+#' @references Arita H. (2015) Multisite and multispecies measures of overlap,
+#' co-occurrence and co-diversity. Ecography 40: 709-718.
+#' @references Dice L.R. (1945) Measures of the amount of ecological association
+#' between species. Ecology 94: 2403-2414.
 #' @import vegan
 #' @export
 
@@ -185,7 +221,7 @@ C_sor <- function(m, lst = FALSE, fun = FALSE)
 
 
 # ------------------------------------------------------------------------------
-#' Pairwise Simpson seggregation among species in a community matrix
+#' Pairwise Simpson aggregation among species in a community matrix
 #'
 #' @inheritParams C_forbes
 #' @return A dist or data.frame objects with the pairwise association values.
@@ -199,7 +235,8 @@ C_sim <- function(m, lst = FALSE, fun = FALSE)
   m <- m[, colSums(m) != 0]
 
   D <- vegan::designdist(m,
-                    method = "pmin(b,c)/(pmin(b,c)+a)",
+                    method = "a/(pmin(b,c)+a)", # the similarity version
+                    #method = "pmin(b,c)/(pmin(b,c)+a)", # use this for dissimilarity
                     abcd = TRUE,
                     terms = "binary")
 
@@ -213,38 +250,7 @@ C_sim <- function(m, lst = FALSE, fun = FALSE)
 
 
 # ------------------------------------------------------------------------------
-#' Association metric of Dale (1999)
-#'
-#' This is a metric described on page 147 of Dale (1999).
-#'
-#' @inheritParams C_forbes
-#' @return A dist or data.frame objects with the pairwise association values.
-#' @import vegan
-#' @references Dale M.T.D (1999) Spatial pattern analysis in plant ecology.
-#' Cambridge University Press.
-#' @export
-
-C_dale <- function(m, lst = FALSE, fun = FALSE)
-{
-  # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
-
-  D <- vegan::designdist(m,
-                         method = "a*d - b*c",
-                         abcd = TRUE,
-                         terms = "binary")
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
-
-  return(D)
-}
-
-# ------------------------------------------------------------------------------
-#' Toth's association
+#' Whittaker's index of overall association in a community matrix
 #'
 #' This metric is equivalent to calculating the classical Whittaker's beta diversity on
 #' a transposed matrix. The idea to use this metric for species associations arose
@@ -255,7 +261,7 @@ C_dale <- function(m, lst = FALSE, fun = FALSE)
 #' @return A single number, which is the ratio of mean occupancy and the number of
 #' @export
 
-C_toth <- function(m)
+C_w <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -269,9 +275,14 @@ C_toth <- function(m)
   return(N.sites/mean.occ)
 }
 
+#m <- Atmar[[1]]
+#C_toth(m)
 
 # ------------------------------------------------------------------------------
 #' Variance ratio of Schluter (1984)
+#'
+#' This is the classical variance ratio function; the function is applicable to
+#' both incidence and abundance matrices.
 #'
 #' @inheritParams C_forbes
 #' @return A single number, the variance ratio.
@@ -280,7 +291,7 @@ C_toth <- function(m)
 #' with some example applications. Ecology 65: 998-1005.
 #' @export
 
-V_ratio <- function (m)
+C_ratio <- function (m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -304,7 +315,7 @@ V_ratio <- function (m)
 #' bipartite ecological networks. The Open Ecology Journal, 2: 7-24.
 #' @export
 
-N_connect <- function (m)
+C_conn <- function (m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -327,13 +338,14 @@ N_connect <- function (m)
 #' @return A single number, the number of unique species combinations.
 #' @export
 
-N_combo <- function (m)
+C_combo <- function (m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
   m <- m[, colSums(m) != 0]
+
   # convert to binary matrix
-  m[m > 0] <- 1
+  # m[m > 0] <- 1
 
   # these two lines are adopted from the 'species_combo' function from EcoSimR:
   res <- ncol(unique(m, MARGIN = 2))
@@ -350,25 +362,24 @@ N_combo <- function (m)
 #' @return A single number, the number of checkerboard species pairs.
 #' @export
 
-N_checker <- function (m)
+C_checker <- function (m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
   m <- m[, colSums(m) != 0]
+
   # convert to binary matrix
-  m[m > 0] <- 1
+  # m[m > 0] <- 1
 
   # the following code comes from the 'checker' function from EcoSimR:
   pairwise <- cbind(t(combn(nrow(m), 2)), 0)
   shared <- mat.or.vec(1, nrow(pairwise))
   for (i in 1:nrow(pairwise)) {
-    shared[i] <- sum(m[pairwise[i, 1], ] == 1 & m[pairwise[i,
-                                                           2], ] == 1)
+    shared[i] <- sum(m[pairwise[i, 1], ] == 1 & m[pairwise[i, 2], ] == 1)
   }
   res <- sum(shared == 0)
   return(res)
 }
-
 
 
 
