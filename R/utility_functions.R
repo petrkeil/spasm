@@ -2,7 +2,7 @@
 #'
 #' @param comm.ppp A marked point pattern of spatstat's 'ppp', where marks identify each
 #' point (individual) to a species.
-#' @param dim.yx
+#' @param dim.yx Number of cells along the Y and X dimension of the raster.
 #' @param plotstack Logical. Should the raster for each species be plotted?
 #' @param clean Logical. Should only sites with positive abundance of at least one
 #' species be returned?
@@ -15,8 +15,9 @@
 #' @export
 #'
 
-ppp.to.comm <- function(comm.ppp, dim.yx, plotstack = FALSE, clean = TRUE)
+ppp.to.comm <- function(comm.ppp, dim.yx, plotstack = FALSE, clean = FALSE)
 {
+  require(raster)
   pixellated <- lapply(X = split(comm.ppp), FUN = pixellate, dimyx = dim.yx)
   rasterized <- lapply(pixellated, FUN = raster)
   final.stack <- stack(rasterized)
@@ -35,7 +36,7 @@ ppp.to.comm <- function(comm.ppp, dim.yx, plotstack = FALSE, clean = TRUE)
   }
 
   res <- list(rasters = final.stack,
-              abundance = abundance,
+              abundance = t(abundance),
               coords = coords,
               N.cells = N.nonempty)
   return(res)
@@ -47,13 +48,12 @@ ppp.to.comm <- function(comm.ppp, dim.yx, plotstack = FALSE, clean = TRUE)
 #' @param comm.ppp A marked point pattern of spatstat's 'ppp', where marks identify each
 #' point (individual) to a species.
 #' @param min.abu The threshold. All species with N >= min.abu will be removed.
-#'
 #' @return ppp object
 #' @import spatstat
 #' @import raster
 #' @export
 #'
-#
+
 ppp.trim <- function(comm.ppp, min.abu)
 {
   smr <- summary(comm.ppp)$marks
@@ -77,7 +77,6 @@ ppp.plot.2.spec <- function(comm.ppp, spec.1, spec.2)
 
 # ------------------------------------------------------------------------------
 #' Conversion of distance matrix to list
-#' @export
 
 # function from package 'spaa' by Jinlong Zhang <jinlongzhang01@gmail.com>:
 dist2list <- function (dist)

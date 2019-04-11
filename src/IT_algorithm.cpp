@@ -8,8 +8,6 @@ using namespace Rcpp;
 //'
 //' This function does blah blah blah.
 //'
-//' @param Nothing
-//' @export
 // [[Rcpp::export]]
 IntegerMatrix IT (NumericVector rowsums,
                   NumericVector colsums,

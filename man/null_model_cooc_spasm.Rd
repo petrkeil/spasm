@@ -2,11 +2,10 @@
 % Please edit documentation in R/null_model_simulations.R
 \name{null_model_cooc_spasm}
 \alias{null_model_cooc_spasm}
-\title{Co-Occurrence Null model - modified verstion from EcoSimR}
+\title{Cooccurrence (binary presence-absence) null model - modified verstion from EcoSimR}
 \usage{
 null_model_cooc_spasm(speciesData, algo = "sim9", metric, nReps = 1000,
-  saveSeed = FALSE, burn_in = 500, algoOpts = list(),
-  metricOpts = list(), suppressProg = FALSE, summaryF)
+  burn_in = 500, suppressProg = FALSE, summaryF, ...)
 }
 \arguments{
 \item{speciesData}{a dataframe in which rows are species, columns are sites,
@@ -19,18 +18,12 @@ site. Empty rows and empty columns should not be included in the matrix.}
 
 \item{nReps}{the number of replicate null assemblages to create; default is 1000 replicates.}
 
-\item{saveSeed}{TRUE or FALSE. If TRUE the current seed is saved so the simulation can be repeated; default is FALSE.}
-
 \item{burn_in}{The number of burn_in iterations to use with the simFast algorithm; default is 500 burn-in replicates.}
-
-\item{algoOpts}{a list containing all the options for the specific algorithm you want to use.  Must match the algorithm given in the `algo` argument.}
-
-\item{metricOpts}{a list containing all the options for the specific metric you want to use.  Must match the metric given in the `metric` argument.}
 
 \item{suppressProg}{TRUE or FALSE. If true, display of the progress bar in the console is suppressed; default is FALSE. This setting is useful for creating markdown documents with `knitr`.}
 }
 \description{
-Create a Co-Occurrence null model. This is a modified version of the function
-"cooc_null_model"
-from EcoSimR, with no restrictions on the metric that is applied to the community matrix.
+Create a Co-Occurrence null model. This is based on the function
+"cooc_null_model" from EcoSimR, with has been modified to have
+no restrictions on the metric that is applied to the community matrix.
 }

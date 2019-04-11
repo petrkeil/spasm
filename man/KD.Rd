@@ -7,7 +7,7 @@
 KD(X, spec.1, spec.2, n.iter, radius)
 }
 \arguments{
-\item{X}{Object of class 'ppp' (from 'spatstat' packge). This is a marked 
+\item{X}{Object of class 'ppp' (from 'spatstat' packge). This is a marked
 point pattern in which each mark gives identity of a species. Thus, the object
 must have at least 2 species.}
 

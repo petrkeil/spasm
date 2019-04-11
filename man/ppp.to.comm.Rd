@@ -4,11 +4,13 @@
 \alias{ppp.to.comm}
 \title{Conversion of point pattern to community matrix Y}
 \usage{
-ppp.to.comm(comm.ppp, dim.yx, plotstack = FALSE, clean = TRUE)
+ppp.to.comm(comm.ppp, dim.yx, plotstack = FALSE, clean = FALSE)
 }
 \arguments{
 \item{comm.ppp}{A marked point pattern of spatstat's 'ppp', where marks identify each
 point (individual) to a species.}
+
+\item{dim.yx}{Number of cells along the Y and X dimension of the raster.}
 
 \item{plotstack}{Logical. Should the raster for each species be plotted?}
 

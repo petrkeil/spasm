@@ -2,10 +2,25 @@
 % Please edit documentation in R/null_model_simulations.R
 \name{null_model_abund_spasm}
 \alias{null_model_abund_spasm}
-\title{Abundance Null model}
+\title{Abundance null model}
 \usage{
-null_model_abund_spasm(m, metric, nReps = 1000, summaryF)
+null_model_abund_spasm(m, metric, nReps = 1000, summaryF, ...)
+}
+\arguments{
+\item{m}{Community data matrix with species as rows and sites as columns. Can
+contain either incidences (1/0) or abundances (natural numbers).}
+
+\item{metric}{An abundance-based association measure. Character string. Options are names
+of CA_ functions of this package spasm.}
+
+\item{nReps}{Integer. Number of samples from the null distribution.}
+
+\item{summaryF}{Name of function that should be used to summarize pairwise similarity matrices.
+For example mean, median, sum, ...}
+
+\item{...}{Further arguments to the CA_ metric function.}
 }
 \description{
-Uses the IT algorithm by Ulrich & Gotelli (2010)
+Randomizes community matrix many times to create a null distribution.
+This function uses the IT algorithm by Ulrich & Gotelli (2010)
 }

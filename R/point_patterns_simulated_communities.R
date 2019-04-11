@@ -194,7 +194,7 @@ fractal.norm.raster <- function(grains = c(64, 32, 16, 8, 4, 2), seed = FALSE)
 # x <- fractal.norm.raster(); par(mfrow=c(1,2)); hist(x); plot(x)
 
 
-
+#'@export
 sim.comm.fractal <- function(abund.vect, var.consp, var.intersp)
 {
   require(truncnorm)
@@ -248,4 +248,94 @@ ppp.to.siteXspec <- function(comm.ppp, grain)
   siteXspec<- do.call("cbind", comm.num)
   return(siteXspec)
 }
+
+
+
+# ------------------------------------------------------------------------------
+#' Truncated exponential probability density function
+#' @export
+
+PDFtexp <- function(d, alpha,  dlim= c(0,sqrt(2)))
+{
+  a <- dlim[1]
+  b <- dlim[2]
+
+  # the limiting case where the PDF is uniform:
+  if(alpha==0) pd <- rep(1, times=length(d))
+  # else, proceed according to the formula
+  else pd <- (alpha*exp(alpha*d)) / (exp(alpha*b) - exp(alpha*a))
+  return(pd)
+}
+
+# ------------------------------------------------------------------------------
+#' Inversed exponential
+
+PDFiexp <- function(d, lambda)
+{
+  # seggregation
+  if(lambda <= 0)
+  {
+    lambda <- -1*lambda
+    pd = exp(-lambda*d)
+  }
+  # aggregation
+  if(lambda > 0)
+  {
+    pd = 1- exp(-lambda*d)
+    pd = pd + (1-max(pd))
+  }
+  return(pd)
+}
+
+d <- seq(0,1, by=0.01)
+plot(d, PDFiexp(d, -10), ylim=c(0,1), type = "l")
+
+
+# ------------------------------------------------------------------------------
+#' Two point patterns with a given attraction or repulsion
+#
+#' @param abund.vect 2-element vector with abundances (# of individuals) of the
+#' two species for which the pattern will be simulated.
+#' @param var.intersp interspecific variance, i.e. width of the density kernel.
+#' It's a positive number, and the closer is the value to 0 the stronger the
+#' intraspecific aggregation.
+#' @param alpha inter-specific association (attraction) or repulsion. Values < 0 are
+#' for repulsion, 0 is no relationship, values > 0 are attraction
+#' @param plot.comm should the pattern be plotted?
+#' @import spatstat
+#' @import mvtnorm
+#' @export
+
+sim.pair <- function(abund.vect, var.consp , alpha, plot.comm=FALSE)
+{
+  # flip the sign of the alpha parameter (for better interpretability)
+  alpha <- alpha*(-1)
+
+  # spread the points of species 1
+  sp1 <- rpoint.MVN(n=abund.vect[1],
+                      var=var.consp,
+                      x.centr=runif(1, 0, 1), y.centr= runif(1, 0, 1))
+
+  sp1.dist <- sp1.prob <- distmap(sp1)
+  sp1.prob[] <- PDFtexp(sp1.dist[], alpha)
+
+  sp2 <- rpoint(n = abund.vect[2], f = sp1.prob)
+
+  sp1 <- data.frame(coords(sp1), species = 1)
+  sp2 <- data.frame(coords(sp2), species = 2)
+
+  sp12 <- rbind(sp1, sp2)
+  comm <- ppp(x = sp12$x,
+              y=sp12$y,
+              marks = as.factor(paste("sp", sp12$species, sep="")),
+              window = square())
+
+  if(plot.comm){plot(comm, cols = c("#f1a340","#998ec3"), main=NULL)}
+
+  return(comm)
+}
+
+
+# Test:
+# a <- sim.pair(abund.vect  = c(100, 100), var.consp = 0.01, alpha   = 0)
 

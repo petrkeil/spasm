@@ -20,5 +20,5 @@ to all pairwise values.}
 A dist or data.frame objects with the pairwise association values.
 }
 \description{
-Pairwise Simpson aggregation among species in a community matrix
+This is the positive association measure (as opposed to dissimilarity).
 }

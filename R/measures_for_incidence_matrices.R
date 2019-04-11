@@ -100,15 +100,24 @@ C_seg <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
 
 C_tog <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
 {
-  # eliminate empty rows and columns
+  # eliminate empty rows (NOT columns)
   m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
 
+  # convert to binary
+  m[m>1] <- 1
 
-  D <- vegan::designdist(m,
-                         method = "a*d",
-                         abcd = TRUE,
-                         terms = "binary")
+  # according to Stone & Roberts 1992:
+  # Tij = Sij(NI + Sij - ri - rj)
+  # where
+  # Sij = a
+  # ri = a + b
+  # rj = a + c
+  # NI = a + b + c + d
+  # which simplifes to a*d
+ D <- vegan::designdist(m,
+                        method = "a*d",
+                        abcd = TRUE,
+                        terms = "binary")
 
   if(scale)
   {
@@ -127,10 +136,10 @@ C_tog <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
   return(D)
 }
 
-
-
 # ------------------------------------------------------------------------------
 #' Pairwise Jaccard associations among species in a community matrix
+#'
+#' This is the positive association measure (as opposed to dissimilarity).
 #'
 #' @inheritParams C_forbes
 #' @return A dist or data.frame objects with the pairwise association values.
@@ -147,6 +156,8 @@ C_jacc <- function(m, lst = FALSE, fun = FALSE)
                          method = "a/(a+b+c)",
                          abcd = TRUE,
                          terms = "binary")
+
+  D <- 1-D # convert it to an similarity (association) measures
 
   if(lst) D <- dist2list(D)
 
@@ -189,7 +200,8 @@ C_pears <- function(m, lst = FALSE, fun = FALSE)
 # ------------------------------------------------------------------------------
 #' Pairwise Sorensen associations among species in a community matrix
 #'
-#' Arita (2017) also quotes this to be the "index of co-incidence" of Dice (1945)
+#' Arita (2017) also quotes this to be the "index of co-incidence" of Dice (1945).
+#' This is the positive association measure (as opposed to dissimilarity).
 #'
 #' @inheritParams C_forbes
 #' @return A dist or data.frame objects with the pairwise association values.
@@ -210,6 +222,7 @@ C_sor <- function(m, lst = FALSE, fun = FALSE)
                          method = "(2*a)/(2*a+b+c)",
                          abcd = TRUE,
                          terms = "binary")
+  D <- 1-D # convert it to an similarity (association) measures
 
   if(lst) D <- dist2list(D)
 
@@ -222,6 +235,8 @@ C_sor <- function(m, lst = FALSE, fun = FALSE)
 
 # ------------------------------------------------------------------------------
 #' Pairwise Simpson aggregation among species in a community matrix
+#'
+#' This is the positive association measure (as opposed to dissimilarity).
 #'
 #' @inheritParams C_forbes
 #' @return A dist or data.frame objects with the pairwise association values.
@@ -239,6 +254,7 @@ C_sim <- function(m, lst = FALSE, fun = FALSE)
                     #method = "pmin(b,c)/(pmin(b,c)+a)", # use this for dissimilarity
                     abcd = TRUE,
                     terms = "binary")
+  D <- 1-D # convert it to an similarity (association) measures
 
   if(lst) D <- dist2list(D)
 
@@ -323,7 +339,7 @@ C_conn <- function (m)
   # convert to binary matrix
   m[m > 0] <- 1
 
-  res <- sum(m>0)/(nrow(m)*ncol(m))
+  res <- sum(m>0) / ((nrow(m)*ncol(m)))
   return(res)
 }
 

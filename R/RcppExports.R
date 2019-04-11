@@ -5,8 +5,6 @@
 #'
 #' This function does blah blah blah.
 #'
-#' @param Nothing
-#' @export
 IT <- function(rowsums, colsums, nrow, ncol, N) {
     .Call('_spasm_IT', PACKAGE = 'spasm', rowsums, colsums, nrow, ncol, N)
 }
