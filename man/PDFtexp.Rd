@@ -4,7 +4,7 @@
 \alias{PDFtexp}
 \title{Truncated exponential probability density function}
 \usage{
-PDFtexp(d, alpha, dlim = c(0, sqrt(2)))
+PDFtexp(d, alpha, dlim = c(0, 1))
 }
 \description{
 Truncated exponential probability density function

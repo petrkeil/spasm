@@ -255,10 +255,13 @@ ppp.to.siteXspec <- function(comm.ppp, grain)
 #' Truncated exponential probability density function
 #' @export
 
-PDFtexp <- function(d, alpha,  dlim= c(0,sqrt(2)))
+PDFtexp <- function(d, alpha,  dlim= c(0,1))
 {
   a <- dlim[1]
   b <- dlim[2]
+
+  # flip the sign of the alpha parameter (for better interpretability)
+  alpha <- alpha*(-1)
 
   # the limiting case where the PDF is uniform:
   if(alpha==0) pd <- rep(1, times=length(d))
@@ -308,9 +311,6 @@ plot(d, PDFiexp(d, -10), ylim=c(0,1), type = "l")
 
 sim.pair <- function(abund.vect, var.consp , alpha, plot.comm=FALSE)
 {
-  # flip the sign of the alpha parameter (for better interpretability)
-  alpha <- alpha*(-1)
-
   # spread the points of species 1
   sp1 <- rpoint.MVN(n=abund.vect[1],
                       var=var.consp,
@@ -337,5 +337,8 @@ sim.pair <- function(abund.vect, var.consp , alpha, plot.comm=FALSE)
 
 
 # Test:
-# a <- sim.pair(abund.vect  = c(100, 100), var.consp = 0.01, alpha   = 0)
-
+# a <- sim.pair(abund.vect  = c(100, 100),
+#               var.consp = 0.01,
+#               alpha   = -10,
+#               plot.comm=TRUE)
+#a
