@@ -234,7 +234,7 @@ pairs.panels(res, hist.col = "grey",
 dev.off()
 
 
-png(file = "figures/abundance_pairwise_pairplot.png",
+png(file = "figures/abundance_pairwise_pairplot2.png",
     width = 1000, height = 1000, res=150)
     par(xaxt = "n", yaxt = "n")
 
