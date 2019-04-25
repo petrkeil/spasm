@@ -55,8 +55,8 @@ apply(X=res, MARGIN=2, FUN=range)
 
 res2 <- mutate(res,
                C_forbes = log(C_forbes),
-              # C_segSc = log(C_segSc + 1),
-              # C_togSc = log(C_togSc + 1),
+               C_segSc = log(C_segSc + 1),
+               C_togSc = log(C_togSc + 1),
                C_w = log(C_w),
                C_checker = log(C_checker + 1),
                C_combo = log(C_combo),
@@ -77,7 +77,10 @@ res2 <- na.omit(res2)
 
 
 # ------------------------------------------------------------------------------
-png(file = "../Figures/binary_pairwise_pairplot2.png", width = 1000, height = 1000, res=150)
+
+
+png(file = "figures/binary_pairwise_pairplot2.png",
+    width = 1000, height = 1000, res=150)
 par(xaxt = "n", yaxt = "n")
 #pairs.panels(res2, hist.col = "grey",
 #             smooth=FALSE, ellipses = FALSE,
@@ -91,7 +94,6 @@ panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...)
   txt <- round(cor(x, y),2)
   plotrix::draw.circle(x = 0.5, y = 0.5, radius = abs(txt)/2,
                        col = grey(1 - abs(txt)),
-                       #col = "black",
                        border = NA)
   text(0.5, 0.5, txt, cex = abs(txt) + 0.2, col = "white")
 }
@@ -107,7 +109,7 @@ dev.off()
 # ------------------------------------------------------------------------------
 
 
-png(file = "../Figures/binary_corrplot.png", width = 1000, height = 1000, res=150)
+png(file = "figures/binary_corrplot.png", width = 1000, height = 1000, res=200)
 corrplot::corrplot.mixed(corr = cor(res2), lower="ellipse",
                          upper = "number", order="FPC",
                          tl.col = "black",
@@ -136,13 +138,16 @@ inc.all <-  factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
  # ggtitle("b")
 
 
-png(file = "../Figures/binary_pairwise_PCA.png", width = 1000, height = 1000, res=150)
+png(file = "figures/binary_pairwise_PCA.png",
+    width = 1000, height = 1000, res=200)
   inc.all
 dev.off()
 
-png(file = "../Figures/binary_pairwise_graph.png", width = 1000, height = 1000, res=150)
+png(file = "figures/binary_pairwise_graph.png",
+    width = 1000, height = 1000, res=300)
 qgraph(cor(res2), layout = "spring",
-       labels = colnames(cor(res2)))#,
+       labels = colnames(cor(res2)),
+       theme = "colorblind")#,
        #title="c", title.cex = 2)
 dev.off()
 
@@ -168,7 +173,7 @@ for(i in 1:length(dat))
   res.i <- c(N = sum(colSums(m) >= 1),
              S = sum(rowSums(m) >= 1),
              Tot.abu = sum(m),
-             #CA_gower = CA_gower(m, fun = mean),
+            #CA_gower = CA_gower(m, fun = mean),
              CA_bray = CA_bray(m, fun = mean),
              CA_hell = CA_hell(m, fun = mean),
              CA_ruz = CA_ruz(m, fun=mean),
@@ -180,10 +185,10 @@ for(i in 1:length(dat))
              CA_tau = CA_cov_cor(m, fun=mean, method = "kendall", correlation=TRUE),
              #CA_pos = CA_cov_cor(m, fun = pos.fun,
             #                              transf = "hellinger",
-            #                              correlation = TRUE,
+             #                             correlation = TRUE,
             #                              method = "pearson"),
             # CA_neg = CA_cov_cor(m, fun = neg.fun,
-            #                             transf = "hellinger",
+            #                              transf = "hellinger",
             #                              correlation = TRUE,
             #                              method = "pearson",
             CA_ratio = C_ratio(m))
@@ -210,6 +215,9 @@ res <- mutate(res,
 res[res == -Inf] <- NA
 res <- na.omit(res)
 
+cols <- c("S or N", "S or N", "S or N", rep("", times=ncol(res)-3))
+
+
 
 # check distributions of the measures
 par(mfrow=c(3,4))
@@ -219,20 +227,53 @@ for(i in 1:ncol(res))
 }
 
 require(psych)
-png(file = "../Figures/abundance_pairwise_pairplot.png", width = 1400, height = 1400, res=150)
+png(file = "figures/abundance_pairwise_pairplot.png",
+    width = 1400, height = 1400, res=150)
 pairs.panels(res, hist.col = "grey",
              smooth=FALSE, ellipses = FALSE, density = FALSE, scale=TRUE)
 dev.off()
 
 
+png(file = "figures/abundance_pairwise_pairplot.png",
+    width = 1000, height = 1000, res=150)
+    par(xaxt = "n", yaxt = "n")
+
+    panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...)
+    {
+      usr <- par("usr"); on.exit(par(usr))
+      par(usr = c(0, 1, 0, 1))
+      txt <- round(cor(x, y),2)
+      plotrix::draw.circle(x = 0.5, y = 0.5, radius = abs(txt)/2,
+                           col = grey(1 - abs(txt)),
+                           border = NA)
+      text(0.5, 0.5, txt, cex = abs(txt) + 0.2, col = "white")
+    }
+
+    panel.xy <- function(x, y){points(x, y, cex = 0.1)}
+    pairs(res, upper.panel = panel.cor, lower.panel = panel.xy, gap = 0)
+dev.off()
+
+
+
+png(file = "figures/abundance_pairwise_graph.png",
+    width = 1000, height = 1000, res=300)
+qgraph(cor(res), layout = "spring",
+       labels = colnames(cor(res)), theme = "colorblind")#,
+#title="c", title.cex = 2)
+dev.off()
+
+
+
 res.pca <- prcomp(res, scale = TRUE, center = TRUE)
 
-png(file = "../Figures/abundance_pairwise_PCA.png", width = 1500, height = 1500, res=300)
-
-
+png(file = "figures/abundance_pairwise_PCA.png",
+    width = 1000, height = 1000, res=200)
 factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
-                         col.ind = "grey", col.var = "black",
-                         col.circle= "darkgrey", fill.var = "white") +
-  theme_minimal() + ggtitle("")
+                         col.ind = "grey", #col.var = "black",
+                         col.circle= "darkgrey", fill.var = "white",
+                         col.var = cols) +
+  scale_colour_manual(values=c("black", "red")) +
+  theme_minimal() + ggtitle("") +
+  theme(legend.position="none", plot.title=element_blank())
 
 dev.off()

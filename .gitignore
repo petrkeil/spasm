@@ -3,3 +3,4 @@
 .RData
 .Ruserdata
 analyses/sim_results.csv
+analyses/figures
