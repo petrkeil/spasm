@@ -1,5 +1,7 @@
 #' Forbes' coefficient of association among species in a community matrix
 #'
+#' This is blah blah blah
+#'
 #' @param m Community data matrix with species as rows and sites as columns. Can
 #' contain either incidences (1/0) or abundances (natural numbers).
 #' @param lst Should the results be returned as a 'dist' object (FALSE), or

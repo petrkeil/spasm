@@ -22,6 +22,8 @@ dpoint.MVN <- function(x, y, var, x.centr, y.centr)
 #' Funciton that generates the MVN density as a pixel image
 #'
 #' @inheritParams dpoint.MVN
+#' @export
+
 
 dpoint.MVN.image <- function(var, x.centr, y.centr)
 {
@@ -40,6 +42,7 @@ dpoint.MVN.image <- function(var, x.centr, y.centr)
 
 #' @inheritParams dpoint.MVN
 #' @param n number of points
+#' @export
 
 rpoint.MVN <- function(n, var, x.centr, y.centr)
 {
@@ -331,6 +334,7 @@ sim.pair <- function(abund.vect, var.consp , alpha, plot.comm=FALSE)
               window = square())
 
   if(plot.comm){plot(comm, cols = c("#f1a340","#998ec3"), main=NULL)}
+
 
   return(comm)
 }

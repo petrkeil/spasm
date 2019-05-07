@@ -20,7 +20,7 @@ to all pairwise values.}
 A dist or data.frame objects with the pairwise association values.
 }
 \description{
-Forbes' coefficient of association among species in a community matrix
+This is blah blah blah
 }
 \references{
 Forbes S.A. (1907) On the local distribution of certain Illinois

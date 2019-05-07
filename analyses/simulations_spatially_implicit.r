@@ -7,6 +7,9 @@ library(raster)
 library(spasm)
 library(spatstat)
 
+# load Aniko Toth's functions from GitHub
+source("https://raw.githubusercontent.com/anikobtoth/FCW/master/Pair_Functions.R")
+
 ################################################################################
 
 params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
@@ -15,6 +18,14 @@ params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
                       grain = c(128, 64, 32, 16, 8, 4),
                       N1 = c(10, 100, 1000, 10000),
                       N2 = c(10, 100, 1000, 10000))
+
+params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
+                      alpha = seq(-20, 20, by=5),
+                      #alpha = c(-100, -10, -1, 0, 1, 10, 100)
+                      grain = c(64, 32, 16, 8, 4),
+                      N1 = c(200, 1000),
+                      N2 = c(200, 1000))
+
 
 res <- list()
 for(i in 1:nrow(params))
@@ -39,7 +50,10 @@ for(i in 1:nrow(params))
                          C_togSc = mean( spasm::C_tog(m.bin, scale=TRUE)),
                          C_jacc = mean( spasm::C_jacc(m.bin)),
                          C_sor = mean( spasm::C_sor(m.bin)),
+                         C_sorZ = spasm::C_sorZ(m.bin),
                          C_forbes = mean( spasm::C_forbes(m.bin)),
+                         C_FETmP = mean(FETmP_Pairwise(m.bin)),
+                         C_FET = mean(FET_Pairwise(m.bin)),
                          C_pears = mean(spasm::C_pears(m.bin)),
                          CA_cov = mean(spasm::CA_cov_cor(m, correlation=FALSE)),
                          CA_cov_hell = mean(spasm::CA_cov_cor(m, correlation=FALSE, transf="hellinger")),
@@ -47,6 +61,7 @@ for(i in 1:nrow(params))
                          CA_cor_hell = mean(spasm::CA_cov_cor(m, correlation=TRUE, transf = "hellinger")),
                          CA_hell = mean(spasm::CA_hell(m)),
                          CA_tau = mean(spasm::CA_cov_cor(m, correlation=TRUE, transf=NULL, method="kendall")),
+                         CA_tauZ = spasm::CA_tauZ(m),
                          CA_bray = mean(spasm::CA_bray(m)),
                          CA_ruz = mean(spasm::CA_ruz(m)),
                          CA_chi = mean(spasm::CA_chi(m)),
@@ -72,10 +87,12 @@ res <- reshape2::melt(data = res.all, measure.vars = c(C.measures,
 
 res$variable <- as.character(res$variable)
 res <- res[is.na(res$value) == FALSE,]
-write.csv(res, file = "sim_results.csv", row.names=FALSE)
+
+# ------------------------------------------------------------------------------
+#  write.csv(res, file = "sim_results.csv", row.names=FALSE)
 # ------------------------------------------------------------------------------
 
-res <- read.csv("sim_results.csv")
+
 chr <- as.character(res$variable)
 #res$variable <- factor(x= res$variable, levels = unique(chr))
 res$variable <- ordered(x= res$variable, levels = unique(chr))

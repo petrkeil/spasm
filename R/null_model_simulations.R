@@ -1,14 +1,14 @@
 ################################################################################
-#'The IT algorithm of Ulrich & Gotelli (2010)
+#'One realization of the IT algorithm of Ulrich & Gotelli (2010)
 #'
 #'@description Uses the IT algorithm by Ulrich & Gotelli (2010). This is the slower
 #'but reliable R implementation.
 #'
 #'@param m Community data matrix with species as rows and sites as columns. Can
 #'contain either incidences (1/0) or abundances (natural numbers).
-#'@export
 
-IT.r <- function(m)
+
+null_step_CA_IT <- function(m)
 {
   # row and column marginals that will be used as probabilities in the sampling
   rsums <- rowSums(m)
@@ -27,225 +27,103 @@ IT.r <- function(m)
     res[rs[i], cs[i]] <- res[rs[i], cs[i]] + 1
   }
 
+  # A CORRECTION FOR RANDOMIZED MATRICES WITH 0 ROWS
+    # which species have 0 individuals
+    zero.spec <- which(rowSums(res) == 0)
+    # where will random 1 placed?
+    one.loc <- sample(1:ncol(m), size = sum(zero.spec), replace=TRUE)
+    res[zero.spec, one.loc] <- 1
+    return(res)
+
   return(res)
 }
 
+# TESTING
+#m <- data.Ulrich[[1]]; rowSums(null_step_CA_IT(m))
+
 ################################################################################
-#'Abundance null model
+#'One realization of the an algorithm that resamples each row according to a Poisson distribution
 #'
-#'@description Randomizes community matrix many times to create a null distribution.
-#'This function uses the IT algorithm by Ulrich & Gotelli (2010)
+#'@description First, for each species in the matrix, mean abunance is calculated.
+#'Then N samples are taken for each species from a Poisson distribution, with lambda
+#'equal to the mean abunance.
 #'
 #'@param m Community data matrix with species as rows and sites as columns. Can
 #'contain either incidences (1/0) or abundances (natural numbers).
-#'@param metric An abundance-based association measure. Character string. Options are names
-#'of CA_ functions of this package spasm.
-#'@param nReps Integer. Number of samples from the null distribution.
-#'@param summaryF Name of function that should be used to summarize pairwise similarity matrices.
-#'For example mean, median, sum, ...
-#'@param ... Further arguments to the CA_ metric function.
-#'@export
 
-null_model_abund_spasm <- function(m,
-                                   metric,
-                                   nReps = 1000,
-                                   summaryF,
-                                   ...)
+
+null_step_CA_Poisson <- function(m)
 {
-  # convert the string to the function object
-  metric <- get(metric)
-  # observed metric
-  obs <- summaryF(metric(m, ...))
+  lambdas <- rowMeans(m)
+  N = ncol(m)
+  res <- t(sapply(X = lambdas, FUN = rpois, n = N))
 
-  sims <- list()
-
-  pb <- txtProgressBar(min = 1, max = nReps, char=">", style=3) # initialize progress bar
-  for(i in 1:nReps)
-  {
-    # perm.m <- IT(m.rowsums, m.colsums, m.nrow, m.ncol, N) # the C++ implementation
-    perm.m <- IT.r(m) # one instance of the randomization algorithm
-    sims[i] <- summaryF(metric(perm.m, ...)) # summarize the results
-    setTxtProgressBar(pb, i)
-  }
-  close(pb)
-
-  sims <- unlist(sims)
-  std_z_score <- (obs - sims)/sd(sims) # standardized deviation from the null model
-
-  return(list(obs=obs, sims=sims, std_z_score=std_z_score))
+  # A CORRECTION FOR RANDOMIZED MATRICES WITH 0 ROWS
+    # which species have 0 individuals
+    zero.spec <- which(rowSums(res) == 0)
+    # where will random 1 placed?
+    one.loc <- sample(1:ncol(m), size = sum(zero.spec), replace=TRUE)
+    res[zero.spec, one.loc] <- 1
+    return(res)
 }
 
-# ----------------------------------------------
-# Testing:
-# require(spasm); m <- data.Ulrich[[1]]
-#
-# meanpos <- function(x) mean(x[x<0])
-# x <- null_model_abund_spasm(m, "CA_cov_cor", summaryF = mean, nReps = 1000,
-#                             method="pearson", transf = "hellinger")
-# require(ggplot2)
-# ggplot(data = data.frame(sims=x$std_z_score), aes(x = sims)) + geom_histogram()
-# ggplot(data = data.frame(sims=x$sims), aes(x = sims)) + geom_histogram()  +
-# geom_vline(xintercept=x$obs, colour="red")
-
+#m <- data.Ulrich[[1]]; rowSums(null_step_CA_Poisson(m))
 
 
 ################################################################################
-#'Cooccurrence (binary presence-absence) null model - modified verstion from EcoSimR
+#'One realization of the sim2 algorithm from EcoSimR
 #'
-#'@description Create a Co-Occurrence null model. This is based on the function
-#'"cooc_null_model" from EcoSimR, with has been modified to have
-#'no restrictions on the metric that is applied to the community matrix.
+#' @description https://cran.r-project.org/web/packages/EcoSimR/vignettes/CoOccurrenceVignette.html
 #'
-#'@param speciesData a dataframe in which rows are species, columns are sites,
-#' and the entries indicate the absence (0) or presence (1) of a species in a
-#' site. Empty rows and empty columns should not be included in the matrix.
-#'@param algo the algorithm to use, must be "sim1", "sim2", "sim3", "sim4", "sim5", "sim6", "sim7", "sim8", "sim9", "sim10"; default is "sim9".
-#'@param metric the metric used to calculate the null model: the choice is unrestricted
-#'@param nReps the number of replicate null assemblages to create; default is 1000 replicates.
-#'@param burn_in The number of burn_in iterations to use with the simFast algorithm; default is 500 burn-in replicates.
-#'@param suppressProg TRUE or FALSE. If true, display of the progress bar in the console is suppressed; default is FALSE. This setting is useful for creating markdown documents with `knitr`.
-#'@import EcoSimR
-#'@export
-
-null_model_cooc_spasm <- function(speciesData,
-                                  algo = "sim9",
-                                  metric,
-                                  nReps = 1000,
-                                  burn_in = 500,
-                                  suppressProg = FALSE,
-                                  summaryF,
-                                  ...){
-
-  # convert the matrix to binary, if it already does not come as such
-  speciesData[speciesData>1] <- 1
+#' @param m Community data matrix with species as rows and sites as columns. Can
+#' contain either incidences (1/0) or abundances (natural numbers).
 
 
-  if(algo == "sim2")
-  {
-    sim <- sim2_spasm(m = speciesData,
-                      metric = metric,
-                      nReps = nReps,
-                      summaryF = summaryF,
-                      ...)
-  }
-
-  if(algo == "sim9")
-  {
-    params = list(speciesData = speciesData,
-           metric = metric,
-           nReps = nReps,
-           burn_in = burn_in,
-           suppressProg = suppressProg,
-           summaryF = summaryF)
-    sim <- do.call(sim9_spasm, params)
-  }
-
-  return(list(obs=sim$Obs,
-              sims=sim$Sim,
-              z_score = sim$Sim - sim$Obs,
-              std_z_score = (sim$Sim - sim$Obs)/sd(sim$Sim)))
-}
-
-
-# ----------------------------------------------
-# Testing:
-# require(spasm); m <- data.Atmar[[1]]
-# x <- null_model_cooc_spasm(m, metric="C_combo", summaryF = mean, nReps = 1000)
-# require(ggplot2)
-# ggplot(data = data.frame(sims=x$std_z_score), aes(x = sims)) + geom_histogram()
-# ggplot(data = data.frame(sims=x$sims), aes(x = sims)) + geom_histogram()  +
-# geom_vline(xintercept=x$obs, colour="red")
-
-
-
-# ------------------------------------------------------------------------------
-#' Sim2 Co-occurrence Randomization Algorithm
-sim2_spasm <- function(m,
-                       metric,
-                       nReps,
-                       summaryF,
-                       ...)
-
+null_step_C_sim2 <- function(m)
 {
-  # convert the string to the function object
-  metric <- get(metric)
-  # observed metric
-  obs <- summaryF(metric(m, ...))
-
-  sims <- list()
-
-  pb <- txtProgressBar(min = 1, max = nReps, char=">", style=3) # initialize progress bar
-  for(i in 1:nReps)
-  {
-    perm.m <-  t(apply(m,1,sample)) # one instance of the randomization algorithm 2
-    sims[i] <- summaryF(metric(perm.m, ...)) # summarize the results
-    setTxtProgressBar(pb, i)
-  }
-  close(pb)
-
-  sims <- unlist(sims)
-
-  return(list(Obs=obs, Sim=sims))
+  t(apply(X = m, MARGIN = 1, FUN = sample))
 }
 
-# sim2_spasm(m, metric = "C_w", nReps = 10, summaryF = mean)
+# TESTING
+# null_step_C_sim2(m)
 
-# ------------------------------------------------------------------------------
-#' Modified sim9 algorithm to handle spasm's functions, taken from EcoSimR
 
-sim9_spasm <- function (speciesData,
-                        metric,
-                        nReps = 1000,
-                        burn_in = 0,
-                        suppressProg = TRUE,
-                        summaryF)
+################################################################################
+#'Standardized Z-score for a given null model algorithm and ISA metric (for pairwise metrics)
+
+#' @param m Community data matrix with species as rows and sites as columns. Can
+#' contain either incidences (1/0) or abundances (natural numbers).
+#' @param alrgorithm Character string. Name of the algorithm to be executed.
+#' @param metric Character string. Name of spasm's pairwise association metric.
+#' @param N.sim Number of algirthm runs.
+#' @export
+#'
+null_model_Z_score <- function(m, algorithm, metric, N.sim)
 {
-  ## Convert to matrix for type consistency
-  if(!is.matrix(speciesData)){ speciesData <- as.matrix(speciesData)}
+  res <- array(dim=c(nrow(m), nrow(m), N.sim))
 
-  metricF <- get(metric)
-  summaryF <- summaryF # Petr Keil: define a summary function to be applied to spasm metric
-
-  Obs <- summaryF(metricF(speciesData))
-
-  #Trim the matrix to be just rowssums > 0
-  msim <- speciesData[rowSums(speciesData) > 0, ]
-  ifelse(burn_in == 0, burn_in <- max(1000,10*nrow(msim)),burn_in <- burn_in)
-  burn.in.metric <- vector(mode="numeric",length = burn_in)
-  simulated.metric <- vector(mode="numeric",length = nReps)
-
-  # run sequential swap for burn in series
-  if(suppressProg){
-    bi_pb <- txtProgressBar(min = 0, max = nReps, style = 3, file = stderr())
-  } else{
-    cat("Burn-in Progress \n")
-    bi_pb <- txtProgressBar(min = 0, max = nReps, style = 3)
-  }
-  for (i in 1:burn_in)
+  for(i in 1:N.sim)
   {
-    msim <-sim9_single(msim)
-    burn.in.metric[i] <- summaryF(metricF(msim))
-    setTxtProgressBar(bi_pb, i)
+    # radnomize using a given algorithm
+    null.m <- do.call(algorithm, list(m))
+    # calculate the metric
+    null.metric <- as.matrix(do.call(metric, list(null.m)))
+    res[,,i] <- null.metric
   }
-  close(bi_pb)
-  # run sequential swap for simulated series
-  if(suppressProg){
-    stat_pb <- txtProgressBar(min = 0, max = nReps, style = 3, file = stderr())
-  } else{
-    cat("Swap Progress \n")
 
-    stat_pb <- txtProgressBar(min = 0, max = nReps, style = 3)
-  }
-  for (i in 1: nReps)
-  {
-    msim <-sim9_single(msim)
-    simulated.metric[i] <- summaryF(metricF(msim))
-    setTxtProgressBar(stat_pb, i)
-  }
-  close(stat_pb)
+  # calculate the Z-score
+  obs <- do.call(metric, list(m))
+  mean.null <- as.dist(apply(X = res, MARGIN = c(1,2), FUN = mean))
+  sd.null <- as.dist(apply(X = res, MARGIN = c(1,2), FUN = sum))
 
-  sim9.fast.out <- list(Obs=Obs, Sim=simulated.metric)
-  return(sim9.fast.out)
+  Z <- (obs - mean.null) / sd.null
+  return(Z)
 }
 
-
+# TESTING
+#m <- data.Atmar[[1]]
+#x <- null_model_Z_score(m,
+#                        algorithm="null_step_C_sim2",
+#                        metric="C_jacc", N.sim = 4)
+#xobs <- CA_hell(m)
+#plot(x, xobs)

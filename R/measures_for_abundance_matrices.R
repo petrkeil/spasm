@@ -53,6 +53,29 @@ CA_cov_cor <- function(m,
 }
 
 
+#' @export
+CA_tauZ <- function(m)
+{
+  # eliminate empty rows and columns
+  m <- m[rowSums(m) != 0, ]
+  m <- m[, colSums(m) != 0]
+
+  obs <- mean(as.dist(cor(t(m), method = "kendall")))
+
+  res <- numeric()
+  for(i in 1:100)
+  {
+    m.rnd <- IT.r(m)
+    res[i] <- mean(as.dist(cor(t(m.rnd), method = "kendall")))
+  }
+  Z <- obs - mean(res)
+  return(Z)
+
+  return(D)
+}
+
+
+
 # ------------------------------------------------------------------------------
 #' Hellinger distance matrix
 #'

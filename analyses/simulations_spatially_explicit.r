@@ -65,7 +65,7 @@ pdfs <- ggplot(data = res, aes(x = Distance, y = pdf)) +
   theme(panel.grid = element_blank(),
         plot.margin=unit(c(5.5,25,5.5,4), "points")) +
   scale_x_continuous(breaks = c(0, 1)) +
-  ylab("pdf") + xlab("Distance from sp1") +
+  ylab(expression(f[sp2](D))) + xlab("D") +
   labs(title = "(b)")
 pdfs
 
@@ -84,6 +84,48 @@ grid::grid.text("attraction", x = 0.78, y = 0.267)
 
 dev.off()
 
+# ------------------------------------------------------------------------------
+# Plotting simulation procedure
+
+png("figures/sumulation_steps.png", width = 2000, height = 1200, res= 300 )
+
+par(mfrow=c(2,3), mai = c(0.3, 0.3, 0.3, 0.3), adj=0)
+
+  set.seed(123)
+  x <- runif(1, 0, 1)
+  y <- runif(1, 0, 1)
+  sigma <- 0.01
+  alpha = -5
+
+  mu <- ppp(x,y)
+  plot(mu, main = expression(paste("(a) ", mu)))
+
+  f.sp1 <- dpoint.MVN.image(var=sigma, x.centr=x, y.centr=y)
+  f.sp1 <- f.sp1/sum(f.sp1)
+  plot(f.sp1, main = expression(paste("(b) ", f[sp1](mu, Sigma) )))
+  contour(f.sp1, add=T, col="white")
+
+  sp1 <- rpoint.MVN(n=100,
+                    var=sigma,
+                    x.centr=x, y.centr= y)
+  plot(sp1, main = expression(paste("(c) sp1")))
+
+  sp1.dist <- sp1.prob <- distmap(sp1)
+  sp1.prob[] <- PDFtexp(sp1.dist[], alpha)
+  sp1.prob <- sp1.prob/sum(sp1.prob)
+
+  plot(sp1.dist, main = expression("(d) D"))
+  contour(sp1.dist, add=T, col="white")
+
+  plot(sp1.prob, main = expression(paste("(e) ", f[sp2], "(D)")))
+  contour(sp1.prob, add=T, col="white")
+
+  sp2 <- rpoint(n = 100, f = sp1.prob)
+  plot(sp2, main = expression(paste("(c) sp2")))
+
+  #plot(sp1); plot(sp2, add=TRUE, col= "red")
+
+dev.off()
 
 # ------------------------------------------------------------------------------
 # SIMULATIONS - VARIOGRAMS
