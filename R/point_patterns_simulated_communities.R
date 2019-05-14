@@ -273,29 +273,6 @@ PDFtexp <- function(d, alpha,  dlim= c(0,1))
   return(pd)
 }
 
-# ------------------------------------------------------------------------------
-#' Inversed exponential
-
-PDFiexp <- function(d, lambda)
-{
-  # seggregation
-  if(lambda <= 0)
-  {
-    lambda <- -1*lambda
-    pd = exp(-lambda*d)
-  }
-  # aggregation
-  if(lambda > 0)
-  {
-    pd = 1- exp(-lambda*d)
-    pd = pd + (1-max(pd))
-  }
-  return(pd)
-}
-
-d <- seq(0,1, by=0.01)
-plot(d, PDFiexp(d, -10), ylim=c(0,1), type = "l")
-
 
 # ------------------------------------------------------------------------------
 #' Two point patterns with a given attraction or repulsion

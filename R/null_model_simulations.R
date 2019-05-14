@@ -8,7 +8,7 @@
 #'contain either incidences (1/0) or abundances (natural numbers).
 
 
-null_step_CA_IT <- function(m)
+step_CA_IT <- function(m)
 {
   # row and column marginals that will be used as probabilities in the sampling
   rsums <- rowSums(m)
@@ -52,7 +52,7 @@ null_step_CA_IT <- function(m)
 #'contain either incidences (1/0) or abundances (natural numbers).
 
 
-null_step_CA_Poisson <- function(m)
+step_CA_Poisson <- function(m)
 {
   lambdas <- rowMeans(m)
   N = ncol(m)
@@ -79,7 +79,7 @@ null_step_CA_Poisson <- function(m)
 #' contain either incidences (1/0) or abundances (natural numbers).
 
 
-null_step_C_sim2 <- function(m)
+step_C_sim2 <- function(m)
 {
   t(apply(X = m, MARGIN = 1, FUN = sample))
 }
@@ -98,7 +98,7 @@ null_step_C_sim2 <- function(m)
 #' @param N.sim Number of algirthm runs.
 #' @export
 #'
-null_model_Z_score <- function(m, algorithm, metric, N.sim)
+Z_score <- function(m, algorithm, metric, N.sim)
 {
   res <- array(dim=c(nrow(m), nrow(m), N.sim))
 
@@ -124,6 +124,6 @@ null_model_Z_score <- function(m, algorithm, metric, N.sim)
 #m <- data.Atmar[[1]]
 #x <- null_model_Z_score(m,
 #                        algorithm="null_step_C_sim2",
-#                        metric="C_jacc", N.sim = 4)
+#                        metric="C_seg", N.sim = 100)
 #xobs <- CA_hell(m)
 #plot(x, xobs)

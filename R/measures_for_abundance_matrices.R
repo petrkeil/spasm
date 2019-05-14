@@ -5,10 +5,6 @@
 #'
 #' @param m Community data matrix with species as rows and sites as columns. Can
 #' contain either incidences (1/0) or abundances (natural numbers).
-#' @param lst Should the results be returned as a 'dist' object (FALSE), or
-#' as a 'data.frame' (TRUE)?
-#' @param fun Additional function (e.g. log-transformation) to be applied
-#' to all pairwise values.
 #' @param transf A transformation function to be applied to the community matrix.
 #' The default is Hellinger transformation. Other options from 'vegan' function
 #' 'decostand' are applicable.
@@ -19,11 +15,9 @@
 #' @export
 
 CA_cov_cor <- function(m,
-                       lst = FALSE,
-                       fun = FALSE,
-                       transf = "hellinger",
+                       transf = NULL,
                        correlation = TRUE,
-                       method = "pearson")
+                       method = "kendall")
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -43,38 +37,8 @@ CA_cov_cor <- function(m,
     D <- as.dist(cov(t(m), method = method))
   }
 
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
-
   return(D)
 }
-
-
-#' @export
-CA_tauZ <- function(m)
-{
-  # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
-
-  obs <- mean(as.dist(cor(t(m), method = "kendall")))
-
-  res <- numeric()
-  for(i in 1:100)
-  {
-    m.rnd <- IT.r(m)
-    res[i] <- mean(as.dist(cor(t(m.rnd), method = "kendall")))
-  }
-  Z <- obs - mean(res)
-  return(Z)
-
-  return(D)
-}
-
-
 
 # ------------------------------------------------------------------------------
 #' Hellinger distance matrix
@@ -91,7 +55,7 @@ CA_tauZ <- function(m)
 #' @import vegan
 #' @export
 
-CA_hell <- function(m, lst = FALSE, fun = FALSE)
+CA_hell <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -100,11 +64,6 @@ CA_hell <- function(m, lst = FALSE, fun = FALSE)
   # Hellinger transformation of abundances
   m <- vegan::decostand(m, method = "hellinger")
   D <- dist(m) # Euclidean distances on the Hellinger-transformed matrix
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
 
   return(D)
 }
@@ -124,7 +83,7 @@ CA_hell <- function(m, lst = FALSE, fun = FALSE)
 #' @import vegan
 #' @export
 
-CA_chi <- function(m, lst = FALSE, fun = FALSE)
+CA_chi <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -133,11 +92,6 @@ CA_chi <- function(m, lst = FALSE, fun = FALSE)
   # Hellinger transformation of abundances
   m <- vegan::decostand(m, method = "chi.square")
   D <- dist(m) # Euclidean distances on the Hellinger-transformed matrix
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
 
   return(D)
 }
@@ -156,7 +110,7 @@ CA_chi <- function(m, lst = FALSE, fun = FALSE)
 #' @import vegan
 #' @export
 
-CA_bray <- function(m, lst = FALSE, fun = FALSE)
+CA_bray <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -164,11 +118,6 @@ CA_bray <- function(m, lst = FALSE, fun = FALSE)
 
   D <- vegan::vegdist(m,
                       method = "bray")
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
 
   return(D)
 }
@@ -187,7 +136,7 @@ CA_bray <- function(m, lst = FALSE, fun = FALSE)
 #' @import vegan
 #' @export
 
-CA_ruz <- function(m, lst = FALSE, fun = FALSE)
+CA_ruz <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -196,11 +145,6 @@ CA_ruz <- function(m, lst = FALSE, fun = FALSE)
   D <- vegan::vegdist(m,
                       method = "bray")
   D <- 2*D/(1+D)
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
 
   return(D)
 }

@@ -4,18 +4,11 @@
 \alias{CA_cov_cor}
 \title{Covariance or correlation matrix calculated from community matrix}
 \usage{
-CA_cov_cor(m, lst = FALSE, fun = FALSE, transf = "hellinger",
-  correlation = TRUE, method = "pearson")
+CA_cov_cor(m, transf = NULL, correlation = TRUE, method = "kendall")
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can
 contain either incidences (1/0) or abundances (natural numbers).}
-
-\item{lst}{Should the results be returned as a 'dist' object (FALSE), or
-as a 'data.frame' (TRUE)?}
-
-\item{fun}{Additional function (e.g. log-transformation) to be applied
-to all pairwise values.}
 
 \item{transf}{A transformation function to be applied to the community matrix.
 The default is Hellinger transformation. Other options from 'vegan' function

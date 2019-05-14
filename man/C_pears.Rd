@@ -4,17 +4,11 @@
 \alias{C_pears}
 \title{Pearson tetrachoric correaltions for binary data}
 \usage{
-C_pears(m, lst = FALSE, fun = FALSE)
+C_pears(m)
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can
 contain either incidences (1/0) or abundances (natural numbers).}
-
-\item{lst}{Should the results be returned as a 'dist' object (FALSE), or
-as a 'data.frame' (TRUE)?}
-
-\item{fun}{Additional function (e.g. log-transformation) to be applied
-to all pairwise values.}
 }
 \value{
 A dist or data.frame objects with the pairwise association values.

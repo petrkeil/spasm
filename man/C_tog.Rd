@@ -4,17 +4,11 @@
 \alias{C_tog}
 \title{'Togetherness' metric of Stone & Roberts (1992), and its scaled version}
 \usage{
-C_tog(m, lst = FALSE, fun = FALSE, scale = FALSE)
+C_tog(m, scale = TRUE)
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can
 contain either incidences (1/0) or abundances (natural numbers).}
-
-\item{lst}{Should the results be returned as a 'dist' object (FALSE), or
-as a 'data.frame' (TRUE)?}
-
-\item{fun}{Additional function (e.g. log-transformation) to be applied
-to all pairwise values.}
 
 \item{scale}{Should the raw metric be scaled using the total number of possible
 site combinations?}

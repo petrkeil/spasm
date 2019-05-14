@@ -4,11 +4,6 @@
 #'
 #' @param m Community data matrix with species as rows and sites as columns. Can
 #' contain either incidences (1/0) or abundances (natural numbers).
-#' @param lst Should the results be returned as a 'dist' object (FALSE), or
-#' as a 'data.frame' (TRUE)?
-#' @param fun Additional function (e.g. log-transformation) to be applied
-#' to all pairwise values.
-#'
 #' @return A dist or data.frame objects with the pairwise association values.
 #' @import vegan
 #' @references Forbes S.A. (1907) On the local distribution of certain Illinois
@@ -19,7 +14,7 @@
 #' @export
 #'
 
-C_forbes <- function(m, lst = FALSE, fun = FALSE)
+C_forbes <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -29,12 +24,6 @@ C_forbes <- function(m, lst = FALSE, fun = FALSE)
                          method = "a / (((a+b)*(a+c))/(a+b+c+d))",
                          abcd = TRUE,
                          terms = "binary")
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
-
   return(D)
 }
 
@@ -55,7 +44,7 @@ C_forbes <- function(m, lst = FALSE, fun = FALSE)
 #' reveal spatial scales of plant community structure. Oikos 127: 415-426.
 #' @export
 
-C_seg <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
+C_seg <- function(m, scale = TRUE)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -74,10 +63,7 @@ C_seg <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
     D <- D/N
   }
 
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
+  if(length(D) == 0) D <- NA
 
   return(D)
 }
@@ -100,7 +86,7 @@ C_seg <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
 #' analysis. Oikos 122: 2-18.
 #' @export
 
-C_tog <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
+C_tog <- function(m, scale = TRUE)
 {
   # eliminate empty rows (NOT columns)
   m <- m[rowSums(m) != 0, ]
@@ -130,10 +116,7 @@ C_tog <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
     D <- D/N
   }
 
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
+ if(length(D) == 0) D <- NA
 
   return(D)
 }
@@ -148,7 +131,7 @@ C_tog <- function(m, lst = FALSE, fun = FALSE, scale = FALSE)
 #' @import vegan
 #' @export
 
-C_jacc <- function(m, lst = FALSE, fun = FALSE)
+C_jacc <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -160,12 +143,6 @@ C_jacc <- function(m, lst = FALSE, fun = FALSE)
                          terms = "binary")
 
   D <- 1-D # convert it to an similarity (association) measures
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
-
   return(D)
 }
 
@@ -179,7 +156,7 @@ C_jacc <- function(m, lst = FALSE, fun = FALSE)
 #' @import vegan
 #' @export
 
-C_pears <- function(m, lst = FALSE, fun = FALSE)
+C_pears <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -189,11 +166,6 @@ C_pears <- function(m, lst = FALSE, fun = FALSE)
                          method = "(a*d-b*c)/(((a+b)*(c+d)*(a+c)*(b+d))^0.5)",
                          abcd = TRUE,
                          terms = "binary")
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
-
   return(D)
 }
 
@@ -214,7 +186,7 @@ C_pears <- function(m, lst = FALSE, fun = FALSE)
 #' @import vegan
 #' @export
 
-C_sor <- function(m, lst = FALSE, fun = FALSE)
+C_sor <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -225,11 +197,6 @@ C_sor <- function(m, lst = FALSE, fun = FALSE)
                          abcd = TRUE,
                          terms = "binary")
   D <- 1-D # convert it to an similarity (association) measures
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
 
   return(D)
 }
@@ -245,7 +212,7 @@ C_sor <- function(m, lst = FALSE, fun = FALSE)
 #' @import vegan
 #' @export
 
-C_sim <- function(m, lst = FALSE, fun = FALSE)
+C_sim <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -257,12 +224,6 @@ C_sim <- function(m, lst = FALSE, fun = FALSE)
                     abcd = TRUE,
                     terms = "binary")
   D <- 1-D # convert it to an similarity (association) measures
-
-  if(lst) D <- dist2list(D)
-
-  do.fun <- is.function(fun)
-  if(do.fun) D <- fun(D)
-
   return(D)
 }
 

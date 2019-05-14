@@ -15,16 +15,16 @@ source("https://raw.githubusercontent.com/anikobtoth/FCW/master/Pair_Functions.R
 params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
                       alpha = seq(-20, 20, by=2.5),
                       #alpha = c(-100, -10, -1, 0, 1, 10, 100)
-                      grain = c(128, 64, 32, 16, 8, 4),
+                      grain = c(64, 32, 16, 8, 4),
                       N1 = c(10, 100, 1000, 10000),
                       N2 = c(10, 100, 1000, 10000))
 
-params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
-                      alpha = seq(-20, 20, by=5),
-                      #alpha = c(-100, -10, -1, 0, 1, 10, 100)
-                      grain = c(64, 32, 16, 8, 4),
-                      N1 = c(200, 1000),
-                      N2 = c(200, 1000))
+#params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
+#                      alpha = seq(-20, 20, by=2.5),
+#                      #alpha = c(-100, -10, -1, 0, 1, 10, 100)
+#                      grain = c(32, 16, 8, 4),
+#                      N1 = c(200, 1000),
+#                      N2 = c(200, 1000))
 
 
 res <- list()
@@ -46,35 +46,42 @@ for(i in 1:nrow(params))
   m.bin[m >= 1] <- 1
 
 
-  res[[i]] <- data.frame(C_segSc = mean( spasm::C_seg(m.bin, scale=TRUE)),
-                         C_togSc = mean( spasm::C_tog(m.bin, scale=TRUE)),
+  res[[i]] <- data.frame(
+                         C_segSc = mean( spasm::C_seg(m.bin)),
+                         C_segSc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_seg", N.sim=100)),
+                         C_togSc = mean( spasm::C_tog(m.bin)),
+                         C_togSc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_tog", N.sim=100)),
                          C_jacc = mean( spasm::C_jacc(m.bin)),
+                         C_jacc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_jacc", N.sim=100)),
                          C_sor = mean( spasm::C_sor(m.bin)),
-                         C_sorZ = spasm::C_sorZ(m.bin),
+                         C_sor_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_sor", N.sim=100)),
                          C_forbes = mean( spasm::C_forbes(m.bin)),
                          C_FETmP = mean(FETmP_Pairwise(m.bin)),
                          C_FET = mean(FET_Pairwise(m.bin)),
                          C_pears = mean(spasm::C_pears(m.bin)),
                          CA_cov = mean(spasm::CA_cov_cor(m, correlation=FALSE)),
                          CA_cov_hell = mean(spasm::CA_cov_cor(m, correlation=FALSE, transf="hellinger")),
-                         CA_cor = mean(spasm::CA_cov_cor(m, correlation=TRUE)),
-                         CA_cor_hell = mean(spasm::CA_cov_cor(m, correlation=TRUE, transf = "hellinger")),
+                         CA_cor = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="pearson")),
+                         CA_cor_hell = mean(spasm::CA_cov_cor(m, correlation=TRUE, transf = "hellinger", method="pearson")),
                          CA_hell = mean(spasm::CA_hell(m)),
-                         CA_tau = mean(spasm::CA_cov_cor(m, correlation=TRUE, transf=NULL, method="kendall")),
-                         CA_tauZ = spasm::CA_tauZ(m),
+                         CA_hell_Z = mean(spasm::Z_score(m.bin, "step_CA_IT", "CA_hell", N.sim=100)),
+                         CA_tau = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="kendall")),
+                         CA_tau_Z = mean(spasm::Z_score(m.bin, "step_CA_IT", "CA_cov_cor", N.sim=100)),
                          CA_bray = mean(spasm::CA_bray(m)),
+                         CA_bray_Z = mean(spasm::Z_score(m.bin, "step_CA_IT", "CA_bray", N.sim=100)),
                          CA_ruz = mean(spasm::CA_ruz(m)),
                          CA_chi = mean(spasm::CA_chi(m)),
-                         params[i,])
+                         params[i,]
+                        )
 }
 
 res.all <- do.call("rbind", res) %>%
   mutate(Area = 1/(grain^2))
 
-#write.csv(res.all, file="../Data/sim_results.csv", row.names = FALSE)
+write.csv(res.all, file="sim_results.csv", row.names = FALSE)
 # ------------------------------------------------------------------------------
 
-#res.all <- read.csv("../Data/sim_results.csv")
+res.all <- read.csv("sim_results.csv")
 # ------------------------------------------------------------------------------
 
 C.measures <- names(res.all)[grep(x=names(res.all), pattern="C_")]
