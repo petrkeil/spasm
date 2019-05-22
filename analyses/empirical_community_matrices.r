@@ -8,7 +8,7 @@ library(viridis)
 library(RColorBrewer)
 library(qgraph)
 
-my.functions <- c("C_forbes", "C_pears", "C_jacc", "C_sor", "C_sim",
+my.functions <- c("C_forbes", "C_pears", "C_jacc", "C_sor", "C_sim", "C_match",
                   "C_w", "C_checker", "C_combo", "C_conn", "C_ratio")
 
 # ANALYZING INCIDENCE-BASED MEASURES
@@ -35,6 +35,7 @@ for(i in 1:length(dat))
              S = sum(rowSums(m) >= 1),
              C_togSc = mean(C_tog(m, scale= TRUE)),
              C_segSc = mean(C_seg(m, scale = TRUE)),
+             C_FETmP = mean(FETmP_Pairwise(m)),
              res.i)
 
  # print(res.i)
@@ -172,25 +173,16 @@ for(i in 1:length(dat))
   res.i <- c(N = sum(colSums(m) >= 1),
              S = sum(rowSums(m) >= 1),
              Tot.abu = sum(m),
-            #CA_gower = CA_gower(m, fun = mean),
-             CA_bray = CA_bray(m, fun = mean),
-             CA_hell = CA_hell(m, fun = mean),
-             CA_ruz = CA_ruz(m, fun=mean),
-             CA_chi = CA_chi(m, fun=mean),
-             CA_cor = CA_cov_cor(m, fun = mean,
+             CA_bray = mean(CA_bray(m)),
+             CA_hell = mean(CA_hell(m)),
+             CA_ruz = mean(CA_ruz(m)),
+             CA_chi = mean(CA_chi(m)),
+             CA_cor_hell = mean(CA_cov_cor(m,
                                     transf = "hellinger",
                                     correlation = TRUE,
-                                    method = "pearson"),
-             CA_tau = CA_cov_cor(m, fun=mean, method = "kendall", correlation=TRUE),
-             #CA_pos = CA_cov_cor(m, fun = pos.fun,
-            #                              transf = "hellinger",
-             #                             correlation = TRUE,
-            #                              method = "pearson"),
-            # CA_neg = CA_cov_cor(m, fun = neg.fun,
-            #                              transf = "hellinger",
-            #                              correlation = TRUE,
-            #                              method = "pearson",
-            CA_ratio = C_ratio(m))
+                                    method = "pearson")),
+             CA_tau = mean(CA_cov_cor(m, method = "kendall", correlation=TRUE)),
+             CA_ratio = C_ratio(m))
 
   # print(res.i)
   res[[names(dat[i])]] <- res.i

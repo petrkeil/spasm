@@ -16,9 +16,9 @@
 
 C_forbes <- function(m)
 {
-  # eliminate empty rows and columns
+  # eliminate empty rows, but not columns
   m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  # m <- m[, colSums(m) != 0]
 
   D <- vegan::designdist(m,
                          method = "a / (((a+b)*(a+c))/(a+b+c+d))",
@@ -149,6 +149,8 @@ C_jacc <- function(m)
 # ------------------------------------------------------------------------------
 #' Pearson tetrachoric correaltions for binary data
 #'
+#' This is the index A_30 from Hubalek (1982), who considered it to be one of
+#' the recommended indices.
 #' @inheritParams C_forbes
 #' @return A dist or data.frame objects with the pairwise association values.
 #' @references Hubalek Z. (1982) Coefficients of association and similarity, based
@@ -158,9 +160,9 @@ C_jacc <- function(m)
 
 C_pears <- function(m)
 {
-  # eliminate empty rows and columns
+  # eliminate empty rows (but not empty columns)
   m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  # m <- m[, colSums(m) != 0]
 
   D <- vegan::designdist(m,
                          method = "(a*d-b*c)/(((a+b)*(c+d)*(a+c)*(b+d))^0.5)",
@@ -168,6 +170,33 @@ C_pears <- function(m)
                          terms = "binary")
   return(D)
 }
+
+
+# ------------------------------------------------------------------------------
+#' Simple matching coefficient of Sokal & Michener (1958)
+#'
+#' @inheritParams C_forbes
+#' @return A dist or data.frame objects with the pairwise association values.
+#' @references Sokal R.R. & Michener C.D. (1958) A statistical method for evaluating
+#' systematic relationshps. The University of Kansas Scientific Bulletin 38: 1409-1438.
+#' @references Hubalek Z. (1982) Coefficients of association and similarity, based
+#' on binary (presence-absence) data: an evaluation. Biol. Rev. 57: 669-689.
+#' @import vegan
+#' @export
+
+C_match <- function(m)
+{
+  # eliminate empty rows (but not empty columns)
+  m <- m[rowSums(m) != 0, ]
+  # m <- m[, colSums(m) != 0]
+
+  D <- vegan::designdist(m,
+                         method = "(a + d)/(a + b + c + d)",
+                         abcd = TRUE,
+                         terms = "binary")
+  return(D)
+}
+
 
 
 

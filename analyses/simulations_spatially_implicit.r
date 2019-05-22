@@ -6,6 +6,7 @@ library(gridExtra)
 library(raster)
 library(spasm)
 library(spatstat)
+library(ggrepel)
 
 # load Aniko Toth's functions from GitHub
 source("https://raw.githubusercontent.com/anikobtoth/FCW/master/Pair_Functions.R")
@@ -20,8 +21,7 @@ params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
                       N2 = c(10, 100, 1000, 10000))
 
 #params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
-#                      alpha = seq(-20, 20, by=2.5),
-#                      #alpha = c(-100, -10, -1, 0, 1, 10, 100)
+#                      alpha = seq(-20, 20, by=5),
 #                      grain = c(32, 16, 8, 4),
 #                      N1 = c(200, 1000),
 #                      N2 = c(200, 1000))
@@ -57,20 +57,24 @@ for(i in 1:nrow(params))
                          C_sor_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_sor", N.sim=100)),
                          C_forbes = mean( spasm::C_forbes(m.bin)),
                          C_FETmP = mean(FETmP_Pairwise(m.bin)),
-                         C_FET = mean(FET_Pairwise(m.bin)),
+                         #C_FET = mean(FET_Pairwise(m.bin)),
                          C_pears = mean(spasm::C_pears(m.bin)),
+                         C_match = mean(spasm::C_match(m.bin)),
+                         C_match_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_match", N.sim=100)),
                          CA_cov = mean(spasm::CA_cov_cor(m, correlation=FALSE)),
                          CA_cov_hell = mean(spasm::CA_cov_cor(m, correlation=FALSE, transf="hellinger")),
                          CA_cor = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="pearson")),
                          CA_cor_hell = mean(spasm::CA_cov_cor(m, correlation=TRUE, transf = "hellinger", method="pearson")),
                          CA_hell = mean(spasm::CA_hell(m)),
-                         CA_hell_Z = mean(spasm::Z_score(m.bin, "step_CA_IT", "CA_hell", N.sim=100)),
+                         CA_hell_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_hell", N.sim=100)),
                          CA_tau = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="kendall")),
-                         CA_tau_Z = mean(spasm::Z_score(m.bin, "step_CA_IT", "CA_cov_cor", N.sim=100)),
+                         CA_tau_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_cov_cor", N.sim=100)),
                          CA_bray = mean(spasm::CA_bray(m)),
-                         CA_bray_Z = mean(spasm::Z_score(m.bin, "step_CA_IT", "CA_bray", N.sim=100)),
+                         CA_bray_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_bray", N.sim=100)),
                          CA_ruz = mean(spasm::CA_ruz(m)),
+                         CA_ruz_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_ruz", N.sim=100)),
                          CA_chi = mean(spasm::CA_chi(m)),
+                         CA_chi_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_chi", N.sim=100)),
                          params[i,]
                         )
 }
@@ -172,44 +176,101 @@ bar.pos <- ggplot(data=cor.pos, aes(x= reorder(variable, abs(cor.res$Kendall)), 
   xlab("") + ggtitle("(c)")
 
 
-png("figures/simulations_bars.png", width = 1600, height = 600, res = 150)
+png("figures/simulations_bars.png", width = 1600, height = 900, res = 150)
   grid.arrange(bar.all, bar.neg, bar.pos, nrow=1, ncol=3)
 dev.off()
 
+
+
+################################################################################
+
 # -------------------------summarize by scale
-cor.res <- plyr::ddply(.data=res,
+scale <- plyr::ddply(.data=res,
                        .variables=c("variable", "grain"),
                        .fun=summarize,
                        Kendall = abs(cor(alpha, value, method = "kendall")))
-cor.res$variable <- as.factor(cor.res$variable)
-#cor.res$grain <- (1/cor.res$grain)^2
+scale$variable <- as.factor(scale$variable)
 
-gr <- ggplot(data = cor.res, aes(x = grain, y = Kendall)) +
-  geom_point(aes(colour = variable)) +
-  geom_line(aes(colour = variable)) +
+# abundance or incidence?
+type <- as.character(scale$variable)
+type[grep(type, pattern="C_")] <- "Incidence-based"
+type[grep(type, pattern="CA_")] <- "Abundance-based"
+scale <- data.frame(scale, type)
+
+# raw or Z-score?
+Z <- rep("Raw", times = nrow(scale))
+Z[grep(scale$variable, pattern="_Z")] <- "Z-score"
+scale <- data.frame(scale, Z)
+
+# colour palette
+cols <- data.frame(variable = cor.res$variable,
+                   rnd.col = as.factor(sample(1:nrow(cor.res))) )
+scale <- left_join(x=scale, y = cols, by="variable")
+
+# label positions
+scale.labs <- scale[scale$grain == 32,]
+
+gr <- ggplot(data = scale, aes(x = grain, y = Kendall)) +
+  geom_point(aes(colour = rnd.col)) +
+  geom_line(aes(colour = rnd.col)) +
   scale_x_continuous(trans = "log2") +
-  theme_bw() + ggtitle("(a)") +
+  theme_bw() +
+  facet_grid(Z~type) +
+  geom_label_repel(data = scale.labs,
+                   aes(x = grain, y = Kendall, label=variable,
+                       colour = rnd.col)) +
   theme(legend.position="none") +
-  xlab("Grain [# pixels along one side]") + ylab("| Kendall correlation with ISA |")
+  xlab("Grain [# pixels along one side]") +
+  ylab("| Kendall correlation with ISA |")
+gr
 
-cor.res <- plyr::ddply(.data=res,
-                       .variables=c("variable", "var.consp"),
-                       .fun=summarize,
-                       Kendall = abs(cor(alpha, value, method = "kendall")))
-cor.res$variable <- as.factor(cor.res$variable)
-
-csa <-  ggplot(data = cor.res, aes(x = var.consp, y = Kendall)) +
-  geom_point(aes(colour = variable)) +
-  geom_line(aes(colour = variable)) +
-  scale_x_continuous(trans = "log10") +
-  theme_bw() + ggtitle("(b)") +
-  xlab("CSA") + ylab("| Kendall correlation with overall ISA |")
-
-png("figures/simulations_kendall_by_params.png",
-    width = 1400, height= 600, res=130)
-grid.arrange(gr, csa, nrow=1, ncol=2, widths = c(1, 1.3))
+png("figures/simulations_kendall_by_grain.png",
+    width = 1400, height= 1400, res=200)
+ gr
 dev.off()
 
 
+# -------------------------summarize by CSA
 
+csa <- plyr::ddply(.data=res,
+                       .variables=c("variable", "var.consp"),
+                       .fun=summarize,
+                       Kendall = abs(cor(alpha, value, method = "kendall")))
+csa$variable <- as.factor(csa$variable)
+names(csa)[2] <- "CSA"
 
+# abundance or incidence?
+type <- as.character(csa$variable)
+type[grep(type, pattern="C_")] <- "Incidence-based"
+type[grep(type, pattern="CA_")] <- "Abundance-based"
+csa <- data.frame(csa, type)
+
+# raw or Z-score?
+Z <- rep("Raw", times = nrow(csa))
+Z[grep(csa$variable, pattern="_Z")] <- "Z-score"
+csa <- data.frame(csa, Z)
+
+# colour palette
+csa <- left_join(x=csa, y = cols, by="variable")
+
+# label positions
+scale.labs <- csa[csa$CSA == 0.01,]
+
+cs <- ggplot(data = csa, aes(x = CSA, y = Kendall)) +
+  geom_point(aes(colour = rnd.col)) +
+  geom_line(aes(colour = rnd.col)) +
+  scale_x_continuous(trans = "log10") +
+  theme_bw() +
+  facet_grid(Z~type) +
+  geom_label_repel(data = scale.labs,
+                   aes(x = CSA, y = Kendall, label=variable,
+                       colour = rnd.col)) +
+  theme(legend.position="none") +
+  xlab("Con-specific aggregation (CSA)") +
+  ylab("| Kendall correlation with ISA |")
+cs
+
+png("figures/simulations_kendall_by_CSA.png",
+    width = 1400, height= 1400, res=200)
+cs
+dev.off()

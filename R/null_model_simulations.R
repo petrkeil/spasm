@@ -51,7 +51,6 @@ step_CA_IT <- function(m)
 #'@param m Community data matrix with species as rows and sites as columns. Can
 #'contain either incidences (1/0) or abundances (natural numbers).
 
-
 step_CA_Poisson <- function(m)
 {
   lambdas <- rowMeans(m)
@@ -67,7 +66,38 @@ step_CA_Poisson <- function(m)
     return(res)
 }
 
-#m <- data.Ulrich[[1]]; rowSums(null_step_CA_Poisson(m))
+#m <- data.Ulrich[[1]]; rowSums(step_CA_Poisson(m))
+
+
+################################################################################
+#'One realization of the an algorithm that resamples each row randomly
+#'
+#'@description For each row, take the total number of individuals, and
+#'re-assignn each of them with equal probability to each column.
+#' This should actually be equivalent to the Poisson algorithm (i.e. the
+#' distribution of abundances of each species should be Poisson).
+#'
+#'@param m Community data matrix with species as rows and sites as columns. Can
+#'contain either incidences (1/0) or abundances (natural numbers).
+
+step_CA_rowrandom <- function(m)
+{
+  for(i in 1:nrow(m))
+  {
+    x <- m[i,] # extract one row of m (species)
+    new.x <- rep(0, times = length(x))
+    smp <- table(sample(x = 1:length(x), size = sum(x), replace = TRUE)  )
+    smp <- as.data.frame(smp)
+    new.x[smp[,1]] <- smp[,2]
+    m[i,] <- new.x # replace the old row with the resampled row
+  }
+  return(m)
+}
+
+# m <- data.Ulrich[[1]]; rowSums(step_CA_rowrandom(m))
+
+
+
 
 
 ################################################################################
@@ -114,7 +144,7 @@ Z_score <- function(m, algorithm, metric, N.sim)
   # calculate the Z-score
   obs <- do.call(metric, list(m))
   mean.null <- as.dist(apply(X = res, MARGIN = c(1,2), FUN = mean))
-  sd.null <- as.dist(apply(X = res, MARGIN = c(1,2), FUN = sum))
+  sd.null <- as.dist(apply(X = res, MARGIN = c(1,2), FUN = sd))
 
   Z <- (obs - mean.null) / sd.null
   return(Z)
@@ -122,8 +152,8 @@ Z_score <- function(m, algorithm, metric, N.sim)
 
 # TESTING
 #m <- data.Atmar[[1]]
-#x <- null_model_Z_score(m,
-#                        algorithm="null_step_C_sim2",
-#                        metric="C_seg", N.sim = 100)
+#x <- Z_score(m,
+#             algorithm="step_C_sim2",
+#             metric="C_seg", N.sim = 100)
 #xobs <- CA_hell(m)
 #plot(x, xobs)
