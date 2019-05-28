@@ -45,6 +45,10 @@ for(i in 1:nrow(params))
   m.bin <-  m
   m.bin[m >= 1] <- 1
 
+  # which Z-score randomization algorithm to use for abundance data?
+  # algo.abu <- "step_CA_rowrandom"
+  algo.abu <- "step_CA_IT"
+
 
   res[[i]] <- data.frame(
                          C_segSc = mean( spasm::C_seg(m.bin)),

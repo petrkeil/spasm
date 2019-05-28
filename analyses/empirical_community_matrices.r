@@ -8,9 +8,6 @@ library(viridis)
 library(RColorBrewer)
 library(qgraph)
 
-my.functions <- c("C_forbes", "C_pears", "C_jacc", "C_sor", "C_sim", "C_match",
-                  "C_w", "C_checker", "C_combo", "C_conn", "C_ratio")
-
 # ANALYZING INCIDENCE-BASED MEASURES
 dat <- c(data.Ulrich, data.Atmar)
 
@@ -21,22 +18,30 @@ for(i in 1:length(dat))
 {
   message(i)
   m <- dat[[i]]
+  m.bin <- m
+  m.bin[m.bin > 0] <- 1 # convert to binary matrix
 
-  # the distance matrix-based measures
-  res.i <- list()
-  for(j in my.functions)
-  {
-    res.i[[j]] <- mean(do.call(j, list(m = m)))
-  }
-  res.i <- unlist(res.i)
-
-  # other statistics
-  res.i <- c(N = sum(colSums(m) >= 1),
-             S = sum(rowSums(m) >= 1),
-             C_togSc = mean(C_tog(m, scale= TRUE)),
-             C_segSc = mean(C_seg(m, scale = TRUE)),
-             C_FETmP = mean(FETmP_Pairwise(m)),
-             res.i)
+  res.i <- c(N = sum(colSums(m.bin) > 0),
+             S = sum(rowSums(m.bin) > 0),
+             C_segSc = mean( spasm::C_seg(m.bin)),
+             C_togSc = mean(spasm::C_tog(m.bin)),
+             C_jacc = mean( spasm::C_jacc(m.bin)),
+             C_sor = mean( spasm::C_sor(m.bin)),
+             C_forbes = mean( spasm::C_forbes(m.bin)),
+             C_FETmP = mean(FETmP_Pairwise(m.bin)),
+             C_pears = mean(na.omit(spasm::C_pears(m.bin))),
+             C_match = mean(spasm::C_match(m.bin)),
+             C_w = C_w(m.bin),
+             C_ratio = C_ratio(m.bin),
+             C_combo = C_combo(m.bin),
+             C_checker= C_checker(m.bin),
+             C_conn = C_conn(m.bin),
+             C_segSc_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_seg", N.sim=100))),
+             C_togSc_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_tog", N.sim=100))),
+             C_jacc_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_jacc", N.sim=100))),
+             C_sor_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_sor", N.sim=100))),
+             C_match_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_match", N.sim=100)))
+             )
 
  # print(res.i)
   res[[names(dat[i])]] <- res.i
@@ -44,9 +49,13 @@ for(i in 1:length(dat))
 
 res <- do.call("rbind", res)
 res <- data.frame(res)
+write.csv(res, file = "empirical_results_binary.csv", row.names=FALSE)
+
+# ------------------------------------------------------------------------------
+res <- read.csv("empirical_results_binary.csv")
 
 # check distributions of the measures
-par(mfrow=c(4,4))
+par(mfrow=c(5,4))
 for(i in 1:ncol(res))
 {
   hist(res[,i], xlab = names(res)[i], breaks=20, col="grey", main = NULL)
@@ -65,7 +74,7 @@ res2 <- mutate(res,
                S = log(S))
 
 # plot histogram of each variable
-par(mfrow=c(4,4))
+par(mfrow=c(5,4))
 for(i in 1:ncol(res2))
 {
   hist(res2[,i], xlab = names(res2)[i], breaks=20, col="grey", main = NULL)
@@ -73,6 +82,7 @@ for(i in 1:ncol(res2))
 
 # remove -Inf and NA values
 res2[res2 == -Inf] <- NA
+res2[res2 == Inf] <- NA
 res2 <- na.omit(res2)
 
 
@@ -80,7 +90,7 @@ res2 <- na.omit(res2)
 
 
 png(file = "figures/binary_pairwise_pairplot2.png",
-    width = 1000, height = 1000, res=150)
+    width = 1400, height = 1400, res=150)
 par(xaxt = "n", yaxt = "n")
 #pairs.panels(res2, hist.col = "grey",
 #             smooth=FALSE, ellipses = FALSE,
@@ -109,20 +119,6 @@ dev.off()
 # ------------------------------------------------------------------------------
 
 
-png(file = "figures/binary_corrplot.png", width = 1000, height = 1000, res=200)
-corrplot::corrplot.mixed(corr = cor(res2), lower="ellipse",
-                         upper = "number", order="FPC",
-                         tl.col = "black",
-                         tl.cex = 0.7,
-                         tl.pos = "lt",
-                         tl.srt = 40,
-                         number.cex = 0.8,
-                         lower.col = viridis(200),
-                         upper.col = viridis(200))
-title("a", adj = 0,  cex.main = 2, line = 2.5)
-dev.off()
-
-
 res.pca <- prcomp(res2, scale = TRUE, center = TRUE)
 cols <- c("S or N", "S or N", rep("", times=ncol(res2)-2))
 
@@ -132,7 +128,7 @@ inc.all <-  factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
                                      col.ind = "grey", #col.var = "black",
                                      col.circle= "darkgrey", fill.var = "white",
                                      col.var = cols) +
-  scale_colour_manual(values=c("black", "red")) +
+  scale_colour_manual(values=c("black", "#F8766D")) +
   theme_minimal() +
   theme(legend.position='none', plot.title=element_blank()) #+
  # ggtitle("b")
@@ -147,7 +143,7 @@ png(file = "figures/binary_pairwise_graph.png",
     width = 1000, height = 1000, res=300)
 qgraph(cor(res2), layout = "spring",
        labels = colnames(cor(res2)),
-       theme = "colorblind")#,
+       edge.color = c("black"))#,
        #title="c", title.cex = 2)
 dev.off()
 
@@ -155,36 +151,64 @@ dev.off()
 ################################################################################
 # Abundance-based measures
 
+# function removing -Inf, Inf, NaN and NA from a distance matrix
+cleaner <- function(D)
+{
+  D <- D[]
+  D <- na.omit(D)
+  D <- D[D != Inf]
+  D <- D[D != -Inf]
+  return(D)
+}
+
 
 # ANALYZING MEAN VALUE
 dat <- c(data.Ulrich)
+
+# removing 8 studies with extremely low values (bad for rounding)
+good.studies <- lapply(X = data.Ulrich, FUN = max) > 5
+dat <- dat[good.studies]
+# round the abundnaces to integers (in order for the null models to work)
+dat <- lapply(X = dat, FUN = round)
+
+
 res <- list()
 
 pos.fun <- function(D) mean(D[D>0])
 neg.fun <- function(D) mean(D[D<0])
 
-
 for(i in 1:length(dat))
 {
   message(i)
   m <- dat[[i]]
+  # remove zero columns and rows
+  m <- m[rowSums(m) > 0, ]
+  m <- m[, colSums(m) > 0]
 
   # other statistics
   res.i <- c(N = sum(colSums(m) >= 1),
              S = sum(rowSums(m) >= 1),
              Tot.abu = sum(m),
+
+             CA_tau = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="kendall")),
+             CA_cov = mean(spasm::CA_cov_cor(m, correlation=FALSE)),
+             CA_cov_hell = mean(spasm::CA_cov_cor(m, correlation=FALSE, transf="hellinger")),
+             CA_cor = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="pearson")),
+             CA_cor_hell = mean(spasm::CA_cov_cor(m, correlation=TRUE, transf = "hellinger", method="pearson")),
              CA_bray = mean(CA_bray(m)),
              CA_hell = mean(CA_hell(m)),
              CA_ruz = mean(CA_ruz(m)),
              CA_chi = mean(CA_chi(m)),
-             CA_cor_hell = mean(CA_cov_cor(m,
-                                    transf = "hellinger",
-                                    correlation = TRUE,
-                                    method = "pearson")),
-             CA_tau = mean(CA_cov_cor(m, method = "kendall", correlation=TRUE)),
-             CA_ratio = C_ratio(m))
+             CA_ratio = C_ratio(m),
+             CA_cor_hell_Z = mean(cleaner(spasm::Z_score(m, "step_CA_rowrandom", "CA_cov_cor", N.sim=100, transf="hellinger", method="pearson"))),
+             CA_hell_Z = mean(cleaner(spasm::Z_score(m, "step_CA_rowrandom", "CA_hell", N.sim=100))),
+             CA_tau_Z = mean(cleaner(spasm::Z_score(m, "step_CA_rowrandom", "CA_cov_cor", N.sim=100))),
+             CA_bray_Z = mean(cleaner(spasm::Z_score(m, "step_CA_rowrandom", "CA_bray", N.sim=100))),
+             CA_ruz_Z = mean(cleaner(spasm::Z_score(m, "step_CA_rowrandom", "CA_ruz", N.sim=100))),
+             CA_chi_Z = mean(cleaner(spasm::Z_score(m, "step_CA_rowrandom", "CA_chi", N.sim=100)))
+             )
 
-  # print(res.i)
+  print(res.i)
   res[[names(dat[i])]] <- res.i
 }
 
@@ -211,7 +235,7 @@ cols <- c("S or N", "S or N", "S or N", rep("", times=ncol(res)-3))
 
 
 # check distributions of the measures
-par(mfrow=c(3,4))
+par(mfrow=c(5,4))
 for(i in 1:ncol(res))
 {
   hist(res[,i], xlab = names(res)[i], breaks=20, col="grey", main = NULL)
@@ -249,7 +273,8 @@ dev.off()
 png(file = "figures/abundance_pairwise_graph.png",
     width = 1000, height = 1000, res=300)
 qgraph(cor(res), layout = "spring",
-       labels = colnames(cor(res)), theme = "colorblind")#,
+       labels = colnames(cor(res)),
+       edge.color = c("black"))#,
 #title="c", title.cex = 2)
 dev.off()
 
@@ -263,7 +288,7 @@ factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
                          col.ind = "grey", #col.var = "black",
                          col.circle= "darkgrey", fill.var = "white",
                          col.var = cols) +
-  scale_colour_manual(values=c("black", "red")) +
+  scale_colour_manual(values=c("black", "#F8766D")) +
   theme_minimal() + ggtitle("") +
   theme(legend.position="none", plot.title=element_blank())
 

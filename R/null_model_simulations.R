@@ -84,6 +84,7 @@ step_CA_rowrandom <- function(m)
 {
   for(i in 1:nrow(m))
   {
+    #print(i)
     x <- m[i,] # extract one row of m (species)
     new.x <- rep(0, times = length(x))
     smp <- table(sample(x = 1:length(x), size = sum(x), replace = TRUE)  )
@@ -94,7 +95,7 @@ step_CA_rowrandom <- function(m)
   return(m)
 }
 
-# m <- data.Ulrich[[1]]; rowSums(step_CA_rowrandom(m))
+# m <- data.Ulrich[[3]]; rowSums(step_CA_rowrandom(m))
 
 
 
@@ -124,12 +125,17 @@ step_C_sim2 <- function(m)
 #' @param m Community data matrix with species as rows and sites as columns. Can
 #' contain either incidences (1/0) or abundances (natural numbers).
 #' @param alrgorithm Character string. Name of the algorithm to be executed.
-#' @param metric Character string. Name of spasm's pairwise association metric.
+#' @param metric Character string. Name of spasm's pairwise association metric function.
 #' @param N.sim Number of algirthm runs.
+#' @param ... Additional arguments to the `metric` function.
 #' @export
 #'
-Z_score <- function(m, algorithm, metric, N.sim)
+Z_score <- function(m, algorithm, N.sim, metric, ...)
 {
+  # get the extra parameters to be passed to the metric function
+  extra.pars <- as.list(match.call(Z_score, expand.dots = FALSE))$...
+  #print(extra.pars)
+
   res <- array(dim=c(nrow(m), nrow(m), N.sim))
 
   for(i in 1:N.sim)
@@ -137,23 +143,30 @@ Z_score <- function(m, algorithm, metric, N.sim)
     # radnomize using a given algorithm
     null.m <- do.call(algorithm, list(m))
     # calculate the metric
-    null.metric <- as.matrix(do.call(metric, list(null.m)))
+    null.metric <- as.matrix(do.call(metric, c(list(null.m), extra.pars)))
     res[,,i] <- null.metric
   }
 
   # calculate the Z-score
-  obs <- do.call(metric, list(m))
+  obs <- do.call(metric, c(list(m), extra.pars) )
   mean.null <- as.dist(apply(X = res, MARGIN = c(1,2), FUN = mean))
   sd.null <- as.dist(apply(X = res, MARGIN = c(1,2), FUN = sd))
 
+  # the Z-score
   Z <- (obs - mean.null) / sd.null
   return(Z)
 }
 
 # TESTING
-#m <- data.Atmar[[1]]
-#x <- Z_score(m,
-#             algorithm="step_C_sim2",
-#             metric="C_seg", N.sim = 100)
-#xobs <- CA_hell(m)
-#plot(x, xobs)
+# m <- round( data.Ulrich[[3]])
+# m <- m[rowSums(m) > 0,]; m <- m[,colSums(m) > 0]
+# x <- Z_score(m,
+#             algorithm="step_CA_rowrandom",
+#             metric="CA_cov_cor", N.sim = 100,
+#             correlation =FALSE,
+#             method = "pearson")
+# x
+
+
+
+

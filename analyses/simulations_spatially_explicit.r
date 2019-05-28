@@ -6,6 +6,9 @@ library(gridExtra)
 library(raster)
 library(spasm)
 library(spatstat)
+# install_github("mcglinnlab/vario")
+
+library(vario)
 
 # ------------------------------------------------------------------------------
 # ILLUSTRATIONS
@@ -34,15 +37,15 @@ res.pts <- do.call("rbind", res.pts)
 
 
 pp.pairs <-  ggplot(data = res.pts, aes(x = x, y = y)) +
-              geom_point(aes(colour = Species), shape = 19, alpha = 0.5) +
-              facet_grid(CSA ~ ISA, labeller = "label_both") +
-              theme_bw() + theme(panel.grid = element_blank()) +
-              theme(#legend.position = "bottom",
-                    legend.position = c(0.95, 0.78),
-                    legend.background = element_rect(fill = "lightgray")) +
+             geom_point(aes(colour = Species, shape=Species), alpha = 0.5) +
+             facet_grid(CSA ~ ISA, labeller = "label_both") +
+             theme_bw() + theme(panel.grid = element_blank()) +
+             theme(#legend.position = "bottom",
+                   legend.position = c(0.95, 0.78),
+                   legend.background = element_rect(fill = "lightgray")) +
              scale_x_continuous(breaks = c(0, 1)) +
              scale_y_continuous(breaks = c(0, 1)) +
-            labs(title = "(a)")
+             labs(title = "(a)")
 
 print(pp.pairs)
 
@@ -74,11 +77,11 @@ png("figures/simulations_ISA_vs_CSA_examples.png",
 
 grid.arrange(pp.pairs, pdfs, ncol=1, nrow=2, heights = c(1, 0.4))
 
-grid::grid.text("repulsion, seggregation", x = 0.23, y = 0.98)
+grid::grid.text("repulsion, segregation", x = 0.23, y = 0.98)
 grid::grid.text("independence", x = 0.5, y = 0.98)
 grid::grid.text("attraction", x = 0.78, y = 0.98)
 
-grid::grid.text("repulsion, seggregation", x = 0.23, y = 0.267)
+grid::grid.text("repulsion, segregation", x = 0.23, y = 0.267)
 grid::grid.text("independence", x = 0.5, y = 0.267)
 grid::grid.text("attraction", x = 0.78, y = 0.267)
 
@@ -121,7 +124,7 @@ par(mfrow=c(2,3), mai = c(0.3, 0.3, 0.3, 0.3), adj=0)
   contour(sp1.prob, add=T, col="white")
 
   sp2 <- rpoint(n = 100, f = sp1.prob)
-  plot(sp2, main = expression(paste("(c) sp2")))
+  plot(sp2, main = expression(paste("(f) sp2")))
 
   #plot(sp1); plot(sp2, add=TRUE, col= "red")
 
@@ -195,7 +198,7 @@ ggplot(data=res.vario, aes(x=Dist, Covariance)) +
   scale_x_continuous(breaks = c(0, 1), limits=c(0,1)) +
   xlab("Distance")
 
-grid::grid.text("repulsion, seggregation", x = 0.2, y = 0.98)
+grid::grid.text("repulsion, segregation", x = 0.2, y = 0.98)
 grid::grid.text("independence", x = 0.44, y = 0.98)
 grid::grid.text("attraction", x = 0.68, y = 0.98)
 dev.off()
@@ -247,7 +250,7 @@ ggplot(data=res.pcf, aes(x=distance, g)) +
   scale_x_continuous(breaks = c(0, 1), limits=c(0,1)) +
   ylab("Bivariate PCF") + xlab("Distance")
 
-grid::grid.text("repulsion, seggregation", x = 0.2, y = 0.98)
+grid::grid.text("repulsion, segregation", x = 0.2, y = 0.98)
 grid::grid.text("independence", x = 0.44, y = 0.98)
 grid::grid.text("attraction", x = 0.68, y = 0.98)
 dev.off()

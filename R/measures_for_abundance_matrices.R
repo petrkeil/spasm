@@ -32,6 +32,7 @@ CA_cov_cor <- function(m,
   {
     D <- as.dist(cor(t(m), method = method))
   }
+
   else
   {
     D <- as.dist(cov(t(m), method = method))
