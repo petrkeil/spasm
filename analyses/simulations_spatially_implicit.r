@@ -69,6 +69,7 @@ for(i in 1:nrow(params))
                          CA_cov_hell = mean(spasm::CA_cov_cor(m, correlation=FALSE, transf="hellinger")),
                          CA_cor = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="pearson")),
                          CA_cor_hell = mean(spasm::CA_cov_cor(m, correlation=TRUE, transf = "hellinger", method="pearson")),
+                         CA_cor_hell_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_cov_cor", correlation = TRUE, method = "pearson", transf = "hellinger", N.sim=100)),
                          CA_hell = mean(spasm::CA_hell(m)),
                          CA_hell_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_hell", N.sim=100)),
                          CA_tau = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="kendall")),

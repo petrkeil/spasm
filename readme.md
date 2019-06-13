@@ -4,6 +4,21 @@
 
 This package contains code for several species association metrics and analyses.
 
+## Important note about the purpose (i.e. this is not your regular R package!)
+
+*Almost all functions in this package have much better and more mature counterpars
+in other existing packages!* 'spasm' is just an assortment of code and wrappers that I needed
+for a review of species association metrics, and putting the code to the form of 
+a package is my way of organizing and documenting the code.
+
+The existing packages that do a better job than `spasm` are:
+
+- `EcoSimR` for cooccurrence analysis and null models.
+- `spatstat` for point pattern analysis.
+- `vegan` for dissimilarities, and all sorts of association indices.
+- `vario` for community variograms.
+
+
 ## Installing spasm
 
 The easiest way to install spasm is using the ```install_github``` function from

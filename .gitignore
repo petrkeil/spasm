@@ -3,4 +3,6 @@
 .RData
 .Ruserdata
 analyses/sim_results.csv
+analyses/sim_results_abundance.csv
+analyses/sim_results_binary.csv
 analyses/figures

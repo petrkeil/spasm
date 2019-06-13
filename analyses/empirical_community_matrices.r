@@ -1,12 +1,26 @@
 library(psych)
 library(tidyverse)
 library(gridExtra)
-library(devtools)
-#install_github(repo="petrkeil/spasm")
 library(spasm)
-library(viridis)
-library(RColorBrewer)
 library(qgraph)
+library(factoextra)
+
+# In case spasm isn't installed:
+# library(devtools)
+# install_github(repo="petrkeil/spasm")
+
+# function removing -Inf, Inf, NaN and NA from a distance matrix
+cleaner <- function(D)
+{
+  D <- D[]
+  D <- na.omit(D)
+  D <- D[D != Inf]
+  D <- D[D != -Inf]
+  return(D)
+}
+
+
+
 
 # ANALYZING INCIDENCE-BASED MEASURES
 dat <- c(data.Ulrich, data.Atmar)
@@ -23,6 +37,7 @@ for(i in 1:length(dat))
 
   res.i <- c(N = sum(colSums(m.bin) > 0),
              S = sum(rowSums(m.bin) > 0),
+             Tot.incid = sum(m.bin),
              C_segSc = mean( spasm::C_seg(m.bin)),
              C_togSc = mean(spasm::C_tog(m.bin)),
              C_jacc = mean( spasm::C_jacc(m.bin)),
@@ -36,11 +51,11 @@ for(i in 1:length(dat))
              C_combo = C_combo(m.bin),
              C_checker= C_checker(m.bin),
              C_conn = C_conn(m.bin),
-             C_segSc_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_seg", N.sim=100))),
-             C_togSc_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_tog", N.sim=100))),
-             C_jacc_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_jacc", N.sim=100))),
-             C_sor_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_sor", N.sim=100))),
-             C_match_Z = mean(na.omit(spasm::Z_score(m.bin, "step_C_sim2", "C_match", N.sim=100)))
+             C_segSc_Z = mean(cleaner(spasm::Z_score(m.bin, "step_C_sim2", "C_seg", N.sim=100))),
+             C_togSc_Z = mean(cleaner(spasm::Z_score(m.bin, "step_C_sim2", "C_tog", N.sim=100))),
+             C_jacc_Z = mean(cleaner(spasm::Z_score(m.bin, "step_C_sim2", "C_jacc", N.sim=100))),
+             C_sor_Z = mean(cleaner(spasm::Z_score(m.bin, "step_C_sim2", "C_sor", N.sim=100))),
+             C_match_Z = mean(cleaner(spasm::Z_score(m.bin, "step_C_sim2", "C_match", N.sim=100)))
              )
 
  # print(res.i)
@@ -71,10 +86,11 @@ res2 <- mutate(res,
                C_combo = log(C_combo),
                C_ratio = log(C_ratio),
                N = log(N),
-               S = log(S))
+               S = log(S),
+               Tot.incid = log(Tot.incid))
 
 # plot histogram of each variable
-par(mfrow=c(5,4))
+par(mfrow=c(5,5))
 for(i in 1:ncol(res2))
 {
   hist(res2[,i], xlab = names(res2)[i], breaks=20, col="grey", main = NULL)
@@ -120,15 +136,17 @@ dev.off()
 
 
 res.pca <- prcomp(res2, scale = TRUE, center = TRUE)
-cols <- c("S or N", "S or N", rep("", times=ncol(res2)-2))
+cols <- c("S or N", "S or N", "S or N",  rep("", times=ncol(res2)-3))
 
-
+cols2 <- c("#F8766D", "#F8766D",  "#F8766D",
+           rep("#FFFFFF", times=ncol(res2)-3))
+cols2[grep(x = names(res2), pattern = "_Z")] <- "#00BFC4"
 
 inc.all <-  factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
                                      col.ind = "grey", #col.var = "black",
                                      col.circle= "darkgrey", fill.var = "white",
-                                     col.var = cols) +
-  scale_colour_manual(values=c("black", "#F8766D")) +
+                                     col.var = cols2) +
+  scale_colour_manual(values=c("#00BFC4", "#F8766D", "black")) +
   theme_minimal() +
   theme(legend.position='none', plot.title=element_blank()) #+
  # ggtitle("b")
@@ -143,7 +161,8 @@ png(file = "figures/binary_pairwise_graph.png",
     width = 1000, height = 1000, res=300)
 qgraph(cor(res2), layout = "spring",
        labels = colnames(cor(res2)),
-       edge.color = c("black"))#,
+       edge.color = c("black"),
+       color = cols2)#,
        #title="c", title.cex = 2)
 dev.off()
 
@@ -151,15 +170,6 @@ dev.off()
 ################################################################################
 # Abundance-based measures
 
-# function removing -Inf, Inf, NaN and NA from a distance matrix
-cleaner <- function(D)
-{
-  D <- D[]
-  D <- na.omit(D)
-  D <- D[D != Inf]
-  D <- D[D != -Inf]
-  return(D)
-}
 
 
 # ANALYZING MEAN VALUE
@@ -222,8 +232,11 @@ res <- mutate(res,
               Tot.abu = log(Tot.abu),
               CA_ratio = log(CA_ratio))
 
+write.csv(res, row.names=FALSE, file = "empirical_results_abundance.csv")
 
+# ------------------------------------------------------------------------------
 
+res <- read.csv(file = "empirical_results_abundance.csv")
 
 
 # remove -Inf and NA values
@@ -233,13 +246,27 @@ res <- na.omit(res)
 cols <- c("S or N", "S or N", "S or N", rep("", times=ncol(res)-3))
 
 
+res2 <- res[res$CA_ruz_Z < 100,]
+res2 <- res2[res2$CA_cov < 200,]
+res2 <- res2[res2$CA_hell_Z < 1e+14,]
+res2 <- res2[res2$CA_tau_Z > -50,]
+res2 <- res2[res2$CA_cor_hell_Z > -5.0e+14,]
+res <- res2
+
+
+cols2 <- c("#F8766D", "#F8766D",  "#F8766D",
+           rep("#FFFFFF", times=ncol(res)-3))
+cols2[grep(x = names(res), pattern = "_Z")] <- "#00BFC4"
+
 
 # check distributions of the measures
 par(mfrow=c(5,4))
 for(i in 1:ncol(res))
 {
-  hist(res[,i], xlab = names(res)[i], breaks=20, col="grey", main = NULL)
+  hist(res2[,i], xlab = names(res)[i], breaks=20, col="grey", main = NULL)
 }
+
+res <- res2
 
 require(psych)
 png(file = "figures/abundance_pairwise_pairplot.png",
@@ -271,10 +298,11 @@ dev.off()
 
 
 png(file = "figures/abundance_pairwise_graph.png",
-    width = 1000, height = 1000, res=300)
+    width = 1400, height = 1400, res=300)
 qgraph(cor(res), layout = "spring",
        labels = colnames(cor(res)),
-       edge.color = c("black"))#,
+       edge.color = c("black"),
+       color = cols2)#,
 #title="c", title.cex = 2)
 dev.off()
 
@@ -287,8 +315,8 @@ png(file = "figures/abundance_pairwise_PCA.png",
 factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
                          col.ind = "grey", #col.var = "black",
                          col.circle= "darkgrey", fill.var = "white",
-                         col.var = cols) +
-  scale_colour_manual(values=c("black", "#F8766D")) +
+                         col.var = cols2) +
+  scale_colour_manual(values=c("#00BFC4", "#F8766D", "black")) +
   theme_minimal() + ggtitle("") +
   theme(legend.position="none", plot.title=element_blank())
 
