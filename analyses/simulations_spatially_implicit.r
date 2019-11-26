@@ -20,12 +20,6 @@ params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
                       N1 = c(10, 100, 1000, 10000),
                       N2 = c(10, 100, 1000, 10000))
 
-#params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
-#                      alpha = seq(-20, 20, by=5),
-#                      grain = c(32, 16, 8, 4),
-#                      N1 = c(200, 1000),
-#                      N2 = c(200, 1000))
-
 
 res <- list()
 for(i in 1:nrow(params))
@@ -49,37 +43,46 @@ for(i in 1:nrow(params))
   # algo.abu <- "step_CA_rowrandom"
   algo.abu <- "step_CA_IT"
 
+  N = 200 # how many null model simulations?
 
   res[[i]] <- data.frame(
                          C_segSc = mean( spasm::C_seg(m.bin)),
-                         C_segSc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_seg", N.sim=100)),
+                         C_segSc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_seg", N.sim=N)),
                          C_togSc = mean( spasm::C_tog(m.bin)),
-                         C_togSc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_tog", N.sim=100)),
+                         C_togSc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_tog", N.sim=N)),
                          C_jacc = mean( spasm::C_jacc(m.bin)),
-                         C_jacc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_jacc", N.sim=100)),
+                         C_jacc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_jacc", N.sim=N)),
                          C_sor = mean( spasm::C_sor(m.bin)),
-                         C_sor_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_sor", N.sim=100)),
+                         C_sor_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_sor", N.sim=N)),
                          C_forbes = mean( spasm::C_forbes(m.bin)),
+                         C_alroy = mean(spasm::C_alroy(m.bin)),
                          C_FETmP = mean(FETmP_Pairwise(m.bin)),
-                         #C_FET = mean(FET_Pairwise(m.bin)),
                          C_pears = mean(spasm::C_pears(m.bin)),
                          C_match = mean(spasm::C_match(m.bin)),
-                         C_match_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_match", N.sim=100)),
+                         C_match_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_match", N.sim=N)),
                          CA_cov = mean(spasm::CA_cov_cor(m, correlation=FALSE)),
                          CA_cov_hell = mean(spasm::CA_cov_cor(m, correlation=FALSE, transf="hellinger")),
                          CA_cor = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="pearson")),
-                         CA_cor_hell = mean(spasm::CA_cov_cor(m, correlation=TRUE, transf = "hellinger", method="pearson")),
-                         CA_cor_hell_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_cov_cor", correlation = TRUE, method = "pearson", transf = "hellinger", N.sim=100)),
+                         CA_cor_hell = mean(spasm::CA_cov_cor(m,
+                                                              correlation=TRUE,
+                                                              transf = "hellinger",
+                                                              method="pearson")),
+                         CA_cor_hell_Z = mean(spasm::Z_score(m, "step_CA_IT", "CA_cov_cor",
+                                                             correlation = TRUE,
+                                                             method = "pearson",
+                                                             transf = "hellinger",
+                                                             N.sim=N)),
                          CA_hell = mean(spasm::CA_hell(m)),
-                         CA_hell_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_hell", N.sim=100)),
-                         CA_tau = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="kendall")),
-                         CA_tau_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_cov_cor", N.sim=100)),
+                         CA_hell_Z = mean(spasm::Z_score(m, "step_CA_IT", "CA_hell", N.sim=N)),
+                         CA_rho = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="spearman")),
+                         CA_rho_Z = mean(spasm::Z_score(m, "step_CA_IT", "CA_cov_cor",
+                                                        method="spearman", N.sim=N)),
                          CA_bray = mean(spasm::CA_bray(m)),
-                         CA_bray_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_bray", N.sim=100)),
+                         CA_bray_Z = mean(spasm::Z_score(m, "step_CA_IT", "CA_bray", N.sim=N)),
                          CA_ruz = mean(spasm::CA_ruz(m)),
-                         CA_ruz_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_ruz", N.sim=100)),
+                         CA_ruz_Z = mean(spasm::Z_score(m, "step_CA_IT", "CA_ruz", N.sim=N)),
                          CA_chi = mean(spasm::CA_chi(m)),
-                         CA_chi_Z = mean(spasm::Z_score(m, "step_CA_rowrandom", "CA_chi", N.sim=100)),
+                         CA_chi_Z = mean(spasm::Z_score(m, "step_CA_IT", "CA_chi", N.sim=N)),
                          params[i,]
                         )
 }
@@ -103,10 +106,10 @@ res <- reshape2::melt(data = res.all, measure.vars = c(C.measures,
 
 res$variable <- as.character(res$variable)
 res <- res[is.na(res$value) == FALSE,]
-
-# ------------------------------------------------------------------------------
-#  write.csv(res, file = "sim_results.csv", row.names=FALSE)
-# ------------------------------------------------------------------------------
+res <- res[res$value != Inf,]
+res <- res[res$value != (-Inf),]
+#res <- res[res$value < 1000,]
+#res <- res[res$value > -1000,]
 
 
 chr <- as.character(res$variable)
@@ -133,11 +136,16 @@ dev.off()
 cor.res <- plyr::ddply(.data=res,
                        .variables=c("variable"),
                        .fun=summarize,
-                       Kendall = cor(alpha, value, method = "kendall"))
+                       Spearman = cor(alpha, value, method = "spearman"))
+data <- as.character(cor.res$variable)
+data[grep(data, pattern="C_")] <- "Binary"
+data[grep(data, pattern="CA_")] <- "Abundance"
+
 type <- as.character(cor.res$variable)
-type[grep(type, pattern="C_")] <- "Incidence-based"
-type[grep(type, pattern="CA_")] <- "Abundance-based"
-cor.res <- data.frame(cor.res, type)
+type[] <- "Raw"
+type[grep(as.character(cor.res$variable), pattern="_Z")] <- "Z-score"
+
+cor.res <- data.frame(cor.res, data, type)
 
 # ------------------------------------------------------------------------------
 # by negative or positive ISA
@@ -145,61 +153,68 @@ cor.res <- data.frame(cor.res, type)
 cor.posneg <- plyr::ddply(.data=res,
                           .variables=c("variable", "sign"),
                           .fun=summarize,
-                          Kendall = cor(alpha, value, method = "kendall"))
+                          Spearman = cor(alpha, value, method = "spearman"))
+data <- as.character(cor.posneg$variable)
+data[grep(data, pattern="C_")] <- "Binary"
+data[grep(data, pattern="CA_")] <- "Abundance"
+
 type <- as.character(cor.posneg$variable)
-type[grep(type, pattern="C_")] <- "Incidence-based"
-type[grep(type, pattern="CA_")] <- "Abundance-based"
-cor.posneg <- data.frame(cor.posneg, type)
+type[] <- "Raw"
+type[grep(as.character(cor.posneg$variable), pattern="_Z")] <- "Z-score"
+
+cor.posneg <- data.frame(cor.posneg, data, type)
 
 cor.pos <- cor.posneg[cor.posneg$sign == "attraction",]
 cor.neg <- cor.posneg[cor.posneg$sign == "repulsion",]
 
 
-
 # -----------------------------------------------------------------------------
 # barplots
 bar.all <- ggplot(data=cor.res,
-                  aes(x= reorder(variable, abs(cor.res$Kendall)), y = abs(Kendall))) +
-            geom_col(aes(fill = type)) +
+                  aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
+            geom_col(aes(fill = data)) +
             ylim(c(0, 1)) + theme_bw() + coord_flip() +
-            ylab("| Kendall correlation with overall ISA |") +
+            ylab("| Correlation with overall ISA |") +
             theme(legend.position="none") +
+           # facet_grid(.~type) +
             xlab("") + ggtitle("(a)")
 
-bar.neg <- ggplot(data=cor.neg, aes(x= reorder(variable, abs(cor.res$Kendall)), y = abs(Kendall))) +
-  geom_col(aes(fill = type)) + ylim(c(0, 1)) +
+bar.neg <- ggplot(data=cor.neg, aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
+  geom_col(aes(fill = data)) + ylim(c(0, 1)) +
   theme_bw() + coord_flip() +
-  ylab("| Kendall correlation with repulsion |") +
+  ylab("| Correlation with repulsion |") +
   theme(legend.position="none") +
   xlab("")+ ggtitle("(b)")
 
-bar.pos <- ggplot(data=cor.pos, aes(x= reorder(variable, abs(cor.res$Kendall)), y = abs(Kendall))) +
-  geom_col(aes(fill = type)) + ylim(c(0, 1)) +
+bar.pos <- ggplot(data=cor.pos, aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
+  geom_col(aes(fill = data)) + ylim(c(0, 1)) +
   theme_bw() + coord_flip() +
-  ylab("| Kendall correlation with attraction |") +
+  ylab("| Correlation with attraction |") +
   theme(legend.position=c(0.7, 0.3)) +
   xlab("") + ggtitle("(c)")
 
 
-png("figures/simulations_bars.png", width = 1600, height = 900, res = 150)
+png("figures/simulations_bars.all", width = 1600, height = 900, res = 150)
   grid.arrange(bar.all, bar.neg, bar.pos, nrow=1, ncol=3)
 dev.off()
 
 
 
 ################################################################################
+# FIGURES - COMPLETE, WITH Z-SCORES
+################################################################################
 
 # -------------------------summarize by scale
 scale <- plyr::ddply(.data=res,
                        .variables=c("variable", "grain"),
                        .fun=summarize,
-                       Kendall = abs(cor(alpha, value, method = "kendall")))
+                     Spearman = abs(cor(alpha, value, method = "spearman")))
 scale$variable <- as.factor(scale$variable)
 
 # abundance or incidence?
 type <- as.character(scale$variable)
-type[grep(type, pattern="C_")] <- "Incidence-based"
-type[grep(type, pattern="CA_")] <- "Abundance-based"
+type[grep(type, pattern="C_")] <- "Binary data"
+type[grep(type, pattern="CA_")] <- "Abundance data"
 scale <- data.frame(scale, type)
 
 # raw or Z-score?
@@ -215,21 +230,21 @@ scale <- left_join(x=scale, y = cols, by="variable")
 # label positions
 scale.labs <- scale[scale$grain == 32,]
 
-gr <- ggplot(data = scale, aes(x = grain, y = Kendall)) +
+gr <- ggplot(data = scale, aes(x = grain, y = Spearman)) +
   geom_point(aes(colour = rnd.col)) +
   geom_line(aes(colour = rnd.col)) +
   scale_x_continuous(trans = "log2") +
   theme_bw() +
   facet_grid(Z~type) +
   geom_label_repel(data = scale.labs,
-                   aes(x = grain, y = Kendall, label=variable,
+                   aes(x = grain, y = Spearman, label=variable,
                        colour = rnd.col)) +
   theme(legend.position="none") +
   xlab("Grain [# pixels along one side]") +
-  ylab("| Kendall correlation with ISA |")
+  ylab("| Correlation with ISA |")
 gr
 
-png("figures/simulations_kendall_by_grain.png",
+png("figures/simulations_spearman_by_grain.png",
     width = 1400, height= 1400, res=200)
  gr
 dev.off()
@@ -240,14 +255,14 @@ dev.off()
 csa <- plyr::ddply(.data=res,
                        .variables=c("variable", "var.consp"),
                        .fun=summarize,
-                       Kendall = abs(cor(alpha, value, method = "kendall")))
+                   Spearman = abs(cor(alpha, value, method = "spearman")))
 csa$variable <- as.factor(csa$variable)
 names(csa)[2] <- "CSA"
 
 # abundance or incidence?
 type <- as.character(csa$variable)
-type[grep(type, pattern="C_")] <- "Incidence-based"
-type[grep(type, pattern="CA_")] <- "Abundance-based"
+type[grep(type, pattern="C_")] <- "Binary data"
+type[grep(type, pattern="CA_")] <- "Abundance data"
 csa <- data.frame(csa, type)
 
 # raw or Z-score?
@@ -261,21 +276,58 @@ csa <- left_join(x=csa, y = cols, by="variable")
 # label positions
 scale.labs <- csa[csa$CSA == 0.01,]
 
-cs <- ggplot(data = csa, aes(x = CSA, y = Kendall)) +
+cs <- ggplot(data = csa, aes(x = CSA, y = Spearman)) +
   geom_point(aes(colour = rnd.col)) +
   geom_line(aes(colour = rnd.col)) +
   scale_x_continuous(trans = "log10") +
   theme_bw() +
   facet_grid(Z~type) +
   geom_label_repel(data = scale.labs,
-                   aes(x = CSA, y = Kendall, label=variable,
+                   aes(x = CSA, y = Spearman, label=variable,
                        colour = rnd.col)) +
   theme(legend.position="none") +
   xlab("Con-specific aggregation (CSA)") +
-  ylab("| Kendall correlation with ISA |")
+  ylab("| Correlation with ISA |")
 cs
 
-png("figures/simulations_kendall_by_CSA.png",
+png("figures/simulations_spearman_by_CSA.png",
     width = 1400, height= 1400, res=200)
 cs
 dev.off()
+
+################################################################################
+# FIGURES - ONLY RAW METRICS
+################################################################################
+cor.res <- cor.res[cor.res$type == "Raw", ]
+cor.pos <- cor.pos[cor.pos$type == "Raw", ]
+cor.neg <- cor.neg[cor.neg$type == "Raw", ]
+
+# barplots
+bar.all <- ggplot(data=cor.res,
+                  aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
+  geom_col(aes(fill = data)) +
+  ylim(c(0, 1)) + theme_bw() + coord_flip() +
+  ylab("| Correlation with overall ISA |") +
+  theme(legend.position="none") +
+  # facet_grid(.~type) +
+  xlab("") + ggtitle("(a)")
+
+bar.neg <- ggplot(data=cor.neg, aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
+  geom_col(aes(fill = data)) + ylim(c(0, 1)) +
+  theme_bw() + coord_flip() +
+  ylab("| Correlation with repulsion |") +
+  theme(legend.position="none") +
+  xlab("")+ ggtitle("(b)")
+
+bar.pos <- ggplot(data=cor.pos, aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
+  geom_col(aes(fill = data)) + ylim(c(0, 1)) +
+  theme_bw() + coord_flip() +
+  ylab("| Correlation with attraction |") +
+  theme(legend.position=c(0.7, 0.3)) +
+  xlab("") + ggtitle("(c)")
+
+
+png("figures/simulations_bars_raw.png", width = 1600, height = 900, res = 150)
+grid.arrange(bar.all, bar.neg, bar.pos, nrow=1, ncol=3)
+dev.off()
+

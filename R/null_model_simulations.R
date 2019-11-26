@@ -27,19 +27,32 @@ step_CA_IT <- function(m)
     res[rs[i], cs[i]] <- res[rs[i], cs[i]] + 1
   }
 
-  # A CORRECTION FOR RANDOMIZED MATRICES WITH 0 ROWS
-    # which species have 0 individuals
-    zero.spec <- which(rowSums(res) == 0)
-    # where will random 1 placed?
-    one.loc <- sample(1:ncol(m), size = sum(zero.spec), replace=TRUE)
-    res[zero.spec, one.loc] <- 1
-    return(res)
+  # A CORRECTION FOR RANDOMIZED MATRICES WITH 0 ROWS (= species)
+  # -> WE SIMPLY ADD 1
+      # which species have 0 individuals?
+      zero.spec <- which(rowSums(res) == 0)
+      # where will random 1 be placed?
+      one.loc <- sample(1:ncol(m), size = sum(zero.spec), replace=TRUE)
+      res[zero.spec, one.loc] <- 1
 
   return(res)
 }
 
 # TESTING
-#m <- data.Ulrich[[1]]; rowSums(null_step_CA_IT(m))
+# x <- data.Ulrich[[1]]
+# x <- matrix(c(1,10, 100, 0, 5, 0,0,1,0,0,0,0,
+#              6,12, 499, 0, 1000,0,0,0,10,0,0,0), byrow=TRUE, nrow=2)
+
+# par(mfrow=c(1,3))
+# plot(colSums(x), colSums(step_CA_IT(x))); abline(a = 0, b=1)
+# plot(rowSums(x), rowSums(step_CA_IT(x))); abline(a = 0, b=1)
+# plot(x, step_CA_IT(x)); abline(a = 0, b=1)
+
+# sum(x); sum(step_CA_IT(x))
+
+
+
+
 
 ################################################################################
 #'One realization of the an algorithm that resamples each row according to a Poisson distribution
@@ -84,7 +97,7 @@ step_CA_rowrandom <- function(m)
 {
   for(i in 1:nrow(m))
   {
-    #print(i)
+    print(i)
     x <- m[i,] # extract one row of m (species)
     new.x <- rep(0, times = length(x))
     smp <- table(sample(x = 1:length(x), size = sum(x), replace = TRUE)  )
@@ -96,8 +109,6 @@ step_CA_rowrandom <- function(m)
 }
 
 # m <- data.Ulrich[[3]]; rowSums(step_CA_rowrandom(m))
-
-
 
 
 
@@ -161,9 +172,9 @@ Z_score <- function(m, algorithm, N.sim, metric, ...)
 # m <- round( data.Ulrich[[3]])
 # m <- m[rowSums(m) > 0,]; m <- m[,colSums(m) > 0]
 # x <- Z_score(m,
-#             algorithm="step_CA_rowrandom",
+#             algorithm="step_CA_IT",
 #             metric="CA_cov_cor", N.sim = 100,
-#             correlation =FALSE,
+#             correlation = FALSE,
 #             method = "pearson")
 # x
 

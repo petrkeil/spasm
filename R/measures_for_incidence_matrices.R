@@ -1,7 +1,5 @@
 #' Forbes' coefficient of association among species in a community matrix
 #'
-#' This is blah blah blah
-#'
 #' @param m Community data matrix with species as rows and sites as columns. Can
 #' contain either incidences (1/0) or abundances (natural numbers).
 #' @return A dist or data.frame objects with the pairwise association values.
@@ -27,7 +25,32 @@ C_forbes <- function(m)
   return(D)
 }
 
+# ------------------------------------------------------------------------------
+#' Alroy's (2015) modification of the Forbes index
+#'
+#' @param m Community data matrix with species as rows and sites as columns. Can
+#' contain either incidences (1/0) or abundances (natural numbers).
+#' @return A dist or data.frame objects with the pairwise association values.
+#' @import vegan
+#' @references Alroy J. (2015) A new twist on a very old binary similarity coefficient.
+#' Ecology 96: 575-586.
+#' @export
+#'
 
+C_alroy <- function(m)
+{
+  # eliminate empty rows, but not columns
+  m <- m[rowSums(m) != 0, ]
+
+  D <- vegan::designdist(m,
+                         method = "a*( (a+b+c) + sqrt(a+b+c) )/( (a+b)*(a+c) + a*sqrt(a+b+c) + 0.5*(b*c) )",
+                         abcd = TRUE,
+                         terms = "binary")
+  return(D)
+}
+
+#C_alroy(matrix(c(1,1,0,0,1,1,
+#               0,0,1,0,0,1), byrow=T, nrow=2))
 
 # ------------------------------------------------------------------------------
 #' The classical 'C-score' seggregation metric of Stone & Roberts (1990),

@@ -4,7 +4,7 @@
 \alias{CA_cov_cor}
 \title{Covariance or correlation matrix calculated from community matrix}
 \usage{
-CA_cov_cor(m, transf = NULL, correlation = TRUE, method = "kendall")
+CA_cov_cor(m, transf = NULL, correlation = TRUE, method = "spearman")
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can

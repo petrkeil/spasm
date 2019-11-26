@@ -17,7 +17,7 @@
 CA_cov_cor <- function(m,
                        transf = NULL,
                        correlation = TRUE,
-                       method = "kendall")
+                       method = "spearman")
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]

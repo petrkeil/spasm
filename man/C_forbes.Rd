@@ -14,7 +14,7 @@ contain either incidences (1/0) or abundances (natural numbers).}
 A dist or data.frame objects with the pairwise association values.
 }
 \description{
-This is blah blah blah
+Forbes' coefficient of association among species in a community matrix
 }
 \references{
 Forbes S.A. (1907) On the local distribution of certain Illinois

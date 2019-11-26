@@ -4,10 +4,10 @@
 
 This package contains code for several species association metrics and analyses.
 
-## Important note about the purpose (i.e. this is not your regular R package!)
+## Beware, this is not a regular R package!
 
-*Almost all functions in this package have much better and more mature counterpars
-in other existing packages!* 'spasm' is just an assortment of code and wrappers that I needed
+**Almost all functions in this package have much better and more mature counterpars
+in other existing packages!** 'spasm' is just an assortment of code and wrappers that I needed
 for a review of species association metrics, and putting the code to the form of 
 a package is my way of organizing and documenting the code.
 
@@ -18,6 +18,8 @@ The existing packages that do a better job than `spasm` are:
 - `vegan` for dissimilarities, and all sorts of association indices.
 - `vario` for community variograms.
 
+**Before using a `spasm` function, please have a look at these packages - they may
+do what you need in a more standard and better way.**
 
 ## Installing spasm
 

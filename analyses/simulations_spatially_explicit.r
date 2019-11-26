@@ -68,7 +68,7 @@ pdfs <- ggplot(data = res, aes(x = Distance, y = pdf)) +
   theme(panel.grid = element_blank(),
         plot.margin=unit(c(5.5,25,5.5,4), "points")) +
   scale_x_continuous(breaks = c(0, 1)) +
-  ylab(expression(f[sp2](D))) + xlab("D") +
+  ylab(expression(f[sp2](r))) + xlab("Distance r") +
   labs(title = "(b)")
 pdfs
 
@@ -77,11 +77,11 @@ png("figures/simulations_ISA_vs_CSA_examples.png",
 
 grid.arrange(pp.pairs, pdfs, ncol=1, nrow=2, heights = c(1, 0.4))
 
-grid::grid.text("repulsion, segregation", x = 0.23, y = 0.98)
+grid::grid.text("repulsion", x = 0.23, y = 0.98)
 grid::grid.text("independence", x = 0.5, y = 0.98)
 grid::grid.text("attraction", x = 0.78, y = 0.98)
 
-grid::grid.text("repulsion, segregation", x = 0.23, y = 0.267)
+grid::grid.text("repulsion", x = 0.23, y = 0.267)
 grid::grid.text("independence", x = 0.5, y = 0.267)
 grid::grid.text("attraction", x = 0.78, y = 0.267)
 
@@ -117,10 +117,10 @@ par(mfrow=c(2,3), mai = c(0.3, 0.3, 0.3, 0.3), adj=0)
   sp1.prob[] <- PDFtexp(sp1.dist[], alpha)
   sp1.prob <- sp1.prob/sum(sp1.prob)
 
-  plot(sp1.dist, main = expression("(d) D"))
+  plot(sp1.dist, main = expression("(d) r"))
   contour(sp1.dist, add=T, col="white")
 
-  plot(sp1.prob, main = expression(paste("(e) ", f[sp2], "(D)")))
+  plot(sp1.prob, main = expression(paste("(e) ", f[sp2], "(r)")))
   contour(sp1.prob, add=T, col="white")
 
   sp2 <- rpoint(n = 100, f = sp1.prob)
@@ -196,9 +196,9 @@ ggplot(data=res.vario, aes(x=Dist, Covariance)) +
         legend.background = element_rect(fill = "lightgray"),
         plot.margin=unit(c(20,5.5,5.5,5.5), "points")) +
   scale_x_continuous(breaks = c(0, 1), limits=c(0,1)) +
-  xlab("Distance")
+  xlab("Distance r")
 
-grid::grid.text("repulsion, segregation", x = 0.2, y = 0.98)
+grid::grid.text("repulsion", x = 0.2, y = 0.98)
 grid::grid.text("independence", x = 0.44, y = 0.98)
 grid::grid.text("attraction", x = 0.68, y = 0.98)
 dev.off()
@@ -248,9 +248,9 @@ ggplot(data=res.pcf, aes(x=distance, g)) +
         plot.margin=unit(c(20,90,5.5,5.4), "points"),
         legend.background = element_rect(fill = "lightgray")) +
   scale_x_continuous(breaks = c(0, 1), limits=c(0,1)) +
-  ylab("Bivariate PCF") + xlab("Distance")
+  ylab("Bivariate PCF") + xlab("Distance r")
 
-grid::grid.text("repulsion, segregation", x = 0.2, y = 0.98)
+grid::grid.text("repulsion", x = 0.2, y = 0.98)
 grid::grid.text("independence", x = 0.44, y = 0.98)
 grid::grid.text("attraction", x = 0.68, y = 0.98)
 dev.off()
