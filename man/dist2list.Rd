@@ -2,10 +2,18 @@
 % Please edit documentation in R/utility_functions.R
 \name{dist2list}
 \alias{dist2list}
-\title{Conversion of distance matrix to list}
+\title{Conversion of distance matrix to list
+This function is taken from package 'spaa' by Jinlong Zhang}
 \usage{
 dist2list(dist)
 }
+\arguments{
+\item{dist}{Object of class dist}
+}
+\value{
+Object of class dist
+}
 \description{
 Conversion of distance matrix to list
+This function is taken from package 'spaa' by Jinlong Zhang
 }

@@ -6,7 +6,7 @@
 \alias{spasm-package}
 \title{spasm}
 \description{
-Description of your package
+A package with functions that were used for Keil et al.'s paper on interspecific associations
 }
 \author{
 Petr Keil

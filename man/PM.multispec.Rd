@@ -20,7 +20,7 @@ point process.}
 A list.
 }
 \description{
-Multi-species P-M classfication of Wiegand et al. (2007)
+Still under development - use it cautiously
 }
 \references{
 Wiegand T. et al. (2007) Species associations in a heterogeneous

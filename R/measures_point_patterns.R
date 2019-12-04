@@ -97,6 +97,8 @@ KD <- function(X, spec.1, spec.2, n.iter, radius)
 ################################################################################
 #' Multi-species P-M classfication of Wiegand et al. (2007)
 #'
+#' Still under development - use it cautiously
+#'
 #' @param X Object of class 'ppp' (from 'spatstat' packge). This is a marked
 #' point pattern in which each mark gives identity of a species. Thus, the object
 #' must have at least 2 species.
@@ -142,7 +144,10 @@ PM.multispec <- function(X, n.iter, radius)
 
 
 ################################################################################
-#' Bivariate nearest neighbor distance function (D) and K-function (K)
+#' Plot the PM classification scheme
+#'
+#' This function plots the output of the PM.multispec function. Still under
+#' development - use it cautiously.
 #'
 #' @param PM A list object returned by the PM.multispec function.
 #'

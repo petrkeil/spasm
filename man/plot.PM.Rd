@@ -2,7 +2,7 @@
 % Please edit documentation in R/measures_point_patterns.R
 \name{plot.PM}
 \alias{plot.PM}
-\title{Bivariate nearest neighbor distance function (D) and K-function (K)}
+\title{Plot the PM classification scheme}
 \usage{
 plot.PM(PM, xlim = NULL, ylim = NULL, labs = FALSE,
   lab.shift = NULL, main = NULL)
@@ -14,5 +14,6 @@ plot.PM(PM, xlim = NULL, ylim = NULL, labs = FALSE,
 A ggplot figure.
 }
 \description{
-Bivariate nearest neighbor distance function (D) and K-function (K)
+This function plots the output of the PM.multispec function. Still under
+development - use it cautiously.
 }

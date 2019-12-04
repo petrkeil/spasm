@@ -6,6 +6,13 @@
 \usage{
 PDFtexp(d, alpha, dlim = c(0, 1))
 }
+\arguments{
+\item{d}{a vector or scalar representing spatial distance}
+
+\item{alpha}{the main parameter of the function}
+
+\item{dlim}{the two truncation points of the function (default is 0 and 1)}
+}
 \description{
-Truncated exponential probability density function
+This is the probability density function from Keil (2014) PeerJ: https://peerj.com/preprints/446/.
 }

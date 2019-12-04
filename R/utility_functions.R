@@ -78,7 +78,11 @@ ppp.plot.2.spec <- function(comm.ppp, spec.1, spec.2)
 # ------------------------------------------------------------------------------
 #' Conversion of distance matrix to list
 
-# function from package 'spaa' by Jinlong Zhang <jinlongzhang01@gmail.com>:
+#' This function is taken from package 'spaa' by Jinlong Zhang
+#' @param dist Object of class dist
+#' @return Object of class dist
+#' @export
+
 dist2list <- function (dist)
 {
   if (!class(dist) == "dist") {

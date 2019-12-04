@@ -1,3 +1,11 @@
+################################################################################
+#
+# Code for the simulations behind Figs. 7, S5, S6, S7
+#
+# Petr Keil
+#
+################################################################################
+
 library(ggplot2)
 library(dplyr)
 library(vegan)
@@ -8,43 +16,53 @@ library(spasm)
 library(spatstat)
 library(ggrepel)
 
-# load Aniko Toth's functions from GitHub
+# load Aniko Toth's functions from GitHub (for C_FETmP)
 source("https://raw.githubusercontent.com/anikobtoth/FCW/master/Pair_Functions.R")
 
 ################################################################################
 
-params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),
-                      alpha = seq(-20, 20, by=2.5),
-                      #alpha = c(-100, -10, -1, 0, 1, 10, 100)
-                      grain = c(64, 32, 16, 8, 4),
-                      N1 = c(10, 100, 1000, 10000),
-                      N2 = c(10, 100, 1000, 10000))
+
+# Set simulation parameters
+params <- expand.grid(var.consp   = c(0.001, 0.01, 0.1),  # CSA
+                      alpha = seq(-20, 20, by=2.5),       # ISA
+                      grain = c(32, 16, 8, 4),        # number of grid cells along one side
+                      N1 = c(10, 100, 1000, 10000),       # number of individuals of species 1
+                      N2 = c(10, 100, 1000, 10000))       # number of individuals of species 2
 
 
-res <- list()
-for(i in 1:nrow(params))
+# ------------------------------------------------------------------------------
+# The grand loop that does all the simulations
+# ------------------------------------------------------------------------------
+
+set.seed(12345)
+
+res <- list() # empy container for results
+
+for(i in 1:nrow(params)) # for each combination of parameters
 {
   message(paste("Simulation", i, "out of", nrow(params)))
 
+  # simulate point patterns of the two species
   a <- sim.pair(abund.vect = c(params$N1[i], params$N2[i]),
                 var.consp = params$var.consp[i],
                 alpha = params$alpha[i],
                 plot.comm = FALSE)
 
-  n.cells.side <- sqrt(params[i, 'grain'])
+  n.cells.side <- params[i, 'grain']
 
   m <- spasm::ppp.to.comm(a, dim.yx = c(n.cells.side, n.cells.side))$abundance
 
-  # convert to binary matrix
+  # create a binary matrix as well
   m.bin <-  m
   m.bin[m >= 1] <- 1
 
   # which Z-score randomization algorithm to use for abundance data?
-  # algo.abu <- "step_CA_rowrandom"
   algo.abu <- "step_CA_IT"
 
-  N = 200 # how many null model simulations?
+  # how many null model simulations?
+  N = 200
 
+  # all of the metrics
   res[[i]] <- data.frame(
                          C_segSc = mean( spasm::C_seg(m.bin)),
                          C_segSc_Z = mean(spasm::Z_score(m.bin, "step_C_sim2", "C_seg", N.sim=N)),
@@ -83,60 +101,66 @@ for(i in 1:nrow(params))
                          CA_ruz_Z = mean(spasm::Z_score(m, "step_CA_IT", "CA_ruz", N.sim=N)),
                          CA_chi = mean(spasm::CA_chi(m)),
                          CA_chi_Z = mean(spasm::Z_score(m, "step_CA_IT", "CA_chi", N.sim=N)),
-                         params[i,]
+                         params[i,] # saving the simulation parameters as well
                         )
 }
 
+# convert the list to a data frame
 res.all <- do.call("rbind", res) %>%
   mutate(Area = 1/(grain^2))
 
+# save the results to a file (so that I don't have to re-run the loop all the time)
 write.csv(res.all, file="sim_results.csv", row.names = FALSE)
 # ------------------------------------------------------------------------------
 
+# read the results from the file
 res.all <- read.csv("sim_results.csv")
 # ------------------------------------------------------------------------------
 
+# classify abundance- and incidence-based measures
 C.measures <- names(res.all)[grep(x=names(res.all), pattern="C_")]
 CA.measures <- names(res.all)[grep(x=names(res.all), pattern="CA_")]
-
-library(tidyr)
-
 res <- reshape2::melt(data = res.all, measure.vars = c(C.measures,
                                                        CA.measures))
 
+# remove outliers, NAs, infinity values and similar mess
 res$variable <- as.character(res$variable)
-res <- res[is.na(res$value) == FALSE,]
-res <- res[res$value != Inf,]
-res <- res[res$value != (-Inf),]
-#res <- res[res$value < 1000,]
-#res <- res[res$value > -1000,]
+res <- res[is.na(res$value) == FALSE,] # remove NAs
+res <- res[res$value != Inf,]    # remove infinity
+res <- res[res$value != (-Inf),] # remove negative infinity
+#res <- res[res$value < 1000,]    # remove extreme values - not used for the paper
+#res <- res[res$value > -1000,]   # remove extreme values - not used for the paper
 
-
+# some other transfomrations and additions to the data
 chr <- as.character(res$variable)
-#res$variable <- factor(x= res$variable, levels = unique(chr))
 res$variable <- ordered(x= res$variable, levels = unique(chr))
 res$sign <- rep("independence", times=nrow(res))
 res$sign[res$alpha > 0] <- "attraction"
 res$sign[res$alpha < 0] <- "repulsion"
 
+################################################################################
+# FIGURES - SCATTERPLOTS
+################################################################################
 
+# figure with all the details on the relationships
 png("figures/simulations_scatterplots.png",
     width = 2000, height = 1600, res = 200)
-ggplot(data=res, aes(x=alpha, y = value)) +
-  geom_vline(xintercept= 0) +
-  geom_point(shape = 1, alpha = 0.3, colour = "darkgrey") +
-  geom_smooth(se = FALSE, colour = "#FF7570") +
-  theme_bw() + xlab("ISA") +
-  facet_wrap(~variable, scales="free")
+    ggplot(data=res, aes(x=alpha, y = value)) +
+      geom_vline(xintercept= 0) +
+      geom_point(shape = 1, alpha = 0.3, colour = "darkgrey") +
+      geom_smooth(se = FALSE, colour = "#FF7570") +
+      theme_bw() + xlab("ISA") +
+      facet_wrap(~variable, scales="free")
 dev.off()
 
 # ------------------------------------------------------------------------------
-# overall correlation
-
+# overall correlation between the metric and the simulated ISA (represented by alpha)
 cor.res <- plyr::ddply(.data=res,
                        .variables=c("variable"),
                        .fun=summarize,
                        Spearman = cor(alpha, value, method = "spearman"))
+
+# some further data transformations and classifications
 data <- as.character(cor.res$variable)
 data[grep(data, pattern="C_")] <- "Binary"
 data[grep(data, pattern="CA_")] <- "Abundance"
@@ -148,7 +172,7 @@ type[grep(as.character(cor.res$variable), pattern="_Z")] <- "Z-score"
 cor.res <- data.frame(cor.res, data, type)
 
 # ------------------------------------------------------------------------------
-# by negative or positive ISA
+# sorting the results by negative or positive ISA
 
 cor.posneg <- plyr::ddply(.data=res,
                           .variables=c("variable", "sign"),
@@ -168,8 +192,50 @@ cor.pos <- cor.posneg[cor.posneg$sign == "attraction",]
 cor.neg <- cor.posneg[cor.posneg$sign == "repulsion",]
 
 
-# -----------------------------------------------------------------------------
-# barplots
+cor.res <- cor.res[cor.res$type == "Raw", ]
+cor.pos <- cor.pos[cor.pos$type == "Raw", ]
+cor.neg <- cor.neg[cor.neg$type == "Raw", ]
+
+################################################################################
+# FIGURES - BARPLOT WITH ONLY RAW METRICS
+################################################################################
+
+# barplot - overall correlation
+bar.all <- ggplot(data=cor.res,
+                  aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) + # note the abs
+  geom_col(aes(fill = data)) +
+  ylim(c(0, 1)) + theme_bw() + coord_flip() +
+  ylab("| Correlation with overall ISA |") +
+  theme(legend.position="none") +
+  # facet_grid(.~type) +
+  xlab("") + ggtitle("(a)")
+
+# barplot - negative correlation
+bar.neg <- ggplot(data=cor.neg, aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
+  geom_col(aes(fill = data)) + ylim(c(0, 1)) +
+  theme_bw() + coord_flip() +
+  ylab("| Correlation with repulsion |") +
+  theme(legend.position="none") +
+  xlab("")+ ggtitle("(b)")
+
+# barplot - positive correlation
+bar.pos <- ggplot(data=cor.pos, aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
+  geom_col(aes(fill = data)) + ylim(c(0, 1)) +
+  theme_bw() + coord_flip() +
+  ylab("| Correlation with attraction |") +
+  theme(legend.position=c(0.7, 0.3)) +
+  xlab("") + ggtitle("(c)")
+
+# export the figure
+png("figures/simulations_bars_raw.png", width = 1600, height = 900, res = 150)
+  grid.arrange(bar.all, bar.neg, bar.pos, nrow=1, ncol=3)
+dev.off()
+
+
+################################################################################
+# FIGURES - BARPLOT WITH RAW METRICS AND Z-SCORES TOGETHER
+################################################################################
+
 bar.all <- ggplot(data=cor.res,
                   aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
             geom_col(aes(fill = data)) +
@@ -201,7 +267,7 @@ dev.off()
 
 
 ################################################################################
-# FIGURES - COMPLETE, WITH Z-SCORES
+# FIGURES - CORRELATIONS SUMMARIZED BY GRAIN
 ################################################################################
 
 # -------------------------summarize by scale
@@ -244,13 +310,13 @@ gr <- ggplot(data = scale, aes(x = grain, y = Spearman)) +
   ylab("| Correlation with ISA |")
 gr
 
-png("figures/simulations_spearman_by_grain.png",
-    width = 1400, height= 1400, res=200)
- gr
+png("figures/simulations_spearman_by_grain.png", width = 1400, height= 1400, res=200)
+ print(gr)
 dev.off()
 
-
-# -------------------------summarize by CSA
+################################################################################
+# FIGURES - CORRELATIONS SUMMARIZED BY CSA
+################################################################################
 
 csa <- plyr::ddply(.data=res,
                        .variables=c("variable", "var.consp"),
@@ -290,44 +356,59 @@ cs <- ggplot(data = csa, aes(x = CSA, y = Spearman)) +
   ylab("| Correlation with ISA |")
 cs
 
-png("figures/simulations_spearman_by_CSA.png",
-    width = 1400, height= 1400, res=200)
-cs
+png("figures/simulations_spearman_by_CSA.png", width = 1400, height= 1400, res=200)
+  print(cs)
 dev.off()
 
 ################################################################################
-# FIGURES - ONLY RAW METRICS
+# FIGURES - MEAN ISA AS A FUNCTION OF GRAIN
 ################################################################################
-cor.res <- cor.res[cor.res$type == "Raw", ]
-cor.pos <- cor.pos[cor.pos$type == "Raw", ]
-cor.neg <- cor.neg[cor.neg$type == "Raw", ]
 
-# barplots
-bar.all <- ggplot(data=cor.res,
-                  aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
-  geom_col(aes(fill = data)) +
-  ylim(c(0, 1)) + theme_bw() + coord_flip() +
-  ylab("| Correlation with overall ISA |") +
+# -------------------------summarize by scale
+scale <- plyr::ddply(.data=res,
+                     .variables=c("variable", "grain"),
+                     .fun=summarize,
+                     mean.index = mean(value))
+scale <- plyr::ddply(.data=scale,
+                     .variables="variable",
+                     .fun=mutate,
+                     mean.index = scale(mean.index))
+scale$variable <- as.character(scale$variable)
+
+# abundance or incidence?
+type <- as.character(scale$variable)
+type[grep(type, pattern="C_")] <- "Binary data"
+type[grep(type, pattern="CA_")] <- "Abundance data"
+scale <- data.frame(scale, type)
+
+# raw or Z-score?
+Z <- rep("Raw", times = nrow(scale))
+Z[grep(scale$variable, pattern="_Z")] <- "Z-score"
+scale <- data.frame(scale, Z)
+
+# colour palette
+var.names <- as.character(unique(scale$variable))
+cols <- data.frame(variable = as.character(var.names),
+                   rnd.col = as.factor(sample(1:length(var.names))))
+scale <- left_join(x=scale, y = cols, by="variable")
+
+# label positions
+scale.labs <- scale[scale$grain == 32,]
+
+gr <- ggplot(data = scale, aes(x = grain, y = mean.index)) +
+  geom_point(aes(colour = rnd.col)) +
+  geom_line(aes(colour = rnd.col)) +
+  scale_x_continuous(trans = "log2") +
+  theme_bw() +
+  facet_grid(Z~type) +
+  geom_label_repel(data = scale.labs,
+                   aes(x = grain, y = mean.index, label=variable,
+                       colour = rnd.col)) +
   theme(legend.position="none") +
-  # facet_grid(.~type) +
-  xlab("") + ggtitle("(a)")
+  xlab("Grain [# pixels along one side]") +
+  ylab("Mean metric (scaled to 0 mean and SD of 1)")
+gr
 
-bar.neg <- ggplot(data=cor.neg, aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
-  geom_col(aes(fill = data)) + ylim(c(0, 1)) +
-  theme_bw() + coord_flip() +
-  ylab("| Correlation with repulsion |") +
-  theme(legend.position="none") +
-  xlab("")+ ggtitle("(b)")
-
-bar.pos <- ggplot(data=cor.pos, aes(x= reorder(variable, abs(cor.res$Spearman)), y = abs(Spearman))) +
-  geom_col(aes(fill = data)) + ylim(c(0, 1)) +
-  theme_bw() + coord_flip() +
-  ylab("| Correlation with attraction |") +
-  theme(legend.position=c(0.7, 0.3)) +
-  xlab("") + ggtitle("(c)")
-
-
-png("figures/simulations_bars_raw.png", width = 1600, height = 900, res = 150)
-grid.arrange(bar.all, bar.neg, bar.pos, nrow=1, ncol=3)
+png("figures/simulations_mean_by_GRAIN.png", width = 1400, height= 1400, res=200)
+print(gr)
 dev.off()
-

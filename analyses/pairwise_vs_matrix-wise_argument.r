@@ -1,6 +1,15 @@
-library(spasm)
-?spasm
+################################################################################
+#
+# Comparison of the pairwise and matrixwise ISA approaches.
+# - this is the base for Fig. 2
+#
+# Petr Keil
+#
+################################################################################
 
+library(spasm)
+
+# the two matrices displayed in Fig. 2
 m1 <- matrix(c(1,0,0,0,
                0,1,0,0,
                0,0,1,0,

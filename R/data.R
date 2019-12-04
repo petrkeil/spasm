@@ -31,3 +31,12 @@
 #' @source Owig D., Foster D. & Ellison A. (2015) Harvard Forest CTFS-ForestGEO
 #' Mapped Forest Plot since 2014. Harvard Forest Data Archive: HF253.
 "data.Harvard"
+
+#' Number of papers on biodiversity + a given category on Clarivate Web of Science
+#'
+#' The search was done on 19 Sep 2019. The search categories were the given term (in the data)
+#' AND "biodiversity".
+#'
+#' @source http://apps.webofknowledge.com/
+"data.WOS"
+

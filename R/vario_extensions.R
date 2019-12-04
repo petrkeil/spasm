@@ -1,4 +1,9 @@
-
+# Functions that plot the output of the 'vario' package of Dan McGlinn
+#
+# This code is not used in the analyses - it is here so that it may come handy
+# one day and I don't want to loose it.
+#
+# Petr Keil
 # ------------------------------------------------------------------------------
 vario.summarize <- function(v.obs, v.rand)
 {

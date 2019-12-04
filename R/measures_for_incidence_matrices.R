@@ -284,9 +284,8 @@ C_sim <- function(m)
 #' Whittaker's index of overall association in a community matrix
 #'
 #' This metric is equivalent to calculating the classical Whittaker's beta diversity on
-#' a transposed matrix. The idea to use this metric for species associations arose
-#' during a discussion with Aniko Toth at IBS 2019 conference in Malaga, and hence
-#' the name of the metric.
+#' a transposed matrix. The impulse to use this metric for species associations arose
+#' during a discussion with Aniko Toth at IBS 2019 conference in Malaga.
 #'
 #' @inheritParams C_forbes
 #' @return A single number, which is the ratio of mean occupancy and the number of

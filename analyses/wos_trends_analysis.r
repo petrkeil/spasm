@@ -1,12 +1,28 @@
+################################################################################
+#
+# Code for Figure S1, the analysis of Web of Science trends
+#
+# Petr Keil
+#
+################################################################################
+
 library(ggplot2)
-library(ggrepel)
+library(ggrepel) # for non-overlapping plot labels
 library(plyr)
 library(gridExtra)
 
 # ------------------------------------------------------------------------------
 # read the data
-dat <- read.csv("../data/wos_trends.csv")
+data.WOS <- read.csv("../data/wos_trends.csv")
+
+# export the data for packaging purpose
+save(data.WOS, file = "../data/Web_of_Science_search.RData")
+
+dat <- data.WOS # this is what I am going to work with
+
 dat$Type <- as.character(dat$Type)
+
+# ------------------------------------------------------------------------------
 
 # create labels for search terms
 labs <- plyr::ddply(.data = dat,
@@ -19,6 +35,8 @@ labs <- plyr::ddply(.data = dat,
 ISA <- dat[dat$Type == "ISA",]
 other <- dat[dat$Type == "other",]
 interaction <- dat[dat$Type == "interaction",]
+
+# ------------------------------------------------------------------------------
 
 # plot temporal trends
 P.temp <- ggplot(data = dat, aes(x = Year, y = Count)) +
@@ -36,7 +54,7 @@ P.temp <- ggplot(data = dat, aes(x = Year, y = Count)) +
   ylab("Number of papers")
 
 # export the plot
-pdf("../analyses/figures/WOS_trends.pdf", width=15, height = 9)
+pdf("../analyses/figures/WOS_trends.pdf", width=12, height = 7)
  P.temp
 dev.off()
 
