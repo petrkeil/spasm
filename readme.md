@@ -18,7 +18,7 @@ The existing packages that do a better job than `spasm` are:
 - `vegan` for dissimilarities, and all sorts of association indices.
 - `vario` for community variograms.
 
-**Before using a `spasm` function, please have a look at these packages - they may
+**Before using a `spasm` function, please have a look at these packages - they likely
 do what you need in a more standard and better way.**
 
 ## Installing spasm
