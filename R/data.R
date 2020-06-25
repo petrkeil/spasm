@@ -40,3 +40,12 @@
 #' @source http://apps.webofknowledge.com/
 "data.WOS"
 
+#' Data on 3879 papers published in American Nautralist, Ecology, and Ecography
+#' in years 1995, 1999, 2003, 2007, 2011, and 2019
+#'
+#' I created the data by
+#' reading 3879 abstracts and manually classifying them into thematic categories.
+#' The abstracts were taken from Clarivate Web of Science. Metadata are in the "data" folder.
+#'
+#' @source http://apps.webofknowledge.com/
+"data.journals"

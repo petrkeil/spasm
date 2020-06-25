@@ -1,836 +1,884 @@
-Type,Term,Year,Count,Perc
-ISA,attraction*,2019,20,6.78
-ISA,attraction*,2018,47,15.932
-ISA,attraction*,2017,29,9.831
-ISA,attraction*,2016,32,10.847
-ISA,attraction*,2015,20,6.78
-ISA,attraction*,2014,29,9.831
-ISA,attraction*,2013,28,9.492
-ISA,attraction*,2012,20,6.78
-ISA,attraction*,2011,16,5.424
-ISA,attraction*,2010,9,3.051
-ISA,attraction*,2009,8,2.712
-ISA,attraction*,2008,7,2.373
-ISA,attraction*,2007,3,1.017
-ISA,attraction*,2006,7,2.373
-ISA,attraction*,2005,3,1.017
-ISA,attraction*,2004,5,1.695
-ISA,attraction*,2003,1,0.339
-ISA,attraction*,2002,3,1.017
-ISA,attraction*,2001,3,1.017
-ISA,attraction*,1998,1,0.339
-ISA,attraction*,1997,3,1.017
-ISA,attraction*,1996,1,0.339
-Classic biodiversity patterns,beta NEAR/0 diversit*,2019,302,10.335
-Classic biodiversity patterns,beta NEAR/0 diversit*,2018,374,12.799
-Classic biodiversity patterns,beta NEAR/0 diversit*,2017,329,11.259
-Classic biodiversity patterns,beta NEAR/0 diversit*,2016,298,10.198
-Classic biodiversity patterns,beta NEAR/0 diversit*,2015,264,9.035
-Classic biodiversity patterns,beta NEAR/0 diversit*,2014,218,7.461
-Classic biodiversity patterns,beta NEAR/0 diversit*,2013,187,6.4
-Classic biodiversity patterns,beta NEAR/0 diversit*,2012,171,5.852
-Classic biodiversity patterns,beta NEAR/0 diversit*,2011,130,4.449
-Classic biodiversity patterns,beta NEAR/0 diversit*,2010,143,4.894
-Classic biodiversity patterns,beta NEAR/0 diversit*,2009,92,3.149
-Classic biodiversity patterns,beta NEAR/0 diversit*,2008,99,3.388
-Classic biodiversity patterns,beta NEAR/0 diversit*,2007,63,2.156
-Classic biodiversity patterns,beta NEAR/0 diversit*,2006,60,2.053
-Classic biodiversity patterns,beta NEAR/0 diversit*,2005,42,1.437
-Classic biodiversity patterns,beta NEAR/0 diversit*,2004,36,1.232
-Classic biodiversity patterns,beta NEAR/0 diversit*,2003,26,0.89
-Classic biodiversity patterns,beta NEAR/0 diversit*,2002,21,0.719
-Classic biodiversity patterns,beta NEAR/0 diversit*,2001,16,0.548
-Classic biodiversity patterns,beta NEAR/0 diversit*,2000,10,0.342
-Classic biodiversity patterns,beta NEAR/0 diversit*,1999,14,0.479
-Classic biodiversity patterns,beta NEAR/0 diversit*,1998,8,0.274
-Classic biodiversity patterns,beta NEAR/0 diversit*,1997,9,0.308
-Classic biodiversity patterns,beta NEAR/0 diversit*,1996,4,0.137
-ISA,C-score,2019,3,14.286
-ISA,C-score,2018,3,14.286
-ISA,C-score,2017,1,4.762
-ISA,C-score,2015,1,4.762
-ISA,C-score,2014,1,4.762
-ISA,C-score,2013,2,9.524
-ISA,C-score,2011,1,4.762
-ISA,C-score,2009,4,19.048
-ISA,C-score,2007,2,9.524
-ISA,C-score,2006,1,4.762
-ISA,C-score,2005,1,4.762
-ISA,C-score,2004,1,4.762
-ISA,ecosim*,2019,7,11.864
-ISA,ecosim*,2018,7,11.864
-ISA,ecosim*,2017,3,5.085
-ISA,ecosim*,2016,5,8.475
-ISA,ecosim*,2015,7,11.864
-ISA,ecosim*,2014,3,5.085
-ISA,ecosim*,2013,5,8.475
-ISA,ecosim*,2012,3,5.085
-ISA,ecosim*,2011,3,5.085
-ISA,ecosim*,2010,2,3.39
-ISA,ecosim*,2009,6,10.169
-ISA,ecosim*,2008,4,6.78
-ISA,ecosim*,2006,3,5.085
-ISA,ecosim*,1998,1,1.695
-Classic biodiversity patterns,evenness,2019,175,7.39
-Classic biodiversity patterns,evenness,2018,231,9.755
-Classic biodiversity patterns,evenness,2017,218,9.206
-Classic biodiversity patterns,evenness,2016,206,8.699
-Classic biodiversity patterns,evenness,2015,192,8.108
-Classic biodiversity patterns,evenness,2014,183,7.728
-Classic biodiversity patterns,evenness,2013,182,7.686
-Classic biodiversity patterns,evenness,2012,157,6.63
-Classic biodiversity patterns,evenness,2011,116,4.899
-Classic biodiversity patterns,evenness,2010,131,5.532
-Classic biodiversity patterns,evenness,2009,88,3.716
-Classic biodiversity patterns,evenness,2008,80,3.378
-Classic biodiversity patterns,evenness,2007,76,3.209
-Classic biodiversity patterns,evenness,2006,55,2.323
-Classic biodiversity patterns,evenness,2005,49,2.069
-Classic biodiversity patterns,evenness,2004,48,2.027
-Classic biodiversity patterns,evenness,2003,39,1.647
-Classic biodiversity patterns,evenness,2002,34,1.436
-Classic biodiversity patterns,evenness,2001,39,1.647
-Classic biodiversity patterns,evenness,2000,23,0.971
-Classic biodiversity patterns,evenness,1999,14,0.591
-Classic biodiversity patterns,evenness,1998,9,0.38
-Classic biodiversity patterns,evenness,1997,9,0.38
-Classic biodiversity patterns,evenness,1996,5,0.211
-Classic biodiversity patterns,evenness,1995,6,0.253
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2019,13,10.924
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2018,18,15.126
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2017,21,17.647
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2016,14,11.765
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2015,8,6.723
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2014,9,7.563
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2013,6,5.042
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2012,7,5.882
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2011,6,5.042
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2010,4,3.361
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2009,3,2.521
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2008,3,2.521
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2007,2,1.681
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2006,2,1.681
-Biotic interactions and networks,heterospecific* OR hetero-specific*,2002,1,0.84
-Biotic interactions and networks,heterospecific* OR hetero-specific*,1996,1,0.84
-Biotic interactions and networks,heterospecific* OR hetero-specific*,1993,1,0.84
-Classic biodiversity patterns,jaccard,2019,15,5.319
-Classic biodiversity patterns,jaccard,2018,19,6.738
-Classic biodiversity patterns,jaccard,2017,24,8.511
-Classic biodiversity patterns,jaccard,2016,22,7.801
-Classic biodiversity patterns,jaccard,2015,18,6.383
-Classic biodiversity patterns,jaccard,2014,23,8.156
-Classic biodiversity patterns,jaccard,2013,21,7.447
-Classic biodiversity patterns,jaccard,2012,18,6.383
-Classic biodiversity patterns,jaccard,2011,27,9.574
-Classic biodiversity patterns,jaccard,2010,12,4.255
-Classic biodiversity patterns,jaccard,2009,12,4.255
-Classic biodiversity patterns,jaccard,2008,11,3.901
-Classic biodiversity patterns,jaccard,2007,8,2.837
-Classic biodiversity patterns,jaccard,2006,13,4.61
-Classic biodiversity patterns,jaccard,2005,9,3.191
-Classic biodiversity patterns,jaccard,2004,2,0.709
-Classic biodiversity patterns,jaccard,2003,1,0.355
-Classic biodiversity patterns,jaccard,2002,2,0.709
-Classic biodiversity patterns,jaccard,2001,7,2.482
-Classic biodiversity patterns,jaccard,2000,4,1.418
-Classic biodiversity patterns,jaccard,1999,2,0.709
-Classic biodiversity patterns,jaccard,1998,1,0.355
-Classic biodiversity patterns,jaccard,1997,5,1.773
-Classic biodiversity patterns,jaccard,1996,1,0.355
-Classic biodiversity patterns,jaccard,1995,3,1.064
-Classic biodiversity patterns,nestedness,2019,77,11.738
-Classic biodiversity patterns,nestedness,2018,79,12.043
-Classic biodiversity patterns,nestedness,2017,61,9.299
-Classic biodiversity patterns,nestedness,2016,77,11.738
-Classic biodiversity patterns,nestedness,2015,68,10.366
-Classic biodiversity patterns,nestedness,2014,50,7.622
-Classic biodiversity patterns,nestedness,2013,50,7.622
-Classic biodiversity patterns,nestedness,2012,44,6.707
-Classic biodiversity patterns,nestedness,2011,33,5.03
-Classic biodiversity patterns,nestedness,2010,21,3.201
-Classic biodiversity patterns,nestedness,2009,20,3.049
-Classic biodiversity patterns,nestedness,2008,21,3.201
-Classic biodiversity patterns,nestedness,2007,14,2.134
-Classic biodiversity patterns,nestedness,2006,10,1.524
-Classic biodiversity patterns,nestedness,2005,9,1.372
-Classic biodiversity patterns,nestedness,2004,1,0.152
-Classic biodiversity patterns,nestedness,2003,3,0.457
-Classic biodiversity patterns,nestedness,2002,5,0.762
-Classic biodiversity patterns,nestedness,2001,6,0.915
-Classic biodiversity patterns,nestedness,2000,3,0.457
-Classic biodiversity patterns,nestedness,1999,2,0.305
-Classic biodiversity patterns,nestedness,1997,2,0.305
-Biotic interactions and networks,network*,2019,660,8.407
-Biotic interactions and networks,network*,2018,926,11.795
-Biotic interactions and networks,network*,2017,866,11.03
-Biotic interactions and networks,network*,2016,780,9.935
-Biotic interactions and networks,network*,2015,698,8.891
-Biotic interactions and networks,network*,2014,603,7.681
-Biotic interactions and networks,network*,2013,543,6.916
-Biotic interactions and networks,network*,2012,441,5.617
-Biotic interactions and networks,network*,2011,404,5.146
-Biotic interactions and networks,network*,2010,357,4.547
-Biotic interactions and networks,network*,2009,304,3.872
-Biotic interactions and networks,network*,2008,234,2.981
-Biotic interactions and networks,network*,2007,180,2.293
-Biotic interactions and networks,network*,2006,192,2.446
-Biotic interactions and networks,network*,2005,119,1.516
-Biotic interactions and networks,network*,2004,109,1.388
-Biotic interactions and networks,network*,2003,93,1.185
-Biotic interactions and networks,network*,2002,90,1.146
-Biotic interactions and networks,network*,2001,50,0.637
-Biotic interactions and networks,network*,2000,55,0.701
-Biotic interactions and networks,network*,1999,28,0.357
-Biotic interactions and networks,network*,1998,26,0.331
-Biotic interactions and networks,network*,1997,25,0.318
-Biotic interactions and networks,network*,1996,20,0.255
-Biotic interactions and networks,network*,1995,25,0.318
-ISA,repulsion*,2019,2,18.182
-ISA,repulsion*,2018,1,9.091
-ISA,repulsion*,2017,1,9.091
-ISA,repulsion*,2015,2,18.182
-ISA,repulsion*,2013,1,9.091
-ISA,repulsion*,2012,3,27.273
-ISA,repulsion*,2004,1,9.091
-ISA,segregation*,2019,28,7.349
-ISA,segregation*,2018,41,10.761
-ISA,segregation*,2017,34,8.924
-ISA,segregation*,2016,38,9.974
-ISA,segregation*,2015,24,6.299
-ISA,segregation*,2014,33,8.661
-ISA,segregation*,2013,25,6.562
-ISA,segregation*,2012,19,4.987
-ISA,segregation*,2011,21,5.512
-ISA,segregation*,2010,24,6.299
-ISA,segregation*,2009,15,3.937
-ISA,segregation*,2008,14,3.675
-ISA,segregation*,2007,10,2.625
-ISA,segregation*,2006,15,3.937
-ISA,segregation*,2005,6,1.575
-ISA,segregation*,2004,8,2.1
-ISA,segregation*,2003,3,0.787
-ISA,segregation*,2002,4,1.05
-ISA,segregation*,2001,6,1.575
-ISA,segregation*,2000,4,1.05
-ISA,segregation*,1999,2,0.525
-ISA,segregation*,1998,1,0.262
-ISA,segregation*,1997,1,0.262
-ISA,segregation*,1996,1,0.262
-ISA,segregation*,1995,3,0.787
-Classic biodiversity patterns,simpson,2019,70,8.783
-Classic biodiversity patterns,simpson,2018,78,9.787
-Classic biodiversity patterns,simpson,2017,79,9.912
-Classic biodiversity patterns,simpson,2016,70,8.783
-Classic biodiversity patterns,simpson,2015,66,8.281
-Classic biodiversity patterns,simpson,2014,65,8.156
-Classic biodiversity patterns,simpson,2013,45,5.646
-Classic biodiversity patterns,simpson,2012,37,4.642
-Classic biodiversity patterns,simpson,2011,45,5.646
-Classic biodiversity patterns,simpson,2010,50,6.274
-Classic biodiversity patterns,simpson,2009,32,4.015
-Classic biodiversity patterns,simpson,2008,21,2.635
-Classic biodiversity patterns,simpson,2007,21,2.635
-Classic biodiversity patterns,simpson,2006,25,3.137
-Classic biodiversity patterns,simpson,2005,22,2.76
-Classic biodiversity patterns,simpson,2004,12,1.506
-Classic biodiversity patterns,simpson,2003,12,1.506
-Classic biodiversity patterns,simpson,2002,8,1.004
-Classic biodiversity patterns,simpson,2001,10,1.255
-Classic biodiversity patterns,simpson,2000,11,1.38
-Classic biodiversity patterns,simpson,1999,8,1.004
-Classic biodiversity patterns,simpson,1998,3,0.376
-Classic biodiversity patterns,simpson,1997,2,0.251
-Classic biodiversity patterns,simpson,1996,2,0.251
-Classic biodiversity patterns,simpson,1995,1,0.125
-Classic biodiversity patterns,species-area,2019,56,5.485
-Classic biodiversity patterns,species-area,2018,67,6.562
-Classic biodiversity patterns,species-area,2017,65,6.366
-Classic biodiversity patterns,species-area,2016,76,7.444
-Classic biodiversity patterns,species-area,2015,56,5.485
-Classic biodiversity patterns,species-area,2014,69,6.758
-Classic biodiversity patterns,species-area,2013,55,5.387
-Classic biodiversity patterns,species-area,2012,78,7.64
-Classic biodiversity patterns,species-area,2011,62,6.072
-Classic biodiversity patterns,species-area,2010,50,4.897
-Classic biodiversity patterns,species-area,2009,44,4.31
-Classic biodiversity patterns,species-area,2008,55,5.387
-Classic biodiversity patterns,species-area,2007,54,5.289
-Classic biodiversity patterns,species-area,2006,41,4.016
-Classic biodiversity patterns,species-area,2005,43,4.212
-Classic biodiversity patterns,species-area,2004,35,3.428
-Classic biodiversity patterns,species-area,2003,27,2.644
-Classic biodiversity patterns,species-area,2002,28,2.742
-Classic biodiversity patterns,species-area,2001,21,2.057
-Classic biodiversity patterns,species-area,2000,6,0.588
-Classic biodiversity patterns,species-area,1999,13,1.273
-Classic biodiversity patterns,species-area,1998,4,0.392
-Classic biodiversity patterns,species-area,1997,4,0.392
-Classic biodiversity patterns,species-area,1996,5,0.49
-Classic biodiversity patterns,species-area,1995,4,0.392
-Classic biodiversity patterns,species NEAR/0 richness,2019,1394,6.714
-Classic biodiversity patterns,species NEAR/0 richness,2018,1830,8.814
-Classic biodiversity patterns,species NEAR/0 richness,2017,1830,8.814
-Classic biodiversity patterns,species NEAR/0 richness,2016,1745,8.405
-Classic biodiversity patterns,species NEAR/0 richness,2015,1598,7.697
-Classic biodiversity patterns,species NEAR/0 richness,2014,1494,7.196
-Classic biodiversity patterns,species NEAR/0 richness,2013,1364,6.57
-Classic biodiversity patterns,species NEAR/0 richness,2012,1258,6.059
-Classic biodiversity patterns,species NEAR/0 richness,2011,1175,5.659
-Classic biodiversity patterns,species NEAR/0 richness,2010,1031,4.966
-Classic biodiversity patterns,species NEAR/0 richness,2009,926,4.46
-Classic biodiversity patterns,species NEAR/0 richness,2008,844,4.065
-Classic biodiversity patterns,species NEAR/0 richness,2007,770,3.709
-Classic biodiversity patterns,species NEAR/0 richness,2006,654,3.15
-Classic biodiversity patterns,species NEAR/0 richness,2005,572,2.755
-Classic biodiversity patterns,species NEAR/0 richness,2004,438,2.11
-Classic biodiversity patterns,species NEAR/0 richness,2003,430,2.071
-Classic biodiversity patterns,species NEAR/0 richness,2002,342,1.647
-Classic biodiversity patterns,species NEAR/0 richness,2001,253,1.219
-Classic biodiversity patterns,species NEAR/0 richness,2000,210,1.011
-Classic biodiversity patterns,species NEAR/0 richness,1999,163,0.785
-Classic biodiversity patterns,species NEAR/0 richness,1998,135,0.65
-Classic biodiversity patterns,species NEAR/0 richness,1997,107,0.515
-Classic biodiversity patterns,species NEAR/0 richness,1996,71,0.342
-Classic biodiversity patterns,species NEAR/0 turnover,2019,71,7.521
-Classic biodiversity patterns,species NEAR/0 turnover,2018,113,11.97
-Classic biodiversity patterns,species NEAR/0 turnover,2017,89,9.428
-Classic biodiversity patterns,species NEAR/0 turnover,2016,89,9.428
-Classic biodiversity patterns,species NEAR/0 turnover,2015,73,7.733
-Classic biodiversity patterns,species NEAR/0 turnover,2014,71,7.521
-Classic biodiversity patterns,species NEAR/0 turnover,2013,59,6.25
-Classic biodiversity patterns,species NEAR/0 turnover,2012,65,6.886
-Classic biodiversity patterns,species NEAR/0 turnover,2011,36,3.814
-Classic biodiversity patterns,species NEAR/0 turnover,2010,50,5.297
-Classic biodiversity patterns,species NEAR/0 turnover,2009,43,4.555
-Classic biodiversity patterns,species NEAR/0 turnover,2008,38,4.025
-Classic biodiversity patterns,species NEAR/0 turnover,2007,30,3.178
-Classic biodiversity patterns,species NEAR/0 turnover,2006,14,1.483
-Classic biodiversity patterns,species NEAR/0 turnover,2005,16,1.695
-Classic biodiversity patterns,species NEAR/0 turnover,2004,14,1.483
-Classic biodiversity patterns,species NEAR/0 turnover,2003,18,1.907
-Classic biodiversity patterns,species NEAR/0 turnover,2002,11,1.165
-Classic biodiversity patterns,species NEAR/0 turnover,2001,8,0.847
-Classic biodiversity patterns,species NEAR/0 turnover,2000,12,1.271
-Classic biodiversity patterns,species NEAR/0 turnover,1999,5,0.53
-Classic biodiversity patterns,species NEAR/0 turnover,1998,6,0.636
-Classic biodiversity patterns,species NEAR/0 turnover,1997,5,0.53
-Classic biodiversity patterns,species NEAR/0 turnover,1996,4,0.424
-Classic biodiversity patterns,species NEAR/0 turnover,1995,1,0.106
-ISA,variance NEAR/0 ratio*,2017,1,8.333
-ISA,variance NEAR/0 ratio*,2016,3,25
-ISA,variance NEAR/0 ratio*,2014,2,16.667
-ISA,variance NEAR/0 ratio*,2013,1,8.333
-ISA,variance NEAR/0 ratio*,2007,1,8.333
-ISA,variance NEAR/0 ratio*,2006,1,8.333
-ISA,variance NEAR/0 ratio*,2003,1,8.333
-ISA,variance NEAR/0 ratio*,2001,2,16.667
-Biotic interactions and networks,conspecific* OR con-specific*,2019,36,8.219
-Biotic interactions and networks,conspecific* OR con-specific*,2018,48,10.959
-Biotic interactions and networks,conspecific* OR con-specific*,2017,48,10.959
-Biotic interactions and networks,conspecific* OR con-specific*,2016,46,10.502
-Biotic interactions and networks,conspecific* OR con-specific*,2015,36,8.219
-Biotic interactions and networks,conspecific* OR con-specific*,2014,44,10.046
-Biotic interactions and networks,conspecific* OR con-specific*,2013,30,6.849
-Biotic interactions and networks,conspecific* OR con-specific*,2012,29,6.621
-Biotic interactions and networks,conspecific* OR con-specific*,2011,24,5.479
-Biotic interactions and networks,conspecific* OR con-specific*,2010,19,4.338
-Biotic interactions and networks,conspecific* OR con-specific*,2009,10,2.283
-Biotic interactions and networks,conspecific* OR con-specific*,2008,10,2.283
-Biotic interactions and networks,conspecific* OR con-specific*,2007,11,2.511
-Biotic interactions and networks,conspecific* OR con-specific*,2006,9,2.055
-Biotic interactions and networks,conspecific* OR con-specific*,2005,8,1.826
-Biotic interactions and networks,conspecific* OR con-specific*,2004,5,1.142
-Biotic interactions and networks,conspecific* OR con-specific*,2003,6,1.37
-Biotic interactions and networks,conspecific* OR con-specific*,2002,5,1.142
-Biotic interactions and networks,conspecific* OR con-specific*,2001,3,0.685
-Biotic interactions and networks,conspecific* OR con-specific*,2000,4,0.913
-Biotic interactions and networks,conspecific* OR con-specific*,1999,3,0.685
-Biotic interactions and networks,conspecific* OR con-specific*,1998,2,0.457
-Biotic interactions and networks,conspecific* OR con-specific*,1997,1,0.228
-Biotic interactions and networks,conspecific* OR con-specific*,1995,1,0.228
-ISA,cooccurr* or co-occurr*,2019,131,11.931
-ISA,cooccurr* or co-occurr*,2018,132,12.022
-ISA,cooccurr* or co-occurr*,2017,113,10.291
-ISA,cooccurr* or co-occurr*,2016,122,11.111
-ISA,cooccurr* or co-occurr*,2015,106,9.654
-ISA,cooccurr* or co-occurr*,2014,81,7.377
-ISA,cooccurr* or co-occurr*,2013,75,6.831
-ISA,cooccurr* or co-occurr*,2012,60,5.464
-ISA,cooccurr* or co-occurr*,2011,41,3.734
-ISA,cooccurr* or co-occurr*,2010,41,3.734
-ISA,cooccurr* or co-occurr*,2009,39,3.552
-ISA,cooccurr* or co-occurr*,2008,31,2.823
-ISA,cooccurr* or co-occurr*,2007,24,2.186
-ISA,cooccurr* or co-occurr*,2006,17,1.548
-ISA,cooccurr* or co-occurr*,2005,19,1.73
-ISA,cooccurr* or co-occurr*,2004,16,1.457
-ISA,cooccurr* or co-occurr*,2003,11,1.002
-ISA,cooccurr* or co-occurr*,2002,11,1.002
-ISA,cooccurr* or co-occurr*,2001,11,1.002
-ISA,cooccurr* or co-occurr*,2000,5,0.455
-ISA,cooccurr* or co-occurr*,1999,6,0.546
-ISA,cooccurr* or co-occurr*,1998,4,0.364
-ISA,cooccurr* or co-occurr*,1997,1,0.091
-ISA,cooccurr* or co-occurr*,1995,1,0.091
-Classic biodiversity patterns,relative NEAR/0 abundance*,2019,170,8.822
-Classic biodiversity patterns,relative NEAR/0 abundance*,2018,200,10.379
-Classic biodiversity patterns,relative NEAR/0 abundance*,2017,204,10.586
-Classic biodiversity patterns,relative NEAR/0 abundance*,2016,152,7.888
-Classic biodiversity patterns,relative NEAR/0 abundance*,2015,163,8.459
-Classic biodiversity patterns,relative NEAR/0 abundance*,2014,124,6.435
-Classic biodiversity patterns,relative NEAR/0 abundance*,2013,130,6.746
-Classic biodiversity patterns,relative NEAR/0 abundance*,2012,99,5.138
-Classic biodiversity patterns,relative NEAR/0 abundance*,2011,91,4.722
-Classic biodiversity patterns,relative NEAR/0 abundance*,2010,82,4.255
-Classic biodiversity patterns,relative NEAR/0 abundance*,2009,70,3.633
-Classic biodiversity patterns,relative NEAR/0 abundance*,2008,62,3.217
-Classic biodiversity patterns,relative NEAR/0 abundance*,2007,62,3.217
-Classic biodiversity patterns,relative NEAR/0 abundance*,2006,58,3.01
-Classic biodiversity patterns,relative NEAR/0 abundance*,2005,48,2.491
-Classic biodiversity patterns,relative NEAR/0 abundance*,2004,44,2.283
-Classic biodiversity patterns,relative NEAR/0 abundance*,2003,37,1.92
-Classic biodiversity patterns,relative NEAR/0 abundance*,2002,22,1.142
-Classic biodiversity patterns,relative NEAR/0 abundance*,2001,24,1.245
-Classic biodiversity patterns,relative NEAR/0 abundance*,2000,29,1.505
-Classic biodiversity patterns,relative NEAR/0 abundance*,1999,15,0.778
-Classic biodiversity patterns,relative NEAR/0 abundance*,1998,13,0.675
-Classic biodiversity patterns,relative NEAR/0 abundance*,1997,14,0.727
-Classic biodiversity patterns,relative NEAR/0 abundance*,1996,9,0.467
-Classic biodiversity patterns,relative NEAR/0 abundance*,1995,2,0.104
-Classic biodiversity patterns,SAD,2019,2,2.353
-Classic biodiversity patterns,SAD,2018,12,14.118
-Classic biodiversity patterns,SAD,2017,14,16.471
-Classic biodiversity patterns,SAD,2016,4,4.706
-Classic biodiversity patterns,SAD,2015,10,11.765
-Classic biodiversity patterns,SAD,2014,6,7.059
-Classic biodiversity patterns,SAD,2013,5,5.882
-Classic biodiversity patterns,SAD,2012,8,9.412
-Classic biodiversity patterns,SAD,2011,1,1.176
-Classic biodiversity patterns,SAD,2010,5,5.882
-Classic biodiversity patterns,SAD,2009,5,5.882
-Classic biodiversity patterns,SAD,2008,2,2.353
-Classic biodiversity patterns,SAD,2007,5,5.882
-Classic biodiversity patterns,SAD,2006,2,2.353
-Classic biodiversity patterns,SAD,2005,4,4.706
-Classic biodiversity patterns,extinct*,2019,591,6.259
-Classic biodiversity patterns,extinct*,2018,896,9.49
-Classic biodiversity patterns,extinct*,2017,879,9.309
-Classic biodiversity patterns,extinct*,2016,809,8.568
-Classic biodiversity patterns,extinct*,2015,786,8.325
-Classic biodiversity patterns,extinct*,2014,618,6.545
-Classic biodiversity patterns,extinct*,2013,630,6.672
-Classic biodiversity patterns,extinct*,2012,569,6.026
-Classic biodiversity patterns,extinct*,2011,511,5.412
-Classic biodiversity patterns,extinct*,2010,494,5.232
-Classic biodiversity patterns,extinct*,2009,387,4.099
-Classic biodiversity patterns,extinct*,2008,365,3.866
-Classic biodiversity patterns,extinct*,2007,344,3.643
-Classic biodiversity patterns,extinct*,2006,275,2.913
-Classic biodiversity patterns,extinct*,2005,255,2.701
-Classic biodiversity patterns,extinct*,2004,184,1.949
-Classic biodiversity patterns,extinct*,2003,144,1.525
-Classic biodiversity patterns,extinct*,2002,140,1.483
-Classic biodiversity patterns,extinct*,2001,115,1.218
-Classic biodiversity patterns,extinct*,2000,87,0.921
-Classic biodiversity patterns,extinct*,1999,70,0.741
-Classic biodiversity patterns,extinct*,1998,66,0.699
-Classic biodiversity patterns,extinct*,1997,48,0.508
-Classic biodiversity patterns,extinct*,1996,46,0.487
-Classic biodiversity patterns,extinct*,1995,44,0.466
-ISA,checker*,2019,2,5.405
-ISA,checker*,2018,2,5.405
-ISA,checker*,2017,2,5.405
-ISA,checker*,2016,6,16.216
-ISA,checker*,2015,3,8.108
-ISA,checker*,2014,2,5.405
-ISA,checker*,2013,3,8.108
-ISA,checker*,2012,1,2.703
-ISA,checker*,2011,3,8.108
-ISA,checker*,2009,2,5.405
-ISA,checker*,2006,2,5.405
-ISA,checker*,2005,1,2.703
-ISA,checker*,2004,2,5.405
-ISA,checker*,2002,2,5.405
-ISA,checker*,2001,1,2.703
-ISA,checker*,1999,2,5.405
-ISA,checker*,1992,1,2.703
-ISA,JSDM OR (joint NEAR/0 species),2019,7,31.818
-ISA,JSDM OR (joint NEAR/0 species),2018,4,18.182
-ISA,JSDM OR (joint NEAR/0 species),2017,6,27.273
-ISA,JSDM OR (joint NEAR/0 species),2016,1,4.545
-ISA,JSDM OR (joint NEAR/0 species),2015,1,4.545
-ISA,JSDM OR (joint NEAR/0 species),2014,3,13.636
-ISA,co-distrib* OR codistrib*,2019,6,9.677
-ISA,co-distrib* OR codistrib*,2018,4,6.452
-ISA,co-distrib* OR codistrib*,2017,6,9.677
-ISA,co-distrib* OR codistrib*,2016,11,17.742
-ISA,co-distrib* OR codistrib*,2015,6,9.677
-ISA,co-distrib* OR codistrib*,2014,6,9.677
-ISA,co-distrib* OR codistrib*,2013,1,1.613
-ISA,co-distrib* OR codistrib*,2012,4,6.452
-ISA,co-distrib* OR codistrib*,2011,5,8.065
-ISA,co-distrib* OR codistrib*,2010,4,6.452
-ISA,co-distrib* OR codistrib*,2008,2,3.226
-ISA,co-distrib* OR codistrib*,2007,2,3.226
-ISA,co-distrib* OR codistrib*,2006,3,4.839
-ISA,co-distrib* OR codistrib*,2005,1,1.613
-ISA,co-distrib* OR codistrib*,2004,1,1.613
-Classic biodiversity patterns,shannon,2019,197,8.167
-Classic biodiversity patterns,shannon,2018,261,10.821
-Classic biodiversity patterns,shannon,2017,232,9.619
-Classic biodiversity patterns,shannon,2016,225,9.328
-Classic biodiversity patterns,shannon,2015,224,9.287
-Classic biodiversity patterns,shannon,2014,171,7.09
-Classic biodiversity patterns,shannon,2013,158,6.551
-Classic biodiversity patterns,shannon,2012,129,5.348
-Classic biodiversity patterns,shannon,2011,117,4.851
-Classic biodiversity patterns,shannon,2010,113,4.685
-Classic biodiversity patterns,shannon,2009,106,4.395
-Classic biodiversity patterns,shannon,2008,74,3.068
-Classic biodiversity patterns,shannon,2007,67,2.778
-Classic biodiversity patterns,shannon,2006,77,3.192
-Classic biodiversity patterns,shannon,2005,46,1.907
-Classic biodiversity patterns,shannon,2004,41,1.7
-Classic biodiversity patterns,shannon,2003,28,1.161
-Classic biodiversity patterns,shannon,2002,27,1.119
-Classic biodiversity patterns,shannon,2001,21,0.871
-Classic biodiversity patterns,shannon,2000,20,0.829
-Classic biodiversity patterns,shannon,1999,28,1.161
-Classic biodiversity patterns,shannon,1998,17,0.705
-Classic biodiversity patterns,shannon,1997,15,0.622
-Classic biodiversity patterns,shannon,1996,10,0.415
-Classic biodiversity patterns,shannon,1995,5,0.207
-Biotic interactions and networks,inter-specific* OR interspecific*,2019,126,7.287
-Biotic interactions and networks,inter-specific* OR interspecific*,2018,192,11.105
-Biotic interactions and networks,inter-specific* OR interspecific*,2017,163,9.427
-Biotic interactions and networks,inter-specific* OR interspecific*,2016,156,9.023
-Biotic interactions and networks,inter-specific* OR interspecific*,2015,124,7.172
-Biotic interactions and networks,inter-specific* OR interspecific*,2014,131,7.577
-Biotic interactions and networks,inter-specific* OR interspecific*,2013,122,7.056
-Biotic interactions and networks,inter-specific* OR interspecific*,2012,106,6.131
-Biotic interactions and networks,inter-specific* OR interspecific*,2011,89,5.147
-Biotic interactions and networks,inter-specific* OR interspecific*,2010,78,4.511
-Biotic interactions and networks,inter-specific* OR interspecific*,2009,72,4.164
-Biotic interactions and networks,inter-specific* OR interspecific*,2008,57,3.297
-Biotic interactions and networks,inter-specific* OR interspecific*,2007,55,3.181
-Biotic interactions and networks,inter-specific* OR interspecific*,2006,40,2.313
-Biotic interactions and networks,inter-specific* OR interspecific*,2005,39,2.256
-Biotic interactions and networks,inter-specific* OR interspecific*,2004,27,1.562
-Biotic interactions and networks,inter-specific* OR interspecific*,2003,28,1.619
-Biotic interactions and networks,inter-specific* OR interspecific*,2002,26,1.504
-Biotic interactions and networks,inter-specific* OR interspecific*,2001,25,1.446
-Biotic interactions and networks,inter-specific* OR interspecific*,2000,21,1.215
-Biotic interactions and networks,inter-specific* OR interspecific*,1999,14,0.81
-Biotic interactions and networks,inter-specific* OR interspecific*,1998,11,0.636
-Biotic interactions and networks,inter-specific* OR interspecific*,1997,8,0.463
-Biotic interactions and networks,inter-specific* OR interspecific*,1996,4,0.231
-Biotic interactions and networks,inter-specific* OR interspecific*,1995,3,0.174
-Biotic interactions and networks,intra-specific* OR intraspecific*,2019,138,9.231
-Biotic interactions and networks,intra-specific* OR intraspecific*,2018,183,12.241
-Biotic interactions and networks,intra-specific* OR intraspecific*,2017,165,11.037
-Biotic interactions and networks,intra-specific* OR intraspecific*,2016,155,10.368
-Biotic interactions and networks,intra-specific* OR intraspecific*,2015,105,7.023
-Biotic interactions and networks,intra-specific* OR intraspecific*,2014,103,6.89
-Biotic interactions and networks,intra-specific* OR intraspecific*,2013,110,7.358
-Biotic interactions and networks,intra-specific* OR intraspecific*,2012,77,5.151
-Biotic interactions and networks,intra-specific* OR intraspecific*,2011,76,5.084
-Biotic interactions and networks,intra-specific* OR intraspecific*,2010,71,4.749
-Biotic interactions and networks,intra-specific* OR intraspecific*,2009,51,3.411
-Biotic interactions and networks,intra-specific* OR intraspecific*,2008,41,2.742
-Biotic interactions and networks,intra-specific* OR intraspecific*,2007,45,3.01
-Biotic interactions and networks,intra-specific* OR intraspecific*,2006,31,2.074
-Biotic interactions and networks,intra-specific* OR intraspecific*,2005,27,1.806
-Biotic interactions and networks,intra-specific* OR intraspecific*,2004,20,1.338
-Biotic interactions and networks,intra-specific* OR intraspecific*,2003,16,1.07
-Biotic interactions and networks,intra-specific* OR intraspecific*,2002,11,0.736
-Biotic interactions and networks,intra-specific* OR intraspecific*,2001,15,1.003
-Biotic interactions and networks,intra-specific* OR intraspecific*,2000,12,0.803
-Biotic interactions and networks,intra-specific* OR intraspecific*,1999,7,0.468
-Biotic interactions and networks,intra-specific* OR intraspecific*,1998,11,0.736
-Biotic interactions and networks,intra-specific* OR intraspecific*,1997,9,0.602
-Biotic interactions and networks,intra-specific* OR intraspecific*,1996,8,0.535
-Biotic interactions and networks,intra-specific* OR intraspecific*,1995,6,0.401
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2019,2,3.571
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2018,7,12.5
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2017,7,12.5
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2016,6,10.714
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2015,7,12.5
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2014,5,8.929
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2013,2,3.571
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2012,5,8.929
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2011,5,8.929
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2010,2,3.571
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2009,1,1.786
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2008,1,1.786
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2007,2,3.571
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2006,1,1.786
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2005,2,3.571
-Spatially explicit,point NEAR/0 pattern* OR point-pattern*,1999,1,1.786
-Spatially explicit,variogram* or semivari*,2019,6,7.895
-Spatially explicit,variogram* or semivari*,2018,7,9.211
-Spatially explicit,variogram* or semivari*,2017,6,7.895
-Spatially explicit,variogram* or semivari*,2016,4,5.263
-Spatially explicit,variogram* or semivari*,2015,10,13.158
-Spatially explicit,variogram* or semivari*,2014,2,2.632
-Spatially explicit,variogram* or semivari*,2013,4,5.263
-Spatially explicit,variogram* or semivari*,2012,3,3.947
-Spatially explicit,variogram* or semivari*,2011,5,6.579
-Spatially explicit,variogram* or semivari*,2010,4,5.263
-Spatially explicit,variogram* or semivari*,2009,3,3.947
-Spatially explicit,variogram* or semivari*,2008,2,2.632
-Spatially explicit,variogram* or semivari*,2007,4,5.263
-Spatially explicit,variogram* or semivari*,2006,3,3.947
-Spatially explicit,variogram* or semivari*,2005,2,2.632
-Spatially explicit,variogram* or semivari*,2003,2,2.632
-Spatially explicit,variogram* or semivari*,2002,2,2.632
-Spatially explicit,variogram* or semivari*,2001,1,1.316
-Spatially explicit,variogram* or semivari*,2000,1,1.316
-Spatially explicit,variogram* or semivari*,1999,1,1.316
-Spatially explicit,variogram* or semivari*,1998,3,3.947
-Spatially explicit,variogram* or semivari*,1995,1,1.316
-Spatially explicit,pair NEAR/0 correl*,2018,2,18.182
-Spatially explicit,pair NEAR/0 correl*,2017,2,18.182
-Spatially explicit,pair NEAR/0 correl*,2015,1,9.091
-Spatially explicit,pair NEAR/0 correl*,2014,1,9.091
-Spatially explicit,pair NEAR/0 correl*,2013,1,9.091
-Spatially explicit,pair NEAR/0 correl*,2011,2,18.182
-Spatially explicit,pair NEAR/0 correl*,2010,1,9.091
-Spatially explicit,pair NEAR/0 correl*,2002,1,9.091
-Classic biodiversity patterns,invasi* OR invad*,2019,660,7.548
-Classic biodiversity patterns,invasi* OR invad*,2018,961,10.99
-Classic biodiversity patterns,invasi* OR invad*,2017,896,10.247
-Classic biodiversity patterns,invasi* OR invad*,2016,797,9.115
-Classic biodiversity patterns,invasi* OR invad*,2015,754,8.623
-Classic biodiversity patterns,invasi* OR invad*,2014,640,7.319
-Classic biodiversity patterns,invasi* OR invad*,2013,610,6.976
-Classic biodiversity patterns,invasi* OR invad*,2012,501,5.73
-Classic biodiversity patterns,invasi* OR invad*,2011,466,5.329
-Classic biodiversity patterns,invasi* OR invad*,2010,437,4.998
-Classic biodiversity patterns,invasi* OR invad*,2009,351,4.014
-Classic biodiversity patterns,invasi* OR invad*,2008,316,3.614
-Classic biodiversity patterns,invasi* OR invad*,2007,284,3.248
-Classic biodiversity patterns,invasi* OR invad*,2006,242,2.768
-Classic biodiversity patterns,invasi* OR invad*,2005,188,2.15
-Classic biodiversity patterns,invasi* OR invad*,2004,149,1.704
-Classic biodiversity patterns,invasi* OR invad*,2003,110,1.258
-Classic biodiversity patterns,invasi* OR invad*,2002,84,0.961
-Classic biodiversity patterns,invasi* OR invad*,2001,71,0.812
-Classic biodiversity patterns,invasi* OR invad*,2000,58,0.663
-Classic biodiversity patterns,invasi* OR invad*,1999,49,0.56
-Classic biodiversity patterns,invasi* OR invad*,1998,27,0.309
-Classic biodiversity patterns,invasi* OR invad*,1997,42,0.48
-Classic biodiversity patterns,invasi* OR invad*,1996,23,0.263
-Classic biodiversity patterns,invasi* OR invad*,1995,16,0.183
-Biotic interactions and networks,biotic NEAR/0 interact*,2019,69,8.938
-Biotic interactions and networks,biotic NEAR/0 interact*,2018,111,14.378
-Biotic interactions and networks,biotic NEAR/0 interact*,2017,95,12.306
-Biotic interactions and networks,biotic NEAR/0 interact*,2016,90,11.658
-Biotic interactions and networks,biotic NEAR/0 interact*,2015,71,9.197
-Biotic interactions and networks,biotic NEAR/0 interact*,2014,50,6.477
-Biotic interactions and networks,biotic NEAR/0 interact*,2013,66,8.549
-Biotic interactions and networks,biotic NEAR/0 interact*,2012,37,4.793
-Biotic interactions and networks,biotic NEAR/0 interact*,2011,34,4.404
-Biotic interactions and networks,biotic NEAR/0 interact*,2010,28,3.627
-Biotic interactions and networks,biotic NEAR/0 interact*,2009,22,2.85
-Biotic interactions and networks,biotic NEAR/0 interact*,2008,24,3.109
-Biotic interactions and networks,biotic NEAR/0 interact*,2007,13,1.684
-Biotic interactions and networks,biotic NEAR/0 interact*,2006,14,1.813
-Biotic interactions and networks,biotic NEAR/0 interact*,2005,9,1.166
-Biotic interactions and networks,biotic NEAR/0 interact*,2004,4,0.518
-Biotic interactions and networks,biotic NEAR/0 interact*,2003,5,0.648
-Biotic interactions and networks,biotic NEAR/0 interact*,2002,5,0.648
-Biotic interactions and networks,biotic NEAR/0 interact*,2001,3,0.389
-Biotic interactions and networks,biotic NEAR/0 interact*,2000,3,0.389
-Biotic interactions and networks,biotic NEAR/0 interact*,1999,7,0.907
-Biotic interactions and networks,biotic NEAR/0 interact*,1998,2,0.259
-Biotic interactions and networks,biotic NEAR/0 interact*,1997,4,0.518
-Biotic interactions and networks,biotic NEAR/0 interact*,1996,2,0.259
-Biotic interactions and networks,biotic NEAR/0 interact*,1995,3,0.389
-ISA,*coenos* OR *cenos*,2019,20,5.988
-ISA,*coenos* OR *cenos*,2018,27,8.084
-ISA,*coenos* OR *cenos*,2017,22,6.587
-ISA,*coenos* OR *cenos*,2016,29,8.683
-ISA,*coenos* OR *cenos*,2015,25,7.485
-ISA,*coenos* OR *cenos*,2014,17,5.09
-ISA,*coenos* OR *cenos*,2013,16,4.79
-ISA,*coenos* OR *cenos*,2012,24,7.186
-ISA,*coenos* OR *cenos*,2011,27,8.084
-ISA,*coenos* OR *cenos*,2010,15,4.491
-ISA,*coenos* OR *cenos*,2009,14,4.192
-ISA,*coenos* OR *cenos*,2008,15,4.491
-ISA,*coenos* OR *cenos*,2007,9,2.695
-ISA,*coenos* OR *cenos*,2006,12,3.593
-ISA,*coenos* OR *cenos*,2005,5,1.497
-ISA,*coenos* OR *cenos*,2004,6,1.796
-ISA,*coenos* OR *cenos*,2003,10,2.994
-ISA,*coenos* OR *cenos*,2002,6,1.796
-ISA,*coenos* OR *cenos*,2001,5,1.497
-ISA,*coenos* OR *cenos*,2000,6,1.796
-ISA,*coenos* OR *cenos*,1999,6,1.796
-ISA,*coenos* OR *cenos*,1998,1,0.299
-ISA,*coenos* OR *cenos*,1997,5,1.497
-ISA,*coenos* OR *cenos*,1996,3,0.898
-ISA,*coenos* OR *cenos*,1995,5,1.497
-Spatially explicit,K-function,2018,3,18.75
-Spatially explicit,K-function,2017,1,6.25
-Spatially explicit,K-function,2016,1,6.25
-Spatially explicit,K-function,2015,1,6.25
-Spatially explicit,K-function,2013,3,18.75
-Spatially explicit,K-function,2012,2,12.5
-Spatially explicit,K-function,2009,1,6.25
-Spatially explicit,K-function,2008,1,6.25
-Spatially explicit,K-function,2007,1,6.25
-Spatially explicit,K-function,2006,1,6.25
-Spatially explicit,K-function,2005,1,6.25
-Spatially explicit,kriging,2019,12,12.371
-Spatially explicit,kriging,2018,5,5.155
-Spatially explicit,kriging,2017,13,13.402
-Spatially explicit,kriging,2016,7,7.216
-Spatially explicit,kriging,2015,7,7.216
-Spatially explicit,kriging,2014,5,5.155
-Spatially explicit,kriging,2013,8,8.247
-Spatially explicit,kriging,2012,3,3.093
-Spatially explicit,kriging,2011,9,9.278
-Spatially explicit,kriging,2010,3,3.093
-Spatially explicit,kriging,2009,6,6.186
-Spatially explicit,kriging,2008,2,2.062
-Spatially explicit,kriging,2007,4,4.124
-Spatially explicit,kriging,2006,4,4.124
-Spatially explicit,kriging,2005,2,2.062
-Spatially explicit,kriging,2003,2,2.062
-Spatially explicit,kriging,2000,2,2.062
-Spatially explicit,kriging,1998,2,2.062
-Spatially explicit,kriging,1997,1,1.031
-Spatially explicit,spatial* NEAR/0 autocor*,2019,37,5.901
-Spatially explicit,spatial* NEAR/0 autocor*,2018,39,6.22
-Spatially explicit,spatial* NEAR/0 autocor*,2017,40,6.38
-Spatially explicit,spatial* NEAR/0 autocor*,2016,55,8.772
-Spatially explicit,spatial* NEAR/0 autocor*,2015,33,5.263
-Spatially explicit,spatial* NEAR/0 autocor*,2014,50,7.974
-Spatially explicit,spatial* NEAR/0 autocor*,2013,49,7.815
-Spatially explicit,spatial* NEAR/0 autocor*,2012,40,6.38
-Spatially explicit,spatial* NEAR/0 autocor*,2011,49,7.815
-Spatially explicit,spatial* NEAR/0 autocor*,2010,33,5.263
-Spatially explicit,spatial* NEAR/0 autocor*,2009,49,7.815
-Spatially explicit,spatial* NEAR/0 autocor*,2008,38,6.061
-Spatially explicit,spatial* NEAR/0 autocor*,2007,28,4.466
-Spatially explicit,spatial* NEAR/0 autocor*,2006,27,4.306
-Spatially explicit,spatial* NEAR/0 autocor*,2005,15,2.392
-Spatially explicit,spatial* NEAR/0 autocor*,2004,11,1.754
-Spatially explicit,spatial* NEAR/0 autocor*,2003,4,0.638
-Spatially explicit,spatial* NEAR/0 autocor*,2002,12,1.914
-Spatially explicit,spatial* NEAR/0 autocor*,2001,7,1.116
-Spatially explicit,spatial* NEAR/0 autocor*,2000,3,0.478
-Spatially explicit,spatial* NEAR/0 autocor*,1999,6,0.957
-Spatially explicit,spatial* NEAR/0 autocor*,1998,1,0.159
-Spatially explicit,spatial* NEAR/0 autocor*,1995,1,0.159
-Spatially explicit,nearest NEAR/0 neighbor*,2019,9,9.278
-Spatially explicit,nearest NEAR/0 neighbor*,2018,18,18.557
-Spatially explicit,nearest NEAR/0 neighbor*,2017,7,7.216
-Spatially explicit,nearest NEAR/0 neighbor*,2016,11,11.34
-Spatially explicit,nearest NEAR/0 neighbor*,2015,9,9.278
-Spatially explicit,nearest NEAR/0 neighbor*,2014,5,5.155
-Spatially explicit,nearest NEAR/0 neighbor*,2013,9,9.278
-Spatially explicit,nearest NEAR/0 neighbor*,2012,4,4.124
-Spatially explicit,nearest NEAR/0 neighbor*,2011,5,5.155
-Spatially explicit,nearest NEAR/0 neighbor*,2010,5,5.155
-Spatially explicit,nearest NEAR/0 neighbor*,2009,1,1.031
-Spatially explicit,nearest NEAR/0 neighbor*,2008,3,3.093
-Spatially explicit,nearest NEAR/0 neighbor*,2007,1,1.031
-Spatially explicit,nearest NEAR/0 neighbor*,2006,2,2.062
-Spatially explicit,nearest NEAR/0 neighbor*,2005,3,3.093
-Spatially explicit,nearest NEAR/0 neighbor*,2003,2,2.062
-Spatially explicit,nearest NEAR/0 neighbor*,2002,2,2.062
-Spatially explicit,nearest NEAR/0 neighbor*,2001,1,1.031
-Spatially explicit,distance NEAR/0 decay*,2019,12,5.085
-Spatially explicit,distance NEAR/0 decay*,2018,30,12.712
-Spatially explicit,distance NEAR/0 decay*,2017,23,9.746
-Spatially explicit,distance NEAR/0 decay*,2016,30,12.712
-Spatially explicit,distance NEAR/0 decay*,2015,18,7.627
-Spatially explicit,distance NEAR/0 decay*,2014,19,8.051
-Spatially explicit,distance NEAR/0 decay*,2013,22,9.322
-Spatially explicit,distance NEAR/0 decay*,2012,22,9.322
-Spatially explicit,distance NEAR/0 decay*,2011,16,6.78
-Spatially explicit,distance NEAR/0 decay*,2010,17,7.203
-Spatially explicit,distance NEAR/0 decay*,2009,8,3.39
-Spatially explicit,distance NEAR/0 decay*,2008,6,2.542
-Spatially explicit,distance NEAR/0 decay*,2007,6,2.542
-Spatially explicit,distance NEAR/0 decay*,2006,1,0.424
-Spatially explicit,distance NEAR/0 decay*,2005,3,1.271
-Spatially explicit,distance NEAR/0 decay*,2003,1,0.424
-Spatially explicit,distance NEAR/0 decay*,2002,1,0.424
-Spatially explicit,distance NEAR/0 decay*,1999,1,0.424
-Classic biodiversity patterns,geograph* NEAR/0 range*,2019,92,7.082
-Classic biodiversity patterns,geograph* NEAR/0 range*,2018,117,9.007
-Classic biodiversity patterns,geograph* NEAR/0 range*,2017,122,9.392
-Classic biodiversity patterns,geograph* NEAR/0 range*,2016,108,8.314
-Classic biodiversity patterns,geograph* NEAR/0 range*,2015,95,7.313
-Classic biodiversity patterns,geograph* NEAR/0 range*,2014,102,7.852
-Classic biodiversity patterns,geograph* NEAR/0 range*,2013,97,7.467
-Classic biodiversity patterns,geograph* NEAR/0 range*,2012,67,5.158
-Classic biodiversity patterns,geograph* NEAR/0 range*,2011,69,5.312
-Classic biodiversity patterns,geograph* NEAR/0 range*,2010,64,4.927
-Classic biodiversity patterns,geograph* NEAR/0 range*,2009,54,4.157
-Classic biodiversity patterns,geograph* NEAR/0 range*,2008,62,4.773
-Classic biodiversity patterns,geograph* NEAR/0 range*,2007,46,3.541
-Classic biodiversity patterns,geograph* NEAR/0 range*,2006,40,3.079
-Classic biodiversity patterns,geograph* NEAR/0 range*,2005,33,2.54
-Classic biodiversity patterns,geograph* NEAR/0 range*,2004,29,2.232
-Classic biodiversity patterns,geograph* NEAR/0 range*,2003,17,1.309
-Classic biodiversity patterns,geograph* NEAR/0 range*,2002,24,1.848
-Classic biodiversity patterns,geograph* NEAR/0 range*,2001,13,1.001
-Classic biodiversity patterns,geograph* NEAR/0 range*,2000,7,0.539
-Classic biodiversity patterns,geograph* NEAR/0 range*,1999,12,0.924
-Classic biodiversity patterns,geograph* NEAR/0 range*,1998,10,0.77
-Classic biodiversity patterns,geograph* NEAR/0 range*,1997,6,0.462
-Classic biodiversity patterns,geograph* NEAR/0 range*,1996,2,0.154
-Classic biodiversity patterns,geograph* NEAR/0 range*,1995,6,0.462
-Classic biodiversity patterns,functional,2019,951,9.322
-Classic biodiversity patterns,functional,2018,1285,12.596
-Classic biodiversity patterns,functional,2017,1133,11.106
-Classic biodiversity patterns,functional,2016,1011,9.91
-Classic biodiversity patterns,functional,2015,854,8.371
-Classic biodiversity patterns,functional,2014,773,7.577
-Classic biodiversity patterns,functional,2013,672,6.587
-Classic biodiversity patterns,functional,2012,571,5.597
-Classic biodiversity patterns,functional,2011,475,4.656
-Classic biodiversity patterns,functional,2010,393,3.852
-Classic biodiversity patterns,functional,2009,363,3.558
-Classic biodiversity patterns,functional,2008,297,2.911
-Classic biodiversity patterns,functional,2007,266,2.607
-Classic biodiversity patterns,functional,2006,210,2.058
-Classic biodiversity patterns,functional,2005,158,1.549
-Classic biodiversity patterns,functional,2004,148,1.451
-Classic biodiversity patterns,functional,2003,139,1.362
-Classic biodiversity patterns,functional,2002,94,0.921
-Classic biodiversity patterns,functional,2001,76,0.745
-Classic biodiversity patterns,functional,2000,77,0.755
-Classic biodiversity patterns,functional,1999,74,0.725
-Classic biodiversity patterns,functional,1998,66,0.647
-Classic biodiversity patterns,functional,1997,41,0.402
-Classic biodiversity patterns,functional,1996,29,0.284
-Classic biodiversity patterns,phylogenetic,2019,529,8.331
-Classic biodiversity patterns,phylogenetic,2018,766,12.063
-Classic biodiversity patterns,phylogenetic,2017,684,10.772
-Classic biodiversity patterns,phylogenetic,2016,673,10.598
-Classic biodiversity patterns,phylogenetic,2015,574,9.039
-Classic biodiversity patterns,phylogenetic,2014,514,8.094
-Classic biodiversity patterns,phylogenetic,2013,429,6.756
-Classic biodiversity patterns,phylogenetic,2012,367,5.78
-Classic biodiversity patterns,phylogenetic,2011,301,4.74
-Classic biodiversity patterns,phylogenetic,2010,262,4.126
-Classic biodiversity patterns,phylogenetic,2009,249,3.921
-Classic biodiversity patterns,phylogenetic,2008,202,3.181
-Classic biodiversity patterns,phylogenetic,2007,170,2.677
-Classic biodiversity patterns,phylogenetic,2006,131,2.063
-Classic biodiversity patterns,phylogenetic,2005,97,1.528
-Classic biodiversity patterns,phylogenetic,2004,85,1.339
-Classic biodiversity patterns,phylogenetic,2003,49,0.772
-Classic biodiversity patterns,phylogenetic,2002,61,0.961
-Classic biodiversity patterns,phylogenetic,2001,45,0.709
-Classic biodiversity patterns,phylogenetic,2000,47,0.74
-Classic biodiversity patterns,phylogenetic,1999,28,0.441
-Classic biodiversity patterns,phylogenetic,1998,32,0.504
-Classic biodiversity patterns,phylogenetic,1997,15,0.236
-Classic biodiversity patterns,phylogenetic,1996,12,0.189
-Classic biodiversity patterns,phylogenetic,1995,11,0.173
+Type,Term,Year,Count,Perc,Date_of_search
+Biotic interactions and networks,trophic,2019,534,11.922,15_Jun_2020
+Biotic interactions and networks,trophic,2018,465,10.382,15_Jun_2020
+Biotic interactions and networks,trophic,2017,427,9.533,15_Jun_2020
+Biotic interactions and networks,trophic,2016,389,8.685,15_Jun_2020
+Biotic interactions and networks,trophic,2015,375,8.372,15_Jun_2020
+Biotic interactions and networks,trophic,2014,282,6.296,15_Jun_2020
+Biotic interactions and networks,trophic,2013,306,6.832,15_Jun_2020
+Biotic interactions and networks,trophic,2012,262,5.85,15_Jun_2020
+Biotic interactions and networks,trophic,2011,194,4.331,15_Jun_2020
+Biotic interactions and networks,trophic,2010,207,4.622,15_Jun_2020
+Biotic interactions and networks,trophic,2009,201,4.488,15_Jun_2020
+Biotic interactions and networks,trophic,2008,158,3.528,15_Jun_2020
+Biotic interactions and networks,trophic,2007,124,2.768,15_Jun_2020
+Biotic interactions and networks,trophic,2006,120,2.679,15_Jun_2020
+Biotic interactions and networks,trophic,2005,87,1.942,15_Jun_2020
+Biotic interactions and networks,trophic,2004,85,1.898,15_Jun_2020
+Biotic interactions and networks,trophic,2003,65,1.451,15_Jun_2020
+Biotic interactions and networks,trophic,2002,45,1.005,15_Jun_2020
+Biotic interactions and networks,trophic,2001,33,0.737,15_Jun_2020
+Biotic interactions and networks,trophic,2000,35,0.781,15_Jun_2020
+Biotic interactions and networks,trophic,1999,25,0.558,15_Jun_2020
+Biotic interactions and networks,trophic,1998,37,0.826,15_Jun_2020
+Biotic interactions and networks,trophic,1997,17,0.38,15_Jun_2020
+Biotic interactions and networks,trophic,1996,6,0.095,15_Jun_2020
+Biotic interactions and networks,competiti*,2019,625,9.91,15_Jun_2020
+Biotic interactions and networks,competiti*,2018,603,9.561,15_Jun_2020
+Biotic interactions and networks,competiti*,2017,541,8.578,15_Jun_2020
+Biotic interactions and networks,competiti*,2016,467,7.404,15_Jun_2020
+Biotic interactions and networks,competiti*,2015,483,7.658,15_Jun_2020
+Biotic interactions and networks,competiti*,2014,455,7.214,15_Jun_2020
+Biotic interactions and networks,competiti*,2013,447,7.087,15_Jun_2020
+Biotic interactions and networks,competiti*,2012,377,5.977,15_Jun_2020
+Biotic interactions and networks,competiti*,2011,331,5.248,15_Jun_2020
+Biotic interactions and networks,competiti*,2010,275,4.36,15_Jun_2020
+Biotic interactions and networks,competiti*,2009,261,4.138,15_Jun_2020
+Biotic interactions and networks,competiti*,2008,221,3.504,15_Jun_2020
+Biotic interactions and networks,competiti*,2007,220,3.488,15_Jun_2020
+Biotic interactions and networks,competiti*,2006,173,2.743,15_Jun_2020
+Biotic interactions and networks,competiti*,2005,167,2.648,15_Jun_2020
+Biotic interactions and networks,competiti*,2004,120,1.903,15_Jun_2020
+Biotic interactions and networks,competiti*,2003,106,1.681,15_Jun_2020
+Biotic interactions and networks,competiti*,2002,100,1.586,15_Jun_2020
+Biotic interactions and networks,competiti*,2001,92,1.459,15_Jun_2020
+Biotic interactions and networks,competiti*,2000,60,0.951,15_Jun_2020
+Biotic interactions and networks,competiti*,1999,60,0.951,15_Jun_2020
+Biotic interactions and networks,competiti*,1998,43,0.682,15_Jun_2020
+Biotic interactions and networks,competiti*,1997,40,0.634,15_Jun_2020
+Biotic interactions and networks,competiti*,1996,40,0.634,15_Jun_2020
+ISA,attraction*,2019,20,6.78,19_Sep_2019
+ISA,attraction*,2018,47,15.932,19_Sep_2019
+ISA,attraction*,2017,29,9.831,19_Sep_2019
+ISA,attraction*,2016,32,10.847,19_Sep_2019
+ISA,attraction*,2015,20,6.78,19_Sep_2019
+ISA,attraction*,2014,29,9.831,19_Sep_2019
+ISA,attraction*,2013,28,9.492,19_Sep_2019
+ISA,attraction*,2012,20,6.78,19_Sep_2019
+ISA,attraction*,2011,16,5.424,19_Sep_2019
+ISA,attraction*,2010,9,3.051,19_Sep_2019
+ISA,attraction*,2009,8,2.712,19_Sep_2019
+ISA,attraction*,2008,7,2.373,19_Sep_2019
+ISA,attraction*,2007,3,1.017,19_Sep_2019
+ISA,attraction*,2006,7,2.373,19_Sep_2019
+ISA,attraction*,2005,3,1.017,19_Sep_2019
+ISA,attraction*,2004,5,1.695,19_Sep_2019
+ISA,attraction*,2003,1,0.339,19_Sep_2019
+ISA,attraction*,2002,3,1.017,19_Sep_2019
+ISA,attraction*,2001,3,1.017,19_Sep_2019
+ISA,attraction*,1998,1,0.339,19_Sep_2019
+ISA,attraction*,1997,3,1.017,19_Sep_2019
+ISA,attraction*,1996,1,0.339,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2019,302,10.335,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2018,374,12.799,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2017,329,11.259,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2016,298,10.198,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2015,264,9.035,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2014,218,7.461,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2013,187,6.4,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2012,171,5.852,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2011,130,4.449,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2010,143,4.894,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2009,92,3.149,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2008,99,3.388,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2007,63,2.156,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2006,60,2.053,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2005,42,1.437,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2004,36,1.232,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2003,26,0.89,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2002,21,0.719,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2001,16,0.548,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,2000,10,0.342,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,1999,14,0.479,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,1998,8,0.274,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,1997,9,0.308,19_Sep_2019
+Classic biodiversity patterns,beta NEAR/0 diversit*,1996,4,0.137,19_Sep_2019
+ISA,C-score,2019,3,14.286,19_Sep_2019
+ISA,C-score,2018,3,14.286,19_Sep_2019
+ISA,C-score,2017,1,4.762,19_Sep_2019
+ISA,C-score,2015,1,4.762,19_Sep_2019
+ISA,C-score,2014,1,4.762,19_Sep_2019
+ISA,C-score,2013,2,9.524,19_Sep_2019
+ISA,C-score,2011,1,4.762,19_Sep_2019
+ISA,C-score,2009,4,19.048,19_Sep_2019
+ISA,C-score,2007,2,9.524,19_Sep_2019
+ISA,C-score,2006,1,4.762,19_Sep_2019
+ISA,C-score,2005,1,4.762,19_Sep_2019
+ISA,C-score,2004,1,4.762,19_Sep_2019
+ISA,ecosim*,2019,7,11.864,19_Sep_2019
+ISA,ecosim*,2018,7,11.864,19_Sep_2019
+ISA,ecosim*,2017,3,5.085,19_Sep_2019
+ISA,ecosim*,2016,5,8.475,19_Sep_2019
+ISA,ecosim*,2015,7,11.864,19_Sep_2019
+ISA,ecosim*,2014,3,5.085,19_Sep_2019
+ISA,ecosim*,2013,5,8.475,19_Sep_2019
+ISA,ecosim*,2012,3,5.085,19_Sep_2019
+ISA,ecosim*,2011,3,5.085,19_Sep_2019
+ISA,ecosim*,2010,2,3.39,19_Sep_2019
+ISA,ecosim*,2009,6,10.169,19_Sep_2019
+ISA,ecosim*,2008,4,6.78,19_Sep_2019
+ISA,ecosim*,2006,3,5.085,19_Sep_2019
+ISA,ecosim*,1998,1,1.695,19_Sep_2019
+Classic biodiversity patterns,evenness,2019,175,7.39,19_Sep_2019
+Classic biodiversity patterns,evenness,2018,231,9.755,19_Sep_2019
+Classic biodiversity patterns,evenness,2017,218,9.206,19_Sep_2019
+Classic biodiversity patterns,evenness,2016,206,8.699,19_Sep_2019
+Classic biodiversity patterns,evenness,2015,192,8.108,19_Sep_2019
+Classic biodiversity patterns,evenness,2014,183,7.728,19_Sep_2019
+Classic biodiversity patterns,evenness,2013,182,7.686,19_Sep_2019
+Classic biodiversity patterns,evenness,2012,157,6.63,19_Sep_2019
+Classic biodiversity patterns,evenness,2011,116,4.899,19_Sep_2019
+Classic biodiversity patterns,evenness,2010,131,5.532,19_Sep_2019
+Classic biodiversity patterns,evenness,2009,88,3.716,19_Sep_2019
+Classic biodiversity patterns,evenness,2008,80,3.378,19_Sep_2019
+Classic biodiversity patterns,evenness,2007,76,3.209,19_Sep_2019
+Classic biodiversity patterns,evenness,2006,55,2.323,19_Sep_2019
+Classic biodiversity patterns,evenness,2005,49,2.069,19_Sep_2019
+Classic biodiversity patterns,evenness,2004,48,2.027,19_Sep_2019
+Classic biodiversity patterns,evenness,2003,39,1.647,19_Sep_2019
+Classic biodiversity patterns,evenness,2002,34,1.436,19_Sep_2019
+Classic biodiversity patterns,evenness,2001,39,1.647,19_Sep_2019
+Classic biodiversity patterns,evenness,2000,23,0.971,19_Sep_2019
+Classic biodiversity patterns,evenness,1999,14,0.591,19_Sep_2019
+Classic biodiversity patterns,evenness,1998,9,0.38,19_Sep_2019
+Classic biodiversity patterns,evenness,1997,9,0.38,19_Sep_2019
+Classic biodiversity patterns,evenness,1996,5,0.211,19_Sep_2019
+Classic biodiversity patterns,evenness,1995,6,0.253,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2019,13,10.924,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2018,18,15.126,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2017,21,17.647,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2016,14,11.765,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2015,8,6.723,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2014,9,7.563,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2013,6,5.042,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2012,7,5.882,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2011,6,5.042,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2010,4,3.361,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2009,3,2.521,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2008,3,2.521,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2007,2,1.681,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2006,2,1.681,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,2002,1,0.84,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,1996,1,0.84,19_Sep_2019
+General terms,heterospecific* OR hetero-specific*,1993,1,0.84,19_Sep_2019
+Classic biodiversity patterns,jaccard,2019,15,5.319,19_Sep_2019
+Classic biodiversity patterns,jaccard,2018,19,6.738,19_Sep_2019
+Classic biodiversity patterns,jaccard,2017,24,8.511,19_Sep_2019
+Classic biodiversity patterns,jaccard,2016,22,7.801,19_Sep_2019
+Classic biodiversity patterns,jaccard,2015,18,6.383,19_Sep_2019
+Classic biodiversity patterns,jaccard,2014,23,8.156,19_Sep_2019
+Classic biodiversity patterns,jaccard,2013,21,7.447,19_Sep_2019
+Classic biodiversity patterns,jaccard,2012,18,6.383,19_Sep_2019
+Classic biodiversity patterns,jaccard,2011,27,9.574,19_Sep_2019
+Classic biodiversity patterns,jaccard,2010,12,4.255,19_Sep_2019
+Classic biodiversity patterns,jaccard,2009,12,4.255,19_Sep_2019
+Classic biodiversity patterns,jaccard,2008,11,3.901,19_Sep_2019
+Classic biodiversity patterns,jaccard,2007,8,2.837,19_Sep_2019
+Classic biodiversity patterns,jaccard,2006,13,4.61,19_Sep_2019
+Classic biodiversity patterns,jaccard,2005,9,3.191,19_Sep_2019
+Classic biodiversity patterns,jaccard,2004,2,0.709,19_Sep_2019
+Classic biodiversity patterns,jaccard,2003,1,0.355,19_Sep_2019
+Classic biodiversity patterns,jaccard,2002,2,0.709,19_Sep_2019
+Classic biodiversity patterns,jaccard,2001,7,2.482,19_Sep_2019
+Classic biodiversity patterns,jaccard,2000,4,1.418,19_Sep_2019
+Classic biodiversity patterns,jaccard,1999,2,0.709,19_Sep_2019
+Classic biodiversity patterns,jaccard,1998,1,0.355,19_Sep_2019
+Classic biodiversity patterns,jaccard,1997,5,1.773,19_Sep_2019
+Classic biodiversity patterns,jaccard,1996,1,0.355,19_Sep_2019
+Classic biodiversity patterns,jaccard,1995,3,1.064,19_Sep_2019
+Classic biodiversity patterns,nestedness,2019,77,11.738,19_Sep_2019
+Classic biodiversity patterns,nestedness,2018,79,12.043,19_Sep_2019
+Classic biodiversity patterns,nestedness,2017,61,9.299,19_Sep_2019
+Classic biodiversity patterns,nestedness,2016,77,11.738,19_Sep_2019
+Classic biodiversity patterns,nestedness,2015,68,10.366,19_Sep_2019
+Classic biodiversity patterns,nestedness,2014,50,7.622,19_Sep_2019
+Classic biodiversity patterns,nestedness,2013,50,7.622,19_Sep_2019
+Classic biodiversity patterns,nestedness,2012,44,6.707,19_Sep_2019
+Classic biodiversity patterns,nestedness,2011,33,5.03,19_Sep_2019
+Classic biodiversity patterns,nestedness,2010,21,3.201,19_Sep_2019
+Classic biodiversity patterns,nestedness,2009,20,3.049,19_Sep_2019
+Classic biodiversity patterns,nestedness,2008,21,3.201,19_Sep_2019
+Classic biodiversity patterns,nestedness,2007,14,2.134,19_Sep_2019
+Classic biodiversity patterns,nestedness,2006,10,1.524,19_Sep_2019
+Classic biodiversity patterns,nestedness,2005,9,1.372,19_Sep_2019
+Classic biodiversity patterns,nestedness,2004,1,0.152,19_Sep_2019
+Classic biodiversity patterns,nestedness,2003,3,0.457,19_Sep_2019
+Classic biodiversity patterns,nestedness,2002,5,0.762,19_Sep_2019
+Classic biodiversity patterns,nestedness,2001,6,0.915,19_Sep_2019
+Classic biodiversity patterns,nestedness,2000,3,0.457,19_Sep_2019
+Classic biodiversity patterns,nestedness,1999,2,0.305,19_Sep_2019
+Classic biodiversity patterns,nestedness,1997,2,0.305,19_Sep_2019
+Biotic interactions and networks,network*,2019,660,8.407,19_Sep_2019
+Biotic interactions and networks,network*,2018,926,11.795,19_Sep_2019
+Biotic interactions and networks,network*,2017,866,11.03,19_Sep_2019
+Biotic interactions and networks,network*,2016,780,9.935,19_Sep_2019
+Biotic interactions and networks,network*,2015,698,8.891,19_Sep_2019
+Biotic interactions and networks,network*,2014,603,7.681,19_Sep_2019
+Biotic interactions and networks,network*,2013,543,6.916,19_Sep_2019
+Biotic interactions and networks,network*,2012,441,5.617,19_Sep_2019
+Biotic interactions and networks,network*,2011,404,5.146,19_Sep_2019
+Biotic interactions and networks,network*,2010,357,4.547,19_Sep_2019
+Biotic interactions and networks,network*,2009,304,3.872,19_Sep_2019
+Biotic interactions and networks,network*,2008,234,2.981,19_Sep_2019
+Biotic interactions and networks,network*,2007,180,2.293,19_Sep_2019
+Biotic interactions and networks,network*,2006,192,2.446,19_Sep_2019
+Biotic interactions and networks,network*,2005,119,1.516,19_Sep_2019
+Biotic interactions and networks,network*,2004,109,1.388,19_Sep_2019
+Biotic interactions and networks,network*,2003,93,1.185,19_Sep_2019
+Biotic interactions and networks,network*,2002,90,1.146,19_Sep_2019
+Biotic interactions and networks,network*,2001,50,0.637,19_Sep_2019
+Biotic interactions and networks,network*,2000,55,0.701,19_Sep_2019
+Biotic interactions and networks,network*,1999,28,0.357,19_Sep_2019
+Biotic interactions and networks,network*,1998,26,0.331,19_Sep_2019
+Biotic interactions and networks,network*,1997,25,0.318,19_Sep_2019
+Biotic interactions and networks,network*,1996,20,0.255,19_Sep_2019
+Biotic interactions and networks,network*,1995,25,0.318,19_Sep_2019
+ISA,repulsion*,2019,2,18.182,19_Sep_2019
+ISA,repulsion*,2018,1,9.091,19_Sep_2019
+ISA,repulsion*,2017,1,9.091,19_Sep_2019
+ISA,repulsion*,2015,2,18.182,19_Sep_2019
+ISA,repulsion*,2013,1,9.091,19_Sep_2019
+ISA,repulsion*,2012,3,27.273,19_Sep_2019
+ISA,repulsion*,2004,1,9.091,19_Sep_2019
+ISA,segregation*,2019,28,7.349,19_Sep_2019
+ISA,segregation*,2018,41,10.761,19_Sep_2019
+ISA,segregation*,2017,34,8.924,19_Sep_2019
+ISA,segregation*,2016,38,9.974,19_Sep_2019
+ISA,segregation*,2015,24,6.299,19_Sep_2019
+ISA,segregation*,2014,33,8.661,19_Sep_2019
+ISA,segregation*,2013,25,6.562,19_Sep_2019
+ISA,segregation*,2012,19,4.987,19_Sep_2019
+ISA,segregation*,2011,21,5.512,19_Sep_2019
+ISA,segregation*,2010,24,6.299,19_Sep_2019
+ISA,segregation*,2009,15,3.937,19_Sep_2019
+ISA,segregation*,2008,14,3.675,19_Sep_2019
+ISA,segregation*,2007,10,2.625,19_Sep_2019
+ISA,segregation*,2006,15,3.937,19_Sep_2019
+ISA,segregation*,2005,6,1.575,19_Sep_2019
+ISA,segregation*,2004,8,2.1,19_Sep_2019
+ISA,segregation*,2003,3,0.787,19_Sep_2019
+ISA,segregation*,2002,4,1.05,19_Sep_2019
+ISA,segregation*,2001,6,1.575,19_Sep_2019
+ISA,segregation*,2000,4,1.05,19_Sep_2019
+ISA,segregation*,1999,2,0.525,19_Sep_2019
+ISA,segregation*,1998,1,0.262,19_Sep_2019
+ISA,segregation*,1997,1,0.262,19_Sep_2019
+ISA,segregation*,1996,1,0.262,19_Sep_2019
+ISA,segregation*,1995,3,0.787,19_Sep_2019
+Classic biodiversity patterns,simpson,2019,70,8.783,19_Sep_2019
+Classic biodiversity patterns,simpson,2018,78,9.787,19_Sep_2019
+Classic biodiversity patterns,simpson,2017,79,9.912,19_Sep_2019
+Classic biodiversity patterns,simpson,2016,70,8.783,19_Sep_2019
+Classic biodiversity patterns,simpson,2015,66,8.281,19_Sep_2019
+Classic biodiversity patterns,simpson,2014,65,8.156,19_Sep_2019
+Classic biodiversity patterns,simpson,2013,45,5.646,19_Sep_2019
+Classic biodiversity patterns,simpson,2012,37,4.642,19_Sep_2019
+Classic biodiversity patterns,simpson,2011,45,5.646,19_Sep_2019
+Classic biodiversity patterns,simpson,2010,50,6.274,19_Sep_2019
+Classic biodiversity patterns,simpson,2009,32,4.015,19_Sep_2019
+Classic biodiversity patterns,simpson,2008,21,2.635,19_Sep_2019
+Classic biodiversity patterns,simpson,2007,21,2.635,19_Sep_2019
+Classic biodiversity patterns,simpson,2006,25,3.137,19_Sep_2019
+Classic biodiversity patterns,simpson,2005,22,2.76,19_Sep_2019
+Classic biodiversity patterns,simpson,2004,12,1.506,19_Sep_2019
+Classic biodiversity patterns,simpson,2003,12,1.506,19_Sep_2019
+Classic biodiversity patterns,simpson,2002,8,1.004,19_Sep_2019
+Classic biodiversity patterns,simpson,2001,10,1.255,19_Sep_2019
+Classic biodiversity patterns,simpson,2000,11,1.38,19_Sep_2019
+Classic biodiversity patterns,simpson,1999,8,1.004,19_Sep_2019
+Classic biodiversity patterns,simpson,1998,3,0.376,19_Sep_2019
+Classic biodiversity patterns,simpson,1997,2,0.251,19_Sep_2019
+Classic biodiversity patterns,simpson,1996,2,0.251,19_Sep_2019
+Classic biodiversity patterns,simpson,1995,1,0.125,19_Sep_2019
+Classic biodiversity patterns,species-area,2019,56,5.485,19_Sep_2019
+Classic biodiversity patterns,species-area,2018,67,6.562,19_Sep_2019
+Classic biodiversity patterns,species-area,2017,65,6.366,19_Sep_2019
+Classic biodiversity patterns,species-area,2016,76,7.444,19_Sep_2019
+Classic biodiversity patterns,species-area,2015,56,5.485,19_Sep_2019
+Classic biodiversity patterns,species-area,2014,69,6.758,19_Sep_2019
+Classic biodiversity patterns,species-area,2013,55,5.387,19_Sep_2019
+Classic biodiversity patterns,species-area,2012,78,7.64,19_Sep_2019
+Classic biodiversity patterns,species-area,2011,62,6.072,19_Sep_2019
+Classic biodiversity patterns,species-area,2010,50,4.897,19_Sep_2019
+Classic biodiversity patterns,species-area,2009,44,4.31,19_Sep_2019
+Classic biodiversity patterns,species-area,2008,55,5.387,19_Sep_2019
+Classic biodiversity patterns,species-area,2007,54,5.289,19_Sep_2019
+Classic biodiversity patterns,species-area,2006,41,4.016,19_Sep_2019
+Classic biodiversity patterns,species-area,2005,43,4.212,19_Sep_2019
+Classic biodiversity patterns,species-area,2004,35,3.428,19_Sep_2019
+Classic biodiversity patterns,species-area,2003,27,2.644,19_Sep_2019
+Classic biodiversity patterns,species-area,2002,28,2.742,19_Sep_2019
+Classic biodiversity patterns,species-area,2001,21,2.057,19_Sep_2019
+Classic biodiversity patterns,species-area,2000,6,0.588,19_Sep_2019
+Classic biodiversity patterns,species-area,1999,13,1.273,19_Sep_2019
+Classic biodiversity patterns,species-area,1998,4,0.392,19_Sep_2019
+Classic biodiversity patterns,species-area,1997,4,0.392,19_Sep_2019
+Classic biodiversity patterns,species-area,1996,5,0.49,19_Sep_2019
+Classic biodiversity patterns,species-area,1995,4,0.392,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2019,1394,6.714,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2018,1830,8.814,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2017,1830,8.814,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2016,1745,8.405,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2015,1598,7.697,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2014,1494,7.196,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2013,1364,6.57,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2012,1258,6.059,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2011,1175,5.659,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2010,1031,4.966,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2009,926,4.46,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2008,844,4.065,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2007,770,3.709,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2006,654,3.15,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2005,572,2.755,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2004,438,2.11,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2003,430,2.071,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2002,342,1.647,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2001,253,1.219,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,2000,210,1.011,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,1999,163,0.785,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,1998,135,0.65,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,1997,107,0.515,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 richness,1996,71,0.342,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2019,71,7.521,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2018,113,11.97,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2017,89,9.428,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2016,89,9.428,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2015,73,7.733,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2014,71,7.521,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2013,59,6.25,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2012,65,6.886,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2011,36,3.814,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2010,50,5.297,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2009,43,4.555,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2008,38,4.025,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2007,30,3.178,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2006,14,1.483,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2005,16,1.695,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2004,14,1.483,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2003,18,1.907,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2002,11,1.165,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2001,8,0.847,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,2000,12,1.271,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,1999,5,0.53,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,1998,6,0.636,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,1997,5,0.53,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,1996,4,0.424,19_Sep_2019
+Classic biodiversity patterns,species NEAR/0 turnover,1995,1,0.106,19_Sep_2019
+ISA,variance NEAR/0 ratio*,2017,1,8.333,19_Sep_2019
+ISA,variance NEAR/0 ratio*,2016,3,25,19_Sep_2019
+ISA,variance NEAR/0 ratio*,2014,2,16.667,19_Sep_2019
+ISA,variance NEAR/0 ratio*,2013,1,8.333,19_Sep_2019
+ISA,variance NEAR/0 ratio*,2007,1,8.333,19_Sep_2019
+ISA,variance NEAR/0 ratio*,2006,1,8.333,19_Sep_2019
+ISA,variance NEAR/0 ratio*,2003,1,8.333,19_Sep_2019
+ISA,variance NEAR/0 ratio*,2001,2,16.667,19_Sep_2019
+General terms,conspecific* OR con-specific*,2019,36,8.219,19_Sep_2019
+General terms,conspecific* OR con-specific*,2018,48,10.959,19_Sep_2019
+General terms,conspecific* OR con-specific*,2017,48,10.959,19_Sep_2019
+General terms,conspecific* OR con-specific*,2016,46,10.502,19_Sep_2019
+General terms,conspecific* OR con-specific*,2015,36,8.219,19_Sep_2019
+General terms,conspecific* OR con-specific*,2014,44,10.046,19_Sep_2019
+General terms,conspecific* OR con-specific*,2013,30,6.849,19_Sep_2019
+General terms,conspecific* OR con-specific*,2012,29,6.621,19_Sep_2019
+General terms,conspecific* OR con-specific*,2011,24,5.479,19_Sep_2019
+General terms,conspecific* OR con-specific*,2010,19,4.338,19_Sep_2019
+General terms,conspecific* OR con-specific*,2009,10,2.283,19_Sep_2019
+General terms,conspecific* OR con-specific*,2008,10,2.283,19_Sep_2019
+General terms,conspecific* OR con-specific*,2007,11,2.511,19_Sep_2019
+General terms,conspecific* OR con-specific*,2006,9,2.055,19_Sep_2019
+General terms,conspecific* OR con-specific*,2005,8,1.826,19_Sep_2019
+General terms,conspecific* OR con-specific*,2004,5,1.142,19_Sep_2019
+General terms,conspecific* OR con-specific*,2003,6,1.37,19_Sep_2019
+General terms,conspecific* OR con-specific*,2002,5,1.142,19_Sep_2019
+General terms,conspecific* OR con-specific*,2001,3,0.685,19_Sep_2019
+General terms,conspecific* OR con-specific*,2000,4,0.913,19_Sep_2019
+General terms,conspecific* OR con-specific*,1999,3,0.685,19_Sep_2019
+General terms,conspecific* OR con-specific*,1998,2,0.457,19_Sep_2019
+General terms,conspecific* OR con-specific*,1997,1,0.228,19_Sep_2019
+General terms,conspecific* OR con-specific*,1995,1,0.228,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2019,131,11.931,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2018,132,12.022,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2017,113,10.291,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2016,122,11.111,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2015,106,9.654,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2014,81,7.377,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2013,75,6.831,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2012,60,5.464,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2011,41,3.734,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2010,41,3.734,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2009,39,3.552,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2008,31,2.823,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2007,24,2.186,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2006,17,1.548,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2005,19,1.73,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2004,16,1.457,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2003,11,1.002,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2002,11,1.002,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2001,11,1.002,19_Sep_2019
+ISA,cooccurr* or co-occurr*,2000,5,0.455,19_Sep_2019
+ISA,cooccurr* or co-occurr*,1999,6,0.546,19_Sep_2019
+ISA,cooccurr* or co-occurr*,1998,4,0.364,19_Sep_2019
+ISA,cooccurr* or co-occurr*,1997,1,0.091,19_Sep_2019
+ISA,cooccurr* or co-occurr*,1995,1,0.091,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2019,170,8.822,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2018,200,10.379,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2017,204,10.586,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2016,152,7.888,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2015,163,8.459,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2014,124,6.435,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2013,130,6.746,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2012,99,5.138,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2011,91,4.722,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2010,82,4.255,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2009,70,3.633,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2008,62,3.217,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2007,62,3.217,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2006,58,3.01,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2005,48,2.491,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2004,44,2.283,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2003,37,1.92,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2002,22,1.142,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2001,24,1.245,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,2000,29,1.505,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,1999,15,0.778,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,1998,13,0.675,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,1997,14,0.727,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,1996,9,0.467,19_Sep_2019
+Classic biodiversity patterns,relative NEAR/0 abundance*,1995,2,0.104,19_Sep_2019
+Classic biodiversity patterns,SAD,2019,2,2.353,19_Sep_2019
+Classic biodiversity patterns,SAD,2018,12,14.118,19_Sep_2019
+Classic biodiversity patterns,SAD,2017,14,16.471,19_Sep_2019
+Classic biodiversity patterns,SAD,2016,4,4.706,19_Sep_2019
+Classic biodiversity patterns,SAD,2015,10,11.765,19_Sep_2019
+Classic biodiversity patterns,SAD,2014,6,7.059,19_Sep_2019
+Classic biodiversity patterns,SAD,2013,5,5.882,19_Sep_2019
+Classic biodiversity patterns,SAD,2012,8,9.412,19_Sep_2019
+Classic biodiversity patterns,SAD,2011,1,1.176,19_Sep_2019
+Classic biodiversity patterns,SAD,2010,5,5.882,19_Sep_2019
+Classic biodiversity patterns,SAD,2009,5,5.882,19_Sep_2019
+Classic biodiversity patterns,SAD,2008,2,2.353,19_Sep_2019
+Classic biodiversity patterns,SAD,2007,5,5.882,19_Sep_2019
+Classic biodiversity patterns,SAD,2006,2,2.353,19_Sep_2019
+Classic biodiversity patterns,SAD,2005,4,4.706,19_Sep_2019
+Classic biodiversity patterns,extinct*,2019,591,6.259,19_Sep_2019
+Classic biodiversity patterns,extinct*,2018,896,9.49,19_Sep_2019
+Classic biodiversity patterns,extinct*,2017,879,9.309,19_Sep_2019
+Classic biodiversity patterns,extinct*,2016,809,8.568,19_Sep_2019
+Classic biodiversity patterns,extinct*,2015,786,8.325,19_Sep_2019
+Classic biodiversity patterns,extinct*,2014,618,6.545,19_Sep_2019
+Classic biodiversity patterns,extinct*,2013,630,6.672,19_Sep_2019
+Classic biodiversity patterns,extinct*,2012,569,6.026,19_Sep_2019
+Classic biodiversity patterns,extinct*,2011,511,5.412,19_Sep_2019
+Classic biodiversity patterns,extinct*,2010,494,5.232,19_Sep_2019
+Classic biodiversity patterns,extinct*,2009,387,4.099,19_Sep_2019
+Classic biodiversity patterns,extinct*,2008,365,3.866,19_Sep_2019
+Classic biodiversity patterns,extinct*,2007,344,3.643,19_Sep_2019
+Classic biodiversity patterns,extinct*,2006,275,2.913,19_Sep_2019
+Classic biodiversity patterns,extinct*,2005,255,2.701,19_Sep_2019
+Classic biodiversity patterns,extinct*,2004,184,1.949,19_Sep_2019
+Classic biodiversity patterns,extinct*,2003,144,1.525,19_Sep_2019
+Classic biodiversity patterns,extinct*,2002,140,1.483,19_Sep_2019
+Classic biodiversity patterns,extinct*,2001,115,1.218,19_Sep_2019
+Classic biodiversity patterns,extinct*,2000,87,0.921,19_Sep_2019
+Classic biodiversity patterns,extinct*,1999,70,0.741,19_Sep_2019
+Classic biodiversity patterns,extinct*,1998,66,0.699,19_Sep_2019
+Classic biodiversity patterns,extinct*,1997,48,0.508,19_Sep_2019
+Classic biodiversity patterns,extinct*,1996,46,0.487,19_Sep_2019
+Classic biodiversity patterns,extinct*,1995,44,0.466,19_Sep_2019
+ISA,checker*,2019,2,5.405,19_Sep_2019
+ISA,checker*,2018,2,5.405,19_Sep_2019
+ISA,checker*,2017,2,5.405,19_Sep_2019
+ISA,checker*,2016,6,16.216,19_Sep_2019
+ISA,checker*,2015,3,8.108,19_Sep_2019
+ISA,checker*,2014,2,5.405,19_Sep_2019
+ISA,checker*,2013,3,8.108,19_Sep_2019
+ISA,checker*,2012,1,2.703,19_Sep_2019
+ISA,checker*,2011,3,8.108,19_Sep_2019
+ISA,checker*,2009,2,5.405,19_Sep_2019
+ISA,checker*,2006,2,5.405,19_Sep_2019
+ISA,checker*,2005,1,2.703,19_Sep_2019
+ISA,checker*,2004,2,5.405,19_Sep_2019
+ISA,checker*,2002,2,5.405,19_Sep_2019
+ISA,checker*,2001,1,2.703,19_Sep_2019
+ISA,checker*,1999,2,5.405,19_Sep_2019
+ISA,checker*,1992,1,2.703,19_Sep_2019
+ISA,JSDM OR (joint NEAR/0 species),2019,7,31.818,19_Sep_2019
+ISA,JSDM OR (joint NEAR/0 species),2018,4,18.182,19_Sep_2019
+ISA,JSDM OR (joint NEAR/0 species),2017,6,27.273,19_Sep_2019
+ISA,JSDM OR (joint NEAR/0 species),2016,1,4.545,19_Sep_2019
+ISA,JSDM OR (joint NEAR/0 species),2015,1,4.545,19_Sep_2019
+ISA,JSDM OR (joint NEAR/0 species),2014,3,13.636,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2019,6,9.677,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2018,4,6.452,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2017,6,9.677,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2016,11,17.742,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2015,6,9.677,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2014,6,9.677,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2013,1,1.613,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2012,4,6.452,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2011,5,8.065,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2010,4,6.452,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2008,2,3.226,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2007,2,3.226,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2006,3,4.839,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2005,1,1.613,19_Sep_2019
+ISA,co-distrib* OR codistrib*,2004,1,1.613,19_Sep_2019
+Classic biodiversity patterns,shannon,2019,197,8.167,19_Sep_2019
+Classic biodiversity patterns,shannon,2018,261,10.821,19_Sep_2019
+Classic biodiversity patterns,shannon,2017,232,9.619,19_Sep_2019
+Classic biodiversity patterns,shannon,2016,225,9.328,19_Sep_2019
+Classic biodiversity patterns,shannon,2015,224,9.287,19_Sep_2019
+Classic biodiversity patterns,shannon,2014,171,7.09,19_Sep_2019
+Classic biodiversity patterns,shannon,2013,158,6.551,19_Sep_2019
+Classic biodiversity patterns,shannon,2012,129,5.348,19_Sep_2019
+Classic biodiversity patterns,shannon,2011,117,4.851,19_Sep_2019
+Classic biodiversity patterns,shannon,2010,113,4.685,19_Sep_2019
+Classic biodiversity patterns,shannon,2009,106,4.395,19_Sep_2019
+Classic biodiversity patterns,shannon,2008,74,3.068,19_Sep_2019
+Classic biodiversity patterns,shannon,2007,67,2.778,19_Sep_2019
+Classic biodiversity patterns,shannon,2006,77,3.192,19_Sep_2019
+Classic biodiversity patterns,shannon,2005,46,1.907,19_Sep_2019
+Classic biodiversity patterns,shannon,2004,41,1.7,19_Sep_2019
+Classic biodiversity patterns,shannon,2003,28,1.161,19_Sep_2019
+Classic biodiversity patterns,shannon,2002,27,1.119,19_Sep_2019
+Classic biodiversity patterns,shannon,2001,21,0.871,19_Sep_2019
+Classic biodiversity patterns,shannon,2000,20,0.829,19_Sep_2019
+Classic biodiversity patterns,shannon,1999,28,1.161,19_Sep_2019
+Classic biodiversity patterns,shannon,1998,17,0.705,19_Sep_2019
+Classic biodiversity patterns,shannon,1997,15,0.622,19_Sep_2019
+Classic biodiversity patterns,shannon,1996,10,0.415,19_Sep_2019
+Classic biodiversity patterns,shannon,1995,5,0.207,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2019,126,7.287,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2018,192,11.105,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2017,163,9.427,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2016,156,9.023,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2015,124,7.172,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2014,131,7.577,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2013,122,7.056,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2012,106,6.131,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2011,89,5.147,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2010,78,4.511,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2009,72,4.164,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2008,57,3.297,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2007,55,3.181,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2006,40,2.313,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2005,39,2.256,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2004,27,1.562,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2003,28,1.619,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2002,26,1.504,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2001,25,1.446,19_Sep_2019
+General terms,inter-specific* OR interspecific*,2000,21,1.215,19_Sep_2019
+General terms,inter-specific* OR interspecific*,1999,14,0.81,19_Sep_2019
+General terms,inter-specific* OR interspecific*,1998,11,0.636,19_Sep_2019
+General terms,inter-specific* OR interspecific*,1997,8,0.463,19_Sep_2019
+General terms,inter-specific* OR interspecific*,1996,4,0.231,19_Sep_2019
+General terms,inter-specific* OR interspecific*,1995,3,0.174,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2019,138,9.231,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2018,183,12.241,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2017,165,11.037,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2016,155,10.368,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2015,105,7.023,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2014,103,6.89,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2013,110,7.358,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2012,77,5.151,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2011,76,5.084,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2010,71,4.749,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2009,51,3.411,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2008,41,2.742,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2007,45,3.01,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2006,31,2.074,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2005,27,1.806,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2004,20,1.338,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2003,16,1.07,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2002,11,0.736,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2001,15,1.003,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,2000,12,0.803,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,1999,7,0.468,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,1998,11,0.736,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,1997,9,0.602,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,1996,8,0.535,19_Sep_2019
+General terms,intra-specific* OR intraspecific*,1995,6,0.401,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2019,2,3.571,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2018,7,12.5,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2017,7,12.5,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2016,6,10.714,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2015,7,12.5,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2014,5,8.929,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2013,2,3.571,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2012,5,8.929,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2011,5,8.929,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2010,2,3.571,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2009,1,1.786,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2008,1,1.786,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2007,2,3.571,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2006,1,1.786,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,2005,2,3.571,19_Sep_2019
+Spatially explicit,point NEAR/0 pattern* OR point-pattern*,1999,1,1.786,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2019,6,7.895,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2018,7,9.211,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2017,6,7.895,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2016,4,5.263,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2015,10,13.158,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2014,2,2.632,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2013,4,5.263,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2012,3,3.947,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2011,5,6.579,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2010,4,5.263,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2009,3,3.947,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2008,2,2.632,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2007,4,5.263,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2006,3,3.947,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2005,2,2.632,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2003,2,2.632,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2002,2,2.632,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2001,1,1.316,19_Sep_2019
+Spatially explicit,variogram* or semivari*,2000,1,1.316,19_Sep_2019
+Spatially explicit,variogram* or semivari*,1999,1,1.316,19_Sep_2019
+Spatially explicit,variogram* or semivari*,1998,3,3.947,19_Sep_2019
+Spatially explicit,variogram* or semivari*,1995,1,1.316,19_Sep_2019
+Spatially explicit,pair NEAR/0 correl*,2018,2,18.182,19_Sep_2019
+Spatially explicit,pair NEAR/0 correl*,2017,2,18.182,19_Sep_2019
+Spatially explicit,pair NEAR/0 correl*,2015,1,9.091,19_Sep_2019
+Spatially explicit,pair NEAR/0 correl*,2014,1,9.091,19_Sep_2019
+Spatially explicit,pair NEAR/0 correl*,2013,1,9.091,19_Sep_2019
+Spatially explicit,pair NEAR/0 correl*,2011,2,18.182,19_Sep_2019
+Spatially explicit,pair NEAR/0 correl*,2010,1,9.091,19_Sep_2019
+Spatially explicit,pair NEAR/0 correl*,2002,1,9.091,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2019,660,7.548,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2018,961,10.99,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2017,896,10.247,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2016,797,9.115,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2015,754,8.623,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2014,640,7.319,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2013,610,6.976,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2012,501,5.73,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2011,466,5.329,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2010,437,4.998,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2009,351,4.014,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2008,316,3.614,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2007,284,3.248,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2006,242,2.768,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2005,188,2.15,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2004,149,1.704,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2003,110,1.258,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2002,84,0.961,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2001,71,0.812,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,2000,58,0.663,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,1999,49,0.56,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,1998,27,0.309,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,1997,42,0.48,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,1996,23,0.263,19_Sep_2019
+Classic biodiversity patterns,invasi* OR invad*,1995,16,0.183,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2019,69,8.938,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2018,111,14.378,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2017,95,12.306,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2016,90,11.658,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2015,71,9.197,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2014,50,6.477,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2013,66,8.549,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2012,37,4.793,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2011,34,4.404,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2010,28,3.627,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2009,22,2.85,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2008,24,3.109,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2007,13,1.684,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2006,14,1.813,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2005,9,1.166,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2004,4,0.518,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2003,5,0.648,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2002,5,0.648,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2001,3,0.389,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,2000,3,0.389,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,1999,7,0.907,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,1998,2,0.259,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,1997,4,0.518,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,1996,2,0.259,19_Sep_2019
+Biotic interactions and networks,biotic NEAR/0 interact*,1995,3,0.389,19_Sep_2019
+ISA,*coenos* OR *cenos*,2019,20,5.988,19_Sep_2019
+ISA,*coenos* OR *cenos*,2018,27,8.084,19_Sep_2019
+ISA,*coenos* OR *cenos*,2017,22,6.587,19_Sep_2019
+ISA,*coenos* OR *cenos*,2016,29,8.683,19_Sep_2019
+ISA,*coenos* OR *cenos*,2015,25,7.485,19_Sep_2019
+ISA,*coenos* OR *cenos*,2014,17,5.09,19_Sep_2019
+ISA,*coenos* OR *cenos*,2013,16,4.79,19_Sep_2019
+ISA,*coenos* OR *cenos*,2012,24,7.186,19_Sep_2019
+ISA,*coenos* OR *cenos*,2011,27,8.084,19_Sep_2019
+ISA,*coenos* OR *cenos*,2010,15,4.491,19_Sep_2019
+ISA,*coenos* OR *cenos*,2009,14,4.192,19_Sep_2019
+ISA,*coenos* OR *cenos*,2008,15,4.491,19_Sep_2019
+ISA,*coenos* OR *cenos*,2007,9,2.695,19_Sep_2019
+ISA,*coenos* OR *cenos*,2006,12,3.593,19_Sep_2019
+ISA,*coenos* OR *cenos*,2005,5,1.497,19_Sep_2019
+ISA,*coenos* OR *cenos*,2004,6,1.796,19_Sep_2019
+ISA,*coenos* OR *cenos*,2003,10,2.994,19_Sep_2019
+ISA,*coenos* OR *cenos*,2002,6,1.796,19_Sep_2019
+ISA,*coenos* OR *cenos*,2001,5,1.497,19_Sep_2019
+ISA,*coenos* OR *cenos*,2000,6,1.796,19_Sep_2019
+ISA,*coenos* OR *cenos*,1999,6,1.796,19_Sep_2019
+ISA,*coenos* OR *cenos*,1998,1,0.299,19_Sep_2019
+ISA,*coenos* OR *cenos*,1997,5,1.497,19_Sep_2019
+ISA,*coenos* OR *cenos*,1996,3,0.898,19_Sep_2019
+ISA,*coenos* OR *cenos*,1995,5,1.497,19_Sep_2019
+Spatially explicit,K-function,2018,3,18.75,19_Sep_2019
+Spatially explicit,K-function,2017,1,6.25,19_Sep_2019
+Spatially explicit,K-function,2016,1,6.25,19_Sep_2019
+Spatially explicit,K-function,2015,1,6.25,19_Sep_2019
+Spatially explicit,K-function,2013,3,18.75,19_Sep_2019
+Spatially explicit,K-function,2012,2,12.5,19_Sep_2019
+Spatially explicit,K-function,2009,1,6.25,19_Sep_2019
+Spatially explicit,K-function,2008,1,6.25,19_Sep_2019
+Spatially explicit,K-function,2007,1,6.25,19_Sep_2019
+Spatially explicit,K-function,2006,1,6.25,19_Sep_2019
+Spatially explicit,K-function,2005,1,6.25,19_Sep_2019
+Spatially explicit,kriging,2019,12,12.371,19_Sep_2019
+Spatially explicit,kriging,2018,5,5.155,19_Sep_2019
+Spatially explicit,kriging,2017,13,13.402,19_Sep_2019
+Spatially explicit,kriging,2016,7,7.216,19_Sep_2019
+Spatially explicit,kriging,2015,7,7.216,19_Sep_2019
+Spatially explicit,kriging,2014,5,5.155,19_Sep_2019
+Spatially explicit,kriging,2013,8,8.247,19_Sep_2019
+Spatially explicit,kriging,2012,3,3.093,19_Sep_2019
+Spatially explicit,kriging,2011,9,9.278,19_Sep_2019
+Spatially explicit,kriging,2010,3,3.093,19_Sep_2019
+Spatially explicit,kriging,2009,6,6.186,19_Sep_2019
+Spatially explicit,kriging,2008,2,2.062,19_Sep_2019
+Spatially explicit,kriging,2007,4,4.124,19_Sep_2019
+Spatially explicit,kriging,2006,4,4.124,19_Sep_2019
+Spatially explicit,kriging,2005,2,2.062,19_Sep_2019
+Spatially explicit,kriging,2003,2,2.062,19_Sep_2019
+Spatially explicit,kriging,2000,2,2.062,19_Sep_2019
+Spatially explicit,kriging,1998,2,2.062,19_Sep_2019
+Spatially explicit,kriging,1997,1,1.031,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2019,37,5.901,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2018,39,6.22,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2017,40,6.38,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2016,55,8.772,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2015,33,5.263,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2014,50,7.974,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2013,49,7.815,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2012,40,6.38,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2011,49,7.815,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2010,33,5.263,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2009,49,7.815,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2008,38,6.061,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2007,28,4.466,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2006,27,4.306,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2005,15,2.392,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2004,11,1.754,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2003,4,0.638,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2002,12,1.914,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2001,7,1.116,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,2000,3,0.478,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,1999,6,0.957,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,1998,1,0.159,19_Sep_2019
+Spatially explicit,spatial* NEAR/0 autocor*,1995,1,0.159,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2019,9,9.278,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2018,18,18.557,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2017,7,7.216,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2016,11,11.34,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2015,9,9.278,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2014,5,5.155,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2013,9,9.278,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2012,4,4.124,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2011,5,5.155,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2010,5,5.155,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2009,1,1.031,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2008,3,3.093,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2007,1,1.031,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2006,2,2.062,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2005,3,3.093,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2003,2,2.062,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2002,2,2.062,19_Sep_2019
+Spatially explicit,nearest NEAR/0 neighbor*,2001,1,1.031,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2019,12,5.085,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2018,30,12.712,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2017,23,9.746,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2016,30,12.712,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2015,18,7.627,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2014,19,8.051,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2013,22,9.322,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2012,22,9.322,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2011,16,6.78,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2010,17,7.203,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2009,8,3.39,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2008,6,2.542,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2007,6,2.542,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2006,1,0.424,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2005,3,1.271,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2003,1,0.424,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,2002,1,0.424,19_Sep_2019
+Spatially explicit,distance NEAR/0 decay*,1999,1,0.424,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2019,92,7.082,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2018,117,9.007,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2017,122,9.392,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2016,108,8.314,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2015,95,7.313,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2014,102,7.852,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2013,97,7.467,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2012,67,5.158,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2011,69,5.312,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2010,64,4.927,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2009,54,4.157,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2008,62,4.773,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2007,46,3.541,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2006,40,3.079,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2005,33,2.54,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2004,29,2.232,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2003,17,1.309,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2002,24,1.848,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2001,13,1.001,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,2000,7,0.539,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,1999,12,0.924,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,1998,10,0.77,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,1997,6,0.462,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,1996,2,0.154,19_Sep_2019
+Classic biodiversity patterns,geograph* NEAR/0 range*,1995,6,0.462,19_Sep_2019
+Classic biodiversity patterns,functional,2019,951,9.322,19_Sep_2019
+Classic biodiversity patterns,functional,2018,1285,12.596,19_Sep_2019
+Classic biodiversity patterns,functional,2017,1133,11.106,19_Sep_2019
+Classic biodiversity patterns,functional,2016,1011,9.91,19_Sep_2019
+Classic biodiversity patterns,functional,2015,854,8.371,19_Sep_2019
+Classic biodiversity patterns,functional,2014,773,7.577,19_Sep_2019
+Classic biodiversity patterns,functional,2013,672,6.587,19_Sep_2019
+Classic biodiversity patterns,functional,2012,571,5.597,19_Sep_2019
+Classic biodiversity patterns,functional,2011,475,4.656,19_Sep_2019
+Classic biodiversity patterns,functional,2010,393,3.852,19_Sep_2019
+Classic biodiversity patterns,functional,2009,363,3.558,19_Sep_2019
+Classic biodiversity patterns,functional,2008,297,2.911,19_Sep_2019
+Classic biodiversity patterns,functional,2007,266,2.607,19_Sep_2019
+Classic biodiversity patterns,functional,2006,210,2.058,19_Sep_2019
+Classic biodiversity patterns,functional,2005,158,1.549,19_Sep_2019
+Classic biodiversity patterns,functional,2004,148,1.451,19_Sep_2019
+Classic biodiversity patterns,functional,2003,139,1.362,19_Sep_2019
+Classic biodiversity patterns,functional,2002,94,0.921,19_Sep_2019
+Classic biodiversity patterns,functional,2001,76,0.745,19_Sep_2019
+Classic biodiversity patterns,functional,2000,77,0.755,19_Sep_2019
+Classic biodiversity patterns,functional,1999,74,0.725,19_Sep_2019
+Classic biodiversity patterns,functional,1998,66,0.647,19_Sep_2019
+Classic biodiversity patterns,functional,1997,41,0.402,19_Sep_2019
+Classic biodiversity patterns,functional,1996,29,0.284,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2019,529,8.331,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2018,766,12.063,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2017,684,10.772,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2016,673,10.598,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2015,574,9.039,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2014,514,8.094,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2013,429,6.756,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2012,367,5.78,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2011,301,4.74,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2010,262,4.126,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2009,249,3.921,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2008,202,3.181,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2007,170,2.677,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2006,131,2.063,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2005,97,1.528,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2004,85,1.339,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2003,49,0.772,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2002,61,0.961,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2001,45,0.709,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,2000,47,0.74,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,1999,28,0.441,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,1998,32,0.504,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,1997,15,0.236,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,1996,12,0.189,19_Sep_2019
+Classic biodiversity patterns,phylogenetic,1995,11,0.173,19_Sep_2019

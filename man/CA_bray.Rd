@@ -11,11 +11,13 @@ CA_bray(m)
 contain either incidences (1/0) or abundances (natural numbers).}
 }
 \value{
-A dist or data.frame objects with the pairwise values.
+A dist object with the pairwise values.
 }
 \description{
-Calculates Bray-Curtis dissimilarity matrix for a community matrix.
+Calculates all Bray-Curtis dissimilarities for all pairs of species in a community matrix.
 This is a wrapper to a specific call to the 'vegdist' function in 'vegan'.
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }
 \references{
 Legendre P. & De Caceres M. (2013) Beta diversity as the variance of community

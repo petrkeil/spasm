@@ -1,6 +1,8 @@
 ################################################################################
 #
-# Code for the simulations behind Figs. 7, S5, S6, S7
+# Code for the simulations behind spatially implicit simulations and the comparison
+# of the spatially implicit metrics of ISA
+#
 #
 # Petr Keil
 #
@@ -322,7 +324,7 @@ csa <- plyr::ddply(.data=res,
                        .variables=c("variable", "var.consp"),
                        .fun=summarize,
                    Spearman = abs(cor(alpha, value, method = "spearman")))
-csa$variable <- as.factor(csa$variable)
+csa$variable <- as.character(csa$variable)
 names(csa)[2] <- "CSA"
 
 # abundance or incidence?
@@ -331,13 +333,16 @@ type[grep(type, pattern="C_")] <- "Binary data"
 type[grep(type, pattern="CA_")] <- "Abundance data"
 csa <- data.frame(csa, type)
 
+# colour palette
+var.names <- as.character(unique(csa$variable))
+cols <- data.frame(variable = as.character(var.names),
+                   rnd.col = as.factor(sample(1:length(var.names))))
+csa <- left_join(x=csa, y = cols, by="variable")
+
 # raw or Z-score?
 Z <- rep("Raw", times = nrow(csa))
 Z[grep(csa$variable, pattern="_Z")] <- "Z-score"
 csa <- data.frame(csa, Z)
-
-# colour palette
-csa <- left_join(x=csa, y = cols, by="variable")
 
 # label positions
 scale.labs <- csa[csa$CSA == 0.01,]

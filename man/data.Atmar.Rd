@@ -4,7 +4,9 @@
 \name{data.Atmar}
 \alias{data.Atmar}
 \title{Atmar & Patterson (1995) incidence matrices}
-\format{An object of class \code{list} of length 290.}
+\format{
+An object of class \code{list} of length 290.
+}
 \source{
 Atmar W. & Patterson B. D. (1995) The nestedness temperature calculator:
 a Visual Basic  program,  including  294  presence absence matrices. AICS Research,

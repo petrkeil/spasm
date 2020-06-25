@@ -14,7 +14,7 @@ contain either incidences (1/0) or abundances (natural numbers).}
 A dist or data.frame objects with the pairwise association values.
 }
 \description{
-Simple matching coefficient of Sokal & Michener (1958)
+Note: Before the calculation, species (rows) with zero occurrences are removed from m.
 }
 \references{
 Sokal R.R. & Michener C.D. (1958) A statistical method for evaluating

@@ -16,6 +16,8 @@ A single number, network connectance.
 \description{
 Network connectance, defined as the proportion of all possible links in a network, adopted
 from Carsten Dormann's bipartite package.
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }
 \references{
 Dormann et al. (2009) Indices, graphs and null models: analyzing

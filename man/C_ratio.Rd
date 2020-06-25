@@ -16,6 +16,8 @@ A single number, the variance ratio.
 \description{
 This is the classical variance ratio function; the function is applicable to
 both incidence and abundance matrices.
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }
 \references{
 Schluter, D. 1984. A variance test for detecting species associations,

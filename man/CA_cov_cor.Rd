@@ -4,24 +4,27 @@
 \alias{CA_cov_cor}
 \title{Covariance or correlation matrix calculated from community matrix}
 \usage{
-CA_cov_cor(m, transf = NULL, correlation = TRUE, method = "spearman")
+CA_cov_cor(m, transf = NULL, correlation = TRUE, method = "pearson")
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can
 contain either incidences (1/0) or abundances (natural numbers).}
 
 \item{transf}{A transformation function to be applied to the community matrix.
-The default is Hellinger transformation. Other options from 'vegan' function
+The default is no transformation. Other options from 'vegan' function
 'decostand' are applicable.}
 
 \item{correlation}{Should correlations be returned (TRUE) or covariances (FALSE).}
 
-\item{method}{One of 'peason' (default), 'kendall', or 'spearman'.}
+\item{method}{One of 'peason' (default), 'kendall', or 'spearman'.
+is the default.}
 }
 \value{
-A dist or data.frame objects with the pairwise association values.
+A dist object with the pairwise association values.
 }
 \description{
 Calculates covariance or correlation matrix from a community abundance or
 incidence matrix where species are rows and sites are columns.
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }

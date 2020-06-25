@@ -2,22 +2,25 @@
 #'
 #' Calculates covariance or correlation matrix from a community abundance or
 #' incidence matrix where species are rows and sites are columns.
+#' Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+#' with zero species are removed from m.
 #'
 #' @param m Community data matrix with species as rows and sites as columns. Can
 #' contain either incidences (1/0) or abundances (natural numbers).
 #' @param transf A transformation function to be applied to the community matrix.
-#' The default is Hellinger transformation. Other options from 'vegan' function
+#' The default is no transformation. Other options from 'vegan' function
 #' 'decostand' are applicable.
 #' @param correlation Should correlations be returned (TRUE) or covariances (FALSE).
 #' @param method One of 'peason' (default), 'kendall', or 'spearman'.
-#' @return A dist or data.frame objects with the pairwise association values.
+#' is the default.
+#' @return A dist object with the pairwise association values.
 #' @import vegan
 #' @export
 
 CA_cov_cor <- function(m,
                        transf = NULL,
                        correlation = TRUE,
-                       method = "spearman")
+                       method = "pearson")
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -44,12 +47,14 @@ CA_cov_cor <- function(m,
 # ------------------------------------------------------------------------------
 #' Hellinger distance matrix
 #'
-#' Calculates Hellinger distance matrix for mixed community matrices. In particular,
+#' Calculates Hellinger distances for all pairs of species in a community matrix. In particular,
 #' the abundance data are Hellinger-transformed, and then used for calcluation
 #' of Euclidean distances.
+#' Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+#' with zero species are removed from m.
 #'
 #' @inheritParams CA_cov_cor
-#' @return A dist or data.frame objects with the pairwise values.
+#' @return A dist object with the pairwise values.
 #' @references Legendre P. & De Caceres M. (2013) Beta diversity as the variance of community
 #' data: dissimilarity coefficients and partitioning. Ecology Letters 16: 951-963.
 #' @references Legendre P. & Legendre L. (2012) Numerical Ecology. Elsevier. pp 265-335.
@@ -69,15 +74,21 @@ CA_hell <- function(m)
   return(D)
 }
 
+# m <- data.Ulrich[[1]]
+# CA_hell(m)
+
 # ------------------------------------------------------------------------------
 #' Chi-square distance matrix
 #'
-#' Calculates chi-square distance matrix for mixed community matrices. In particular,
+#' Calculates chi-square distances for all pairs of species in a community matrix.
+#' In particular,
 #' the abundance data are chi-square-transformed, and then used for calcluation
 #' of Euclidean distances.
+#' Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+#' with zero species are removed from m.
 #'
 #' @inheritParams CA_cov_cor
-#' @return A dist or data.frame objects with the pairwise values.
+#' @return A dist object with the pairwise values.
 #' @references Legendre P. & De Caceres M. (2013) Beta diversity as the variance of community
 #' data: dissimilarity coefficients and partitioning. Ecology Letters 16: 951-963.
 #' @references Legendre P. & Legendre L. (2012) Numerical Ecology. Elsevier. pp 265-335.
@@ -92,20 +103,24 @@ CA_chi <- function(m)
 
   # Hellinger transformation of abundances
   m <- vegan::decostand(m, method = "chi.square")
-  D <- dist(m) # Euclidean distances on the Hellinger-transformed matrix
+  D <- dist(m) # Euclidean distances on the Chi.shquare-transformed matrix
 
   return(D)
 }
 
+# m <- data.Ulrich[[1]]
+# CA_chi(m)
 
 # ------------------------------------------------------------------------------
 #' Bray-Curtis dissimilarity matrix
 #'
-#' Calculates Bray-Curtis dissimilarity matrix for a community matrix.
+#' Calculates all Bray-Curtis dissimilarities for all pairs of species in a community matrix.
 #' This is a wrapper to a specific call to the 'vegdist' function in 'vegan'.
+#' Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+#' with zero species are removed from m.
 #'
 #' @inheritParams CA_cov_cor
-#' @return A dist or data.frame objects with the pairwise values.
+#' @return A dist object with the pairwise values.
 #' @references Legendre P. & De Caceres M. (2013) Beta diversity as the variance of community
 #' data: dissimilarity coefficients and partitioning. Ecology Letters 16: 951-963.
 #' @import vegan
@@ -123,15 +138,20 @@ CA_bray <- function(m)
   return(D)
 }
 
+# m <- data.Ulrich[[1]]
+# CA_bray(m)
 
 # ------------------------------------------------------------------------------
 #' Abundance-based Jaccard (a.k.a. Ruzicka) dissimilarity matrix
 #'
-#' Calculates abundance-based Jaccard dissimilarity matrix for a community matrix.
+#' Calculates abundance-based Jaccard dissimilarities for all species pairs
+#' in a community matrix.
 #' This is a wrapper to a specific call to the 'vegdist' function in 'vegan'.
+#' Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+#' with zero species are removed from m.
 #'
 #' @inheritParams CA_cov_cor
-#' @return A dist or data.frame objects with the pairwise values.
+#' @return A dist object with the pairwise values.
 #' @references Legendre P. & De Caceres M. (2013) Beta diversity as the variance of community
 #' data: dissimilarity coefficients and partitioning. Ecology Letters 16: 951-963.
 #' @import vegan

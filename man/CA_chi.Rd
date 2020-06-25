@@ -11,12 +11,15 @@ CA_chi(m)
 contain either incidences (1/0) or abundances (natural numbers).}
 }
 \value{
-A dist or data.frame objects with the pairwise values.
+A dist object with the pairwise values.
 }
 \description{
-Calculates chi-square distance matrix for mixed community matrices. In particular,
+Calculates chi-square distances for all pairs of species in a community matrix.
+In particular,
 the abundance data are chi-square-transformed, and then used for calcluation
 of Euclidean distances.
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }
 \references{
 Legendre P. & De Caceres M. (2013) Beta diversity as the variance of community

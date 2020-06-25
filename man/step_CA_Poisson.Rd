@@ -2,7 +2,8 @@
 % Please edit documentation in R/null_model_simulations.R
 \name{step_CA_Poisson}
 \alias{step_CA_Poisson}
-\title{One realization of the an algorithm that resamples each row according to a Poisson distribution}
+\title{One realization of the an algorithm that resamples each row according to a
+Poisson distribution}
 \usage{
 step_CA_Poisson(m)
 }

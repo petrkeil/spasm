@@ -2,7 +2,7 @@
 % Please edit documentation in R/measures_for_incidence_matrices.R
 \name{C_seg}
 \alias{C_seg}
-\title{The classical 'C-score' seggregation metric of Stone & Roberts (1990),
+\title{The classical 'C-score' (C_seg) seggregation metric of Stone & Roberts (1990),
 and its scaled version}
 \usage{
 C_seg(m, scale = TRUE)
@@ -15,11 +15,17 @@ contain either incidences (1/0) or abundances (natural numbers).}
 site combinations?}
 }
 \value{
-A dist or data.frame objects with the pairwise association values.
+A dist object with the pairwise association values.
 }
 \description{
-The classical 'C-score' seggregation metric of Stone & Roberts (1990),
-and its scaled version
+The scaled version divides the raw C-score by the number of possible site
+combinations, which is `n(n-1)/2` according to Ulrich & Gotelli (2013). Also
+note that their scaling formula also includes `m`, the number of species. Thus,
+Ulrich & Gotelli's (2013) formula for the scaled C-score is actually
+`4*(C_seg)/(m*n*(m-1)(n-1))`. For two species (`m=2`) this reduces to  `C_seg / ((n*(n-1))/2)`,
+which is the formula that I use here for the scaled version.
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }
 \references{
 Stone L. & Roberts A. (1990) The checkerboard score and
@@ -27,4 +33,7 @@ species distributions. Oecologia 85: 74-79.
 
 McNickle G.G. et al. (2018) Checkerboard score-area relationships
 reveal spatial scales of plant community structure. Oikos 127: 415-426.
+
+Ulrich W. & Gotelli N.J. (2013) Pattern detection in null model analysis.
+Oikos 122: 2-18.
 }

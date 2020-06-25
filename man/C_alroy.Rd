@@ -11,10 +11,11 @@ C_alroy(m)
 contain either incidences (1/0) or abundances (natural numbers).}
 }
 \value{
-A dist or data.frame objects with the pairwise association values.
+A dist object with the pairwise association values.
 }
 \description{
-Alroy's (2015) modification of the Forbes index
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }
 \references{
 Alroy J. (2015) A new twist on a very old binary similarity coefficient.

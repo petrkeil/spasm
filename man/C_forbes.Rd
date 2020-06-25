@@ -11,10 +11,10 @@ C_forbes(m)
 contain either incidences (1/0) or abundances (natural numbers).}
 }
 \value{
-A dist or data.frame objects with the pairwise association values.
+A dist object with the pairwise association values.
 }
 \description{
-Forbes' coefficient of association among species in a community matrix
+Note: Before the calculation, species (rows) with only zero occurrences are removed from m.
 }
 \references{
 Forbes S.A. (1907) On the local distribution of certain Illinois

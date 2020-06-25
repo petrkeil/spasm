@@ -16,4 +16,6 @@ A single number, the number of unique species combinations.
 \description{
 This function follows the code from EcoSimR package by Gotelli, Hard and Ellison,
 specifically, it re-uses their 'species_combo' function.
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }

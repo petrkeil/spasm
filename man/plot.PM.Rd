@@ -4,8 +4,14 @@
 \alias{plot.PM}
 \title{Plot the PM classification scheme}
 \usage{
-plot.PM(PM, xlim = NULL, ylim = NULL, labs = FALSE,
-  lab.shift = NULL, main = NULL)
+plot.PM(
+  PM,
+  xlim = NULL,
+  ylim = NULL,
+  labs = FALSE,
+  lab.shift = NULL,
+  main = NULL
+)
 }
 \arguments{
 \item{PM}{A list object returned by the PM.multispec function.}

@@ -4,7 +4,9 @@
 \name{data.WOS}
 \alias{data.WOS}
 \title{Number of papers on biodiversity + a given category on Clarivate Web of Science}
-\format{An object of class \code{data.frame} with 835 rows and 5 columns.}
+\format{
+An object of class \code{data.frame} with 883 rows and 6 columns.
+}
 \source{
 http://apps.webofknowledge.com/
 }

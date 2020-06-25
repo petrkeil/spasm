@@ -20,6 +20,7 @@ m2 <- matrix(c(1,0,0,0,
                1,0,0,0,
                1,1,1,1), byrow=TRUE, nrow=4, ncol=4)
 
+
 # ISA metrics
 C_w(m1)
 C_w(m2)

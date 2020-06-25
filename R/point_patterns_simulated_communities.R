@@ -1,5 +1,9 @@
-#' Bivariate probablity density function in a 2D square
-
+#' Bivariate probablity density (PD) function in a 2D square
+#'
+#' Evaluates probability density at a point specified by x and y coordinates,
+#' given the bivariate normal distribution with x.centr and y.centr means,
+#' with 0 covariance, and with variance var along both axes.
+#'
 #' @param x x Coordinates of points whose PD should be evaluated.
 #' @param y y Coordinates of points whose PD should be evaluated.
 #' @param var Variance of the PDF, which is the same in x and y direction. Note: covariance is 0.
@@ -106,11 +110,14 @@ sim.comm.centered <- function(abund.vect, var.consp, var.intersp)
 #'
 #' The simulation proceeds as:
 #' 1. Generate point pattern for the most abundant (master) species,
-#'    with a given MV variance 'var.consp'
+#'    with a given variance 'var.consp' giving the spread of the points
+#'    along the x and y axis
 #' 2. Generate smoothed density of the master points, with a
-#'    given gaussian kernel width 'var.intersp'
+#'    given gaussian kernel width 'var.intersp'. The steeper the kernel,
+#'    the closer will be the points of the other species to the mother species.
 #' 3. For each other species in the vector, draw points from the smoothed
-#'    density surface and a given abundance
+#'    density surface, with a given abundance
+#' Note: Master species is the most abundant species, i.e. species 1.
 #' @param abund.vect vector of (integer) abundances of species in a community
 #' @param var.consp conspecific variance, i.e. spread of points in the master species
 #' @param var.intersp interspecific variance, i.e. width of the density kernel
@@ -153,9 +160,9 @@ sim.comm.jittered <- function(abund.vect, var.consp, var.intersp)
 
 
 # Test:
-# a <- sim.com.jittered(abund.vect  = c(2,4, 8, 16, 32, 64, 128),
-#                       var.consp   = 0.1,
-#                       var.intersp = 0.1); plot(split(a))
+# a <- sim.comm.jittered(abund.vect  = c(2,4, 8, 16, 32, 64, 128),
+#                       var.consp   = 0.01,
+#                       var.intersp = 0.01); plot(split(a))
 
 
 # ------------------------------------------------------------------------------
@@ -181,6 +188,7 @@ ppp.to.siteXspec <- function(comm.ppp, grain)
 #' @param d a vector or scalar representing spatial distance
 #' @param alpha the main parameter of the function
 #' @param dlim the two truncation points of the function (default is 0 and 1)
+#' @return Probabiliy densities for each of the d values.
 #' @export
 
 PDFtexp <- function(d, alpha,  dlim= c(0,1))
@@ -247,7 +255,7 @@ sim.pair <- function(abund.vect, var.consp , alpha, plot.comm=FALSE)
 #               var.consp = 0.01,
 #               alpha   = -10,
 #               plot.comm=TRUE)
-#a
+# a
 
 
 

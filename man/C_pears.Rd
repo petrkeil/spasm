@@ -16,6 +16,7 @@ A dist or data.frame objects with the pairwise association values.
 \description{
 This is the index A_30 from Hubalek (1982), who considered it to be one of
 the recommended indices.
+Note: Before the calculation, species (rows) with zero occurrences are removed from m.
 }
 \references{
 Hubalek Z. (1982) Coefficients of association and similarity, based

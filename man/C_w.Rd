@@ -16,5 +16,12 @@ A single number, which is the ratio of mean occupancy and the number of
 \description{
 This metric is equivalent to calculating the classical Whittaker's beta diversity on
 a transposed matrix. The impulse to use this metric for species associations arose
-during a discussion with Aniko Toth at IBS 2019 conference in Malaga.
+during a discussion with Aniko Toth at IBS 2019 conference in Malaga. We then
+found out that Arita (2015) also used the same idea.
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
+}
+\references{
+Arita H. (2015) Multisite and multispecies measures of overlap,
+co-occurrence and co-diversity. Ecography 40: 709-718.
 }

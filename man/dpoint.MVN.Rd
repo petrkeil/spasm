@@ -2,7 +2,7 @@
 % Please edit documentation in R/point_patterns_simulated_communities.R
 \name{dpoint.MVN}
 \alias{dpoint.MVN}
-\title{Bivariate probablity density function in a 2D square}
+\title{Bivariate probablity density (PD) function in a 2D square}
 \usage{
 dpoint.MVN(x, y, var, x.centr, y.centr)
 }
@@ -18,5 +18,7 @@ dpoint.MVN(x, y, var, x.centr, y.centr)
 \item{y.centr}{y coordinate of the mean in the 2D space}
 }
 \description{
-Bivariate probablity density function in a 2D square
+Evaluates probability density at a point specified by x and y coordinates,
+given the bivariate normal distribution with x.centr and y.centr means,
+with 0 covariance, and with variance var along both axes.
 }

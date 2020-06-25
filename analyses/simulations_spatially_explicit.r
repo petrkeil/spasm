@@ -1,8 +1,11 @@
 ################################################################################
 #
-# Code for the simulations behind Figs. 6 and 8
+# Code for the spatially explicit simulations used to demonstrate community
+# variograms and pair correlation functions
 #
 # Petr Keil
+#
+# pkeil@seznam.cz
 #
 ################################################################################
 
@@ -40,21 +43,24 @@ var.consp <- c(0.001, 0.01, 0.1)  # vector of CSA values
 #
 ################################################################################
 
+# data frame with all combinations of simulation parameters
 params <- expand.grid(var.consp = var.consp,
                       alpha = alpha.vec)
 
+# empty container for results
 res.pts <- list()
 
 for(i in 1:nrow(params))
 {
   set.seed(12345)
 
-  # simulate the pairs of species
+  # simulate the pair of species as a point pattern
   a <- sim.pair(abund.vect = c(100, 100),
                 var.consp = params$var.consp[i],
                 alpha = params$alpha[i],
                 plot.comm = FALSE)
 
+  # convert the point pattern to a data frame
   res.pts[[i]] <- data.frame(x = a$x,
                              y = a$y,
                              Species= as.character(a$marks),
@@ -84,11 +90,15 @@ print(pp.pairs)
 #
 ################################################################################
 
-# for every value of ISA
+# empty container for results
 res <- list()
+
+# for every value of ISA
 for(i in 1:length(alpha.vec))
 {
+  # vector of distances
   d <- seq(0, 1, by = 0.01)
+
   # calculate the probability density:
   a <- PDFtexp(d,
                alpha = alpha.vec[[i]],
@@ -189,6 +199,7 @@ for(i in 1:nrow(params))
                    alpha = params$alpha[i],
                    plot.comm = FALSE)
 
+  # convert point pattern to community matrix
   comm <- ppp.to.comm(comm, dim.yx = c(20, 20))
   abu <- t(comm$abundance)
 

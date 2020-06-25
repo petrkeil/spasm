@@ -16,9 +16,12 @@ sim.comm.jittered(abund.vect, var.consp, var.intersp)
 \description{
 The simulation proceeds as:
 1. Generate point pattern for the most abundant (master) species,
-   with a given MV variance 'var.consp'
+   with a given variance 'var.consp' giving the spread of the points
+   along the x and y axis
 2. Generate smoothed density of the master points, with a
-   given gaussian kernel width 'var.intersp'
+   given gaussian kernel width 'var.intersp'. The steeper the kernel,
+   the closer will be the points of the other species to the mother species.
 3. For each other species in the vector, draw points from the smoothed
-   density surface and a given abundance
+   density surface, with a given abundance
+Note: Master species is the most abundant species, i.e. species 1.
 }

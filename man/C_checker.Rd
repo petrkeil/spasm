@@ -14,6 +14,8 @@ contain either incidences (1/0) or abundances (natural numbers).}
 A single number, the number of checkerboard species pairs.
 }
 \description{
-This function follows the code from EcoSimR package by Gotelli, Hard and Ellison,
+This function follows the code from 'EcoSimR' package by Gotelli, Hard and Ellison,
 specifically, it re-uses their 'checker' function.
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }

@@ -15,7 +15,8 @@ A dist or data.frame objects with the pairwise association values.
 }
 \description{
 Arita (2017) also quotes this to be the "index of co-incidence" of Dice (1945).
-This is the positive association measure (as opposed to dissimilarity).
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }
 \references{
 Arita H. (2015) Multisite and multispecies measures of overlap,

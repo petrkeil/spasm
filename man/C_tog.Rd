@@ -2,7 +2,7 @@
 % Please edit documentation in R/measures_for_incidence_matrices.R
 \name{C_tog}
 \alias{C_tog}
-\title{'Togetherness' metric of Stone & Roberts (1992), and its scaled version}
+\title{'Togetherness' (C_tog) metric of Stone & Roberts (1992), and its scaled version}
 \usage{
 C_tog(m, scale = TRUE)
 }
@@ -17,7 +17,13 @@ site combinations?}
 A dist or data.frame objects with the pairwise association values.
 }
 \description{
-'Togetherness' metric of Stone & Roberts (1992), and its scaled version
+The scaled version divides the raw togetherness by the number of possible site
+combinations, which is `n(n-1)/2` according to Ulrich & Gotelli (2013). Also
+note that their scaling formula  includes `m`, the number of species. Thus,
+Ulrich & Gotelli's (2013) formula for the scaled C-score is actually
+`4*(C_tog)/(m*n*(m-1)(n-1))`. For two species (`m=2`) this reduces to  `C_tog / ((n*(n-1))/2)`,
+which is the formula that I use here for the scaled version.
+Note: Before the calculation, species (rows) with zero occurrences are removed from m.
 }
 \references{
 Stone L. & Roberts A. (1992) Competitive exclusion, or species

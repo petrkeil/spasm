@@ -2,7 +2,7 @@
 % Please edit documentation in R/measures_for_incidence_matrices.R
 \name{C_sim}
 \alias{C_sim}
-\title{Pairwise Simpson aggregation among species in a community matrix}
+\title{Pairwise Simpson association among species in a community matrix}
 \usage{
 C_sim(m)
 }
@@ -14,5 +14,7 @@ contain either incidences (1/0) or abundances (natural numbers).}
 A dist or data.frame objects with the pairwise association values.
 }
 \description{
-This is the positive association measure (as opposed to dissimilarity).
+This returns the positive association measure (as opposed to dissimilarity).
+Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+with zero species are removed from m.
 }

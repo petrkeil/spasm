@@ -1,6 +1,6 @@
 ################################################################################
 #
-# Analysis of empirical community matrices behind Figure 5
+# Analysis of empirical community matrices
 #
 # Petr Keil
 #
@@ -196,7 +196,7 @@ dev.off()
 # load the data from the spasm package
 dat <- c(data.Ulrich)
 
-# removing 8 studies with extremely low values (bad for rounding)
+# removing 8 studies with extremely low maximum abundance values (bad for rounding)
 good.studies <- lapply(X = data.Ulrich, FUN = max) > 5
 dat <- dat[good.studies]
 
@@ -223,7 +223,7 @@ for(i in 1:length(dat))
   res.i <- c(N = sum(colSums(m) >= 1),
              Gamma = sum(rowSums(m) >= 1),
              Tot.abu = sum(m),
-             CA_tau = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="kendall")),
+             CA_rho = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="spearman")),
              CA_cov = mean(spasm::CA_cov_cor(m, correlation=FALSE)),
              CA_cov_hell = mean(spasm::CA_cov_cor(m, correlation=FALSE, transf="hellinger")),
              CA_cor = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="pearson")),
@@ -236,7 +236,7 @@ for(i in 1:length(dat))
              CA_cor_hell_Z = mean(cleaner(spasm::Z_score(m, "step_CA_IT", "CA_cov_cor",
                                                          N.sim=N, transf="hellinger", method="pearson"))),
              CA_hell_Z = mean(cleaner(spasm::Z_score(m, "step_CA_IT", "CA_hell", N.sim=N))),
-             CA_tau_Z = mean(cleaner(spasm::Z_score(m, "step_CA_IT", "CA_cov_cor", N.sim=N))),
+             CA_rho_Z = mean(cleaner(spasm::Z_score(m, "step_CA_IT", "CA_cov_cor", N.sim=N, method="spearman"))),
              CA_bray_Z = mean(cleaner(spasm::Z_score(m, "step_CA_IT", "CA_bray", N.sim=N))),
              CA_ruz_Z = mean(cleaner(spasm::Z_score(m, "step_CA_IT", "CA_ruz", N.sim=N))),
              CA_chi_Z = mean(cleaner(spasm::Z_score(m, "step_CA_IT", "CA_chi", N.sim=N)))

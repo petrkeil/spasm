@@ -3,7 +3,6 @@
 \docType{package}
 \name{spasm}
 \alias{spasm}
-\alias{spasm-package}
 \title{spasm}
 \description{
 A package with functions that were used for Keil et al.'s paper on interspecific associations

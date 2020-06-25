@@ -13,6 +13,9 @@ PDFtexp(d, alpha, dlim = c(0, 1))
 
 \item{dlim}{the two truncation points of the function (default is 0 and 1)}
 }
+\value{
+Probabiliy densities for each of the d values.
+}
 \description{
 This is the probability density function from Keil (2014) PeerJ: https://peerj.com/preprints/446/.
 }

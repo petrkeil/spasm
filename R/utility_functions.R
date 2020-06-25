@@ -76,7 +76,7 @@ ppp.plot.2.spec <- function(comm.ppp, spec.1, spec.2)
 
 
 # ------------------------------------------------------------------------------
-#' Conversion of distance matrix to list
+#' Conversion of a distance matrix to a list
 
 #' This function is taken from package 'spaa' by Jinlong Zhang
 #' @param dist Object of class dist

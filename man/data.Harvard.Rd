@@ -4,7 +4,9 @@
 \name{data.Harvard}
 \alias{data.Harvard}
 \title{Orwig, Foster & Ellison (2015) Harvard forest plot}
-\format{An object of class \code{data.frame} with 77536 rows and 4 columns.}
+\format{
+An object of class \code{data.frame} with 77536 rows and 4 columns.
+}
 \source{
 Owig D., Foster D. & Ellison A. (2015) Harvard Forest CTFS-ForestGEO
 Mapped Forest Plot since 2014. Harvard Forest Data Archive: HF253.

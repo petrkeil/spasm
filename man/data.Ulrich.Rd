@@ -4,7 +4,9 @@
 \name{data.Ulrich}
 \alias{data.Ulrich}
 \title{Ulrich & Gotelli (2010) abundance matrices}
-\format{An object of class \code{list} of length 186.}
+\format{
+An object of class \code{list} of length 186.
+}
 \source{
 Ulrich W. & Gotelli N.J. (2010) Null model analysis of species associations
 using abundance data. Ecology 91: 3384-3397.

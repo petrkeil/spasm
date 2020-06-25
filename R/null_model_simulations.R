@@ -55,7 +55,8 @@ step_CA_IT <- function(m)
 
 
 ################################################################################
-#'One realization of the an algorithm that resamples each row according to a Poisson distribution
+#'One realization of the an algorithm that resamples each row according to a
+#'Poisson distribution
 #'
 #'@description First, for each species in the matrix, mean abunance is calculated.
 #'Then N samples are taken for each species from a Poisson distribution, with lambda
