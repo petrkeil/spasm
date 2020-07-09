@@ -51,9 +51,10 @@ for(i in 1:length(dat))
   m.bin[m.bin > 0] <- 1 # convert to binary matrix
 
   # calculate the metrics
-  res.i <- c(N = sum(colSums(m.bin) > 0),
-             Gamma = sum(rowSums(m.bin) > 0),
+  res.i <- c(n = sum(colSums(m.bin) > 0),
+             S = sum(rowSums(m.bin) > 0),
              Tot.incid = sum(m.bin),
+             Whitt = Whittaker(m.bin),
              C_segSc = mean( spasm::C_seg(m.bin)),
              C_togSc = mean(spasm::C_tog(m.bin)),
              C_jacc = mean( spasm::C_jacc(m.bin)),
@@ -63,7 +64,6 @@ for(i in 1:length(dat))
              C_FETmP = mean(FETmP_Pairwise(m.bin)),
              C_pears = mean(na.omit(spasm::C_pears(m.bin))),
              C_match = mean(spasm::C_match(m.bin)),
-             C_w = C_w(m.bin),
              C_ratio = C_ratio(m.bin),
              C_combo = C_combo(m.bin),
              C_checker= C_checker(m.bin),
@@ -101,15 +101,15 @@ res2 <- mutate(res,
                C_forbes = log(C_forbes),
                C_segSc = log(C_segSc + 1),
                C_togSc = log(C_togSc + 1),
-               C_w = log(C_w),
+               Whitt = log(Whitt),
                C_checker = log(C_checker + 1),
                C_combo = log(C_combo),
                C_ratio = log(C_ratio),
-               N = log(N),
-               Gamma = log(Gamma),
-               Tot.incid = log(Tot.incid))
+               n = log(n),
+               S = log(S),
+               Tot.incid = log(Tot.incid)) %>% rename(Whittaker = Whitt)
 
-res <- rename(res, n = N, gamma = Gamma)
+res <- rename(res, n = n, S = S)
 
 # plot histogram of each variable
 par(mfrow=c(5,5))
@@ -156,12 +156,15 @@ dev.off()
 ################################################################################
 
 res.pca <- prcomp(res2, scale = TRUE, center = TRUE)
-cols <- c("S or N", "S or N", "S or N",  rep("", times=ncol(res2)-3))
+cols <- c("S or N", "S or N", "S or N", "S or N", rep("", times=ncol(res2)-4))
 
-cols2 <- c("#F8766D", "#F8766D", "#F8766D",
-           rep("#FFFFFF", times=ncol(res2)-3))
+#FFFFFF - white
+#00BFC4 - ggplot blue
 
-inc.all <-  factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
+cols2 <- c("#F8766D", "#F8766D", "#F8766D", "#F8766D",
+           rep("#FFFFFF", times=ncol(res2)-4))
+
+inc.pca <-  factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
                                      col.ind = "grey",
                                      col.circle= "darkgrey", fill.var = "white",
                                      col.var = cols2) +
@@ -170,24 +173,31 @@ inc.all <-  factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
   theme(legend.position='none', plot.title=element_blank()) #+
 
 
-png(file = "figures/binary_pairwise_PCA.png", width = 1000, height = 1000, res=200)
-  inc.all
+pdf("figures/binary_pairwise_PCA.pdf", height= 5, width = 5)
+plot(inc.pca)
 dev.off()
+
 
 ################################################################################
 # NETWORK GRAPH OF THE INCIDENCE-BASED MEASURES
 ################################################################################
 
-png(file = "figures/binary_pairwise_graph.png", width = 1000, height = 1000, res=300)
-    qgraph(cor(res2), layout = "spring",
+
+inc.net <- qgraph(cor(res2), layout = "spring",
            labels = colnames(cor(res2)),
            edge.color = c("black"),
+           #borders = FALSE,
+           border.color = "grey",
            color = cols2,
+           node.width = 1,
+           node.height = 0.5,
            label.cex = 1.4,
-           shape = "heart",
+           shape = "rectangle",
            node.label.offset = c(0.5, 0.1))
-dev.off()
 
+pdf("figures/binary_pairwise_graph.pdf", height= 5, width = 5)
+plot(inc.net)
+dev.off()
 
 ################################################################################
 # ABUNDANCE-BASED MEASURES
@@ -220,8 +230,8 @@ for(i in 1:length(dat))
   m <- m[, colSums(m) > 0]
 
   # the indices
-  res.i <- c(N = sum(colSums(m) >= 1),
-             Gamma = sum(rowSums(m) >= 1),
+  res.i <- c(n = sum(colSums(m) >= 1),
+             S = sum(rowSums(m) >= 1),
              Tot.abu = sum(m),
              CA_rho = mean(spasm::CA_cov_cor(m, correlation=TRUE, method="spearman")),
              CA_cov = mean(spasm::CA_cov_cor(m, correlation=FALSE)),
@@ -259,14 +269,14 @@ res <- read.csv(file = "empirical_results_abundance.csv")
 
 # transform some of the measures to make the realtionhips more symmetrical
 res <- mutate(res,
-              N = log(N),
-              Gamma = log(Gamma),
+              n = log(n),
+              S = log(S),
               Tot.abu = log(Tot.abu),
               CA_ratio = log(CA_ratio),
-              CA_cov = sqrt(CA_cov),
-              CA_cov_hell = sqrt(CA_cov_hell))
+              CA_cov = log(CA_cov),
+              CA_cov_hell = log(CA_cov_hell))
 
-res <- rename(res, n = N, gamma = Gamma)
+res <- rename(res, n = N, S = S)
 
 # remove Z-scores
 res <- res[,(1:ncol(res) %in% grep(names(res), pattern="_Z")) == FALSE]
@@ -327,18 +337,22 @@ dev.off()
 ################################################################################
 
 
-png(file = "figures/abundance_pairwise_graph.png", width = 1200, height = 1200, res=100)
 
-    qgraph(cor(res), layout = "spring",
-           labels = colnames(cor(res)),
-           edge.color = c("black"),
-           color = cols2,
-           label.cex = 1.4,
-           shape = "heart",
-           node.label.offset = c(0.5, 0.1))
+abu.net <- qgraph(cor(res), layout = "spring",
+                  labels = colnames(cor(res)),
+                  edge.color = c("black"),
+                  #borders = FALSE,
+                  border.color = "grey",
+                  color = cols2,
+                  node.width = 1,
+                  node.height = 0.5,
+                  label.cex = 1.4,
+                  shape = "rectangle",
+                  node.label.offset = c(0.5, 0.1))
 
+pdf("figures/abundance_pairwise_graph.pdf", height= 5, width = 5)
+plot(abu.net)
 dev.off()
-
 
 ################################################################################
 # PCA ORDINATION PLOT OF ABUNDANCE-BASED MEASURES
@@ -346,9 +360,8 @@ dev.off()
 
 res.pca <- prcomp(res, scale = TRUE, center = TRUE)
 
-png(file = "figures/abundance_pairwise_PCA.png", width = 1000, height = 1000, res=200)
 
-    factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
+abu.pca <- factoextra::fviz_pca_var(res.pca, repel=TRUE, label="var",
                              col.ind = "grey", #col.var = "black",
                              col.circle= "darkgrey", fill.var = "white",
                              col.var = cols2) +
@@ -356,4 +369,7 @@ png(file = "figures/abundance_pairwise_PCA.png", width = 1000, height = 1000, re
       theme_minimal() + ggtitle("") +
       theme(legend.position="none", plot.title=element_blank())
 
+pdf("figures/abundance_pairwise_PCA.pdf", height= 5, width = 5)
+plot(abu.pca)
 dev.off()
+

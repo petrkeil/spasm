@@ -9,11 +9,11 @@ I used in paper "Measurement and analysis of interspecific spatial associations 
 ## This is not a regular R package
 
 **Majority of functions in this package have more mature counterpars
-in other existing packages!** 'spasm' is more of an assortment of code and wrappers that I needed
+in other existing packages.** 'spasm' is more of an assortment of code and wrappers that I needed
 for a review of species association metrics, and putting the code to the form of 
-a package is my way of organizing and documenting the code.
+a package is my way of understanding, organizing, and documenting the code.
 
-The existing packages that may do a better job than `spasm` are:
+The existing packages that may do the same or better job than `spasm` are:
 
 - `EcoSimR` for cooccurrence analysis and null models.
 - `spatstat` for point pattern analysis, pair correlation functions, and K functions.
@@ -35,8 +35,20 @@ install_github("petrkeil/spasm")
 
 ## Overview
 
-The functions provided here are classified according to the type of ecological
-data that they use. 
+`spasm` contains:
+
+### Analyses
+
+These are all analyses that were done in the paper. 
+They are located in the `analyses` sub-folder, and 
+contain the comparison of ISA metrics on empirical data, comparison of ISA metrics 
+on simulated data, and analyses of data obtained by literature search.
+
+### Data
+
+These are located in the `data` sub-folder, and also load as a part of the package
+when `library(spasm)` is executed. All of the data objects have ```data.``` prefix in
+their name.
 
 ### Spatially implicit metrics for site x species **incidence** matrices
 

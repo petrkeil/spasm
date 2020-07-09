@@ -233,6 +233,11 @@ png("figures/simulations_bars_raw.png", width = 1600, height = 900, res = 150)
   grid.arrange(bar.all, bar.neg, bar.pos, nrow=1, ncol=3)
 dev.off()
 
+pdf("figures/simulations_bars_raw.pdf", width = 10, height = 5)
+grid.arrange(bar.all, bar.neg, bar.pos, nrow=1, ncol=3)
+dev.off()
+
+
 
 ################################################################################
 # FIGURES - BARPLOT WITH RAW METRICS AND Z-SCORES TOGETHER
@@ -262,22 +267,24 @@ bar.pos <- ggplot(data=cor.pos, aes(x= reorder(variable, abs(cor.res$Spearman)),
   xlab("") + ggtitle("(c)")
 
 
-png("figures/simulations_bars.all", width = 1600, height = 900, res = 150)
+pdf("figures/simulations_bars.pdf", width = 10, height = 5)
   grid.arrange(bar.all, bar.neg, bar.pos, nrow=1, ncol=3)
 dev.off()
 
 
 
+
+
 ################################################################################
-# FIGURES - CORRELATIONS SUMMARIZED BY GRAIN
+# FIGURES - MEAN ISA AS A FUNCTION OF GRAIN
 ################################################################################
 
 # -------------------------summarize by scale
 scale <- plyr::ddply(.data=res,
-                       .variables=c("variable", "grain"),
-                       .fun=summarize,
+                     .variables=c("variable", "grain"),
+                     .fun=summarize,
                      Spearman = abs(cor(alpha, value, method = "spearman")))
-scale$variable <- as.factor(scale$variable)
+scale$variable <- as.character(scale$variable)
 
 # abundance or incidence?
 type <- as.character(scale$variable)
@@ -291,8 +298,9 @@ Z[grep(scale$variable, pattern="_Z")] <- "Z-score"
 scale <- data.frame(scale, Z)
 
 # colour palette
-cols <- data.frame(variable = cor.res$variable,
-                   rnd.col = as.factor(sample(1:nrow(cor.res))) )
+var.names <- as.character(unique(scale$variable))
+cols <- data.frame(variable = as.character(var.names),
+                   rnd.col = as.factor(sample(1:length(var.names))))
 scale <- left_join(x=scale, y = cols, by="variable")
 
 # label positions
@@ -309,11 +317,11 @@ gr <- ggplot(data = scale, aes(x = grain, y = Spearman)) +
                        colour = rnd.col)) +
   theme(legend.position="none") +
   xlab("Grain [# pixels along one side]") +
-  ylab("| Correlation with ISA |")
+  ylab("Mean metric")
 gr
 
-png("figures/simulations_spearman_by_grain.png", width = 1400, height= 1400, res=200)
- print(gr)
+png("figures/simulations_mean_by_GRAIN.png", width = 1400, height= 1400, res=200)
+print(gr)
 dev.off()
 
 ################################################################################
@@ -321,8 +329,8 @@ dev.off()
 ################################################################################
 
 csa <- plyr::ddply(.data=res,
-                       .variables=c("variable", "var.consp"),
-                       .fun=summarize,
+                   .variables=c("variable", "var.consp"),
+                   .fun=summarize,
                    Spearman = abs(cor(alpha, value, method = "spearman")))
 csa$variable <- as.character(csa$variable)
 names(csa)[2] <- "CSA"
@@ -362,58 +370,5 @@ cs <- ggplot(data = csa, aes(x = CSA, y = Spearman)) +
 cs
 
 png("figures/simulations_spearman_by_CSA.png", width = 1400, height= 1400, res=200)
-  print(cs)
-dev.off()
-
-################################################################################
-# FIGURES - MEAN ISA AS A FUNCTION OF GRAIN
-################################################################################
-
-# -------------------------summarize by scale
-scale <- plyr::ddply(.data=res,
-                     .variables=c("variable", "grain"),
-                     .fun=summarize,
-                     mean.index = mean(value))
-scale <- plyr::ddply(.data=scale,
-                     .variables="variable",
-                     .fun=mutate,
-                     mean.index = scale(mean.index))
-scale$variable <- as.character(scale$variable)
-
-# abundance or incidence?
-type <- as.character(scale$variable)
-type[grep(type, pattern="C_")] <- "Binary data"
-type[grep(type, pattern="CA_")] <- "Abundance data"
-scale <- data.frame(scale, type)
-
-# raw or Z-score?
-Z <- rep("Raw", times = nrow(scale))
-Z[grep(scale$variable, pattern="_Z")] <- "Z-score"
-scale <- data.frame(scale, Z)
-
-# colour palette
-var.names <- as.character(unique(scale$variable))
-cols <- data.frame(variable = as.character(var.names),
-                   rnd.col = as.factor(sample(1:length(var.names))))
-scale <- left_join(x=scale, y = cols, by="variable")
-
-# label positions
-scale.labs <- scale[scale$grain == 32,]
-
-gr <- ggplot(data = scale, aes(x = grain, y = mean.index)) +
-  geom_point(aes(colour = rnd.col)) +
-  geom_line(aes(colour = rnd.col)) +
-  scale_x_continuous(trans = "log2") +
-  theme_bw() +
-  facet_grid(Z~type) +
-  geom_label_repel(data = scale.labs,
-                   aes(x = grain, y = mean.index, label=variable,
-                       colour = rnd.col)) +
-  theme(legend.position="none") +
-  xlab("Grain [# pixels along one side]") +
-  ylab("Mean metric (scaled to 0 mean and SD of 1)")
-gr
-
-png("figures/simulations_mean_by_GRAIN.png", width = 1400, height= 1400, res=200)
-print(gr)
+print(cs)
 dev.off()

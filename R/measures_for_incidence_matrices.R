@@ -366,7 +366,7 @@ C_sim <- function(m)
 #' co-occurrence and co-diversity. Ecography 40: 709-718.
 #' @export
 
-C_w <- function(m)
+Whittaker <- function(m)
 {
   # eliminate empty rows and columns
   m <- m[rowSums(m) != 0, ]
@@ -381,8 +381,8 @@ C_w <- function(m)
 }
 
 # m <- data.Atmar[[1]]
-# C_w(t(m))
-# C_w(m)
+# Whittaker(t(m))
+# Whittaker(m)
 
 # ------------------------------------------------------------------------------
 #' Variance ratio of Schluter (1984)
