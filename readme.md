@@ -35,7 +35,13 @@ library(devtools)
 install_github("petrkeil/spasm")
 ```
 
-Alternatively, you can also download the 
+Alternatively, you can also download the .zip file, extract it, and then run
+the following command in the terminal from within the folder that contains the 
+extracted spasm sub-folder:
+
+```{r}
+R CMD build spasm
+```
 
 ## Overview
 
