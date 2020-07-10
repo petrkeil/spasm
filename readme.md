@@ -4,7 +4,8 @@
 
 This package contains code for several species association metrics and analyses that
 I used in paper "Measurement and analysis of interspecific spatial associations as a facet of biodiversity" by
-*Petr Keil, Thorsten Wiegand, Aniko B. Toth, Daniel J. McGlinn & Jonathan Chase*.
+*Petr Keil, Thorsten Wiegand, Aniko B. Toth, Daniel J. McGlinn & Jonathan M. Chase*. **Please cite this
+paper if you use the package.**
 
 ## This is not a regular R package
 
@@ -25,13 +26,16 @@ do what you need in a more standard way.
 
 ## Installing spasm
 
-The easiest way to install spasm is using the ```install_github``` function from
+To install the latest version of spasm, the easiest way 
+is using the ```install_github``` function from
 the ```devtools``` package:
 
 ```{r}
 library(devtools)
 install_github("petrkeil/spasm")
 ```
+
+Alternatively, you can also download the 
 
 ## Overview
 
