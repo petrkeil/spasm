@@ -3,7 +3,7 @@ Type: Package
 Title: Species association measures for various data types
 Version: 0.2
 Date: 2020-06-25
-Author: Petr Keil
+Author: PhDJ Leipzig
 Maintainer: Petr Keil <pkeil@seznam.cz>
 Description: This is an assortment of code that I used for a review of interspecific spatial associations (ISA). The package bundles species association metrics for binary presence-absence site-by-species matrices, abundance matrices, some select point pattern association metrics (relying heavily on R package 'spatstat' machinery), and summary and visualization tools for community variograms (from Dan McGlinn's 'vario' R package). **Please note** that almost every single function in this package has an equivalent in more specialized packages, e.g. vegan or spatstat. It is thus preferable to go to these packages, rather than to use 'spasm' versions. The main purpose of 'spasm' is to document the exact forms of the metrics that I used for the paper, it is a code repository structured as a package. 
 License: GPLv3

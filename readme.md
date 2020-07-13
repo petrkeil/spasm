@@ -1,11 +1,8 @@
 # spasm - **Sp**ecies **as**sociation **m**etrics for various data types
 
-*Petr Keil*
-
 This package contains code for several species association metrics and analyses that
 I used in paper "Measurement and analysis of interspecific spatial associations as a facet of biodiversity" by
-*Petr Keil, Thorsten Wiegand, Aniko B. Toth, Daniel J. McGlinn & Jonathan M. Chase*. **Please cite this
-paper if you use the package.**
+*Petr Keil, Thorsten Wiegand, Aniko B. Toth, Daniel J. McGlinn & Jonathan M. Chase*.
 
 ## This is not a regular R package
 
