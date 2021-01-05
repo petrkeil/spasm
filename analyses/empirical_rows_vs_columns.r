@@ -53,10 +53,10 @@ for(i in 1:length(dat))
              Tot.incid = sum(m.bin),
              C_jacc = mean( spasm::C_jacc(m.bin)),
              C_jacc_Z_sim2 = mean(cleaner(spasm::Z_score(m.bin, "step_C_sim2", "C_jacc", N.sim=N))),
-             C_jacc_Z_CA = mean(cleaner(spasm::Z_score(m.bin, "step_CA_IT", "C_jacc", N.sim=N))),
+             C_jacc_Z_IT = mean(cleaner(spasm::Z_score(m.bin, "step_CA_IT", "C_jacc", N.sim=N))),
              B_jacc =  mean( spasm::C_jacc(t(m.bin))),
              B_jacc_Z_sim2 = mean(cleaner(spasm::Z_score(t(m.bin), "step_C_sim2", "C_jacc", N.sim=N))),
-             B_jacc_Z_CA = mean(cleaner(spasm::Z_score(t(m.bin), "step_CA_IT", "C_jacc", N.sim=N))))
+             B_jacc_Z_IT = mean(cleaner(spasm::Z_score(t(m.bin), "step_CA_IT", "C_jacc", N.sim=N))))
 
   res[[names(dat[i])]] <- res.i
 }
@@ -64,9 +64,9 @@ for(i in 1:length(dat))
 res <- do.call("rbind", res)
 res <- data.frame(res)
 
-#write.csv(res, file = "empirical_results_row_vs_col_jaccard.csv", row.names=FALSE)
+write.csv(res, file = "empirical_results_row_vs_col_jaccard.csv", row.names=FALSE)
 
-res <- read.csv(file = "empirical_results_row_vs_col_jaccard.csv")
+# res <- read.csv(file = "empirical_results_row_vs_col_jaccard.csv")
 
 
 # --------------------------------------------------------------
@@ -92,18 +92,18 @@ Z.plot.sim2 <- ggplot(data = res, aes(x = C_jacc_Z_sim2, y = B_jacc_Z_sim2)) +
   xlab("Z-score of C_Jaccard (sim2)") + ylab("Z-score of Beta_Jaccard (sim2)")
 
 # Z-scores using the IT algorithm
-Z.plot.CA <- ggplot(data = res, aes(x = C_jacc_Z_CA, y = B_jacc_Z_CA)) +
+Z.plot.IT <- ggplot(data = res, aes(x = C_jacc_Z_IT, y = B_jacc_Z_IT)) +
   geom_vline(xintercept=0, colour = "grey") + geom_hline(yintercept=0, colour = "grey") +
   geom_point(shape = 1) +
   geom_abline(intercept=0, slope=1) +
   theme_bw()+
   labs(title = "(c)",
-       subtitle = paste("r = ", round(cor(res$C_jacc_Z_CA, res$B_jacc_Z_CA), 2))) +
+       subtitle = paste("r = ", round(cor(res$C_jacc_Z_IT, res$B_jacc_Z_IT), 2))) +
   xlab("Z-score of C_Jaccard (IT)") + ylab("Z-score of Beta_Jaccard (IT)")
 
 # export the figure
 pdf("figures/rows_vs_columns.pdf", width=11, height= 4)
-grid.arrange(raw.plot, Z.plot.sim2, Z.plot.CA, ncol = 3)
+grid.arrange(raw.plot, Z.plot.sim2, Z.plot.IT, ncol = 3)
 dev.off()
 
 
