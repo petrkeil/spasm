@@ -4,7 +4,7 @@
 \alias{C_alroy}
 \title{Alroy's (2015) modification of the Forbes index}
 \usage{
-C_alroy(m)
+C_alroy(m, clean = TRUE)
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can

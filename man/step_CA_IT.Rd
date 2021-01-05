@@ -12,5 +12,5 @@ contain either incidences (1/0) or abundances (natural numbers).}
 }
 \description{
 Uses the IT algorithm by Ulrich & Gotelli (2010). This is the slower
-but reliable R implementation.
+but more transparent (i.e. understandable by non-C++ users) R implementation.
 }

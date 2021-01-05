@@ -4,11 +4,14 @@
 \alias{Whittaker}
 \title{Whittaker's index of overall association in a community matrix}
 \usage{
-Whittaker(m)
+Whittaker(m, clean = TRUE)
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can
 contain either incidences (1/0) or abundances (natural numbers).}
+
+\item{clean}{Logical. Do you want to remove zero-sum rows or columns? When the index needs
+the "d" fraction (sites where no species occurs), only zero-sum rows are removed.}
 }
 \value{
 A single number, which is the ratio of mean occupancy and the number of

@@ -10,7 +10,7 @@ Z_score(m, algorithm, N.sim, metric, ...)
 \item{m}{Community data matrix with species as rows and sites as columns. Can
 contain either incidences (1/0) or abundances (natural numbers).}
 
-\item{N.sim}{Number of algirthm runs.}
+\item{N.sim}{Number of algorithm runs.}
 
 \item{metric}{Character string. Name of spasm's pairwise association metric function.}
 

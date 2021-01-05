@@ -4,7 +4,7 @@
 \alias{C_tog}
 \title{'Togetherness' (C_tog) metric of Stone & Roberts (1992), and its scaled version}
 \usage{
-C_tog(m, scale = TRUE)
+C_tog(m, scale = TRUE, clean = TRUE)
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can
@@ -12,6 +12,9 @@ contain either incidences (1/0) or abundances (natural numbers).}
 
 \item{scale}{Should the raw metric be scaled using the total number of possible
 site combinations?}
+
+\item{clean}{Logical. Do you want to remove zero-sum rows or columns? When the index needs
+the "d" fraction (sites where no species occurs), only zero-sum rows are removed.}
 }
 \value{
 A dist or data.frame objects with the pairwise association values.

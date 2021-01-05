@@ -2,11 +2,11 @@
 #'One realization of the IT algorithm of Ulrich & Gotelli (2010)
 #'
 #'@description Uses the IT algorithm by Ulrich & Gotelli (2010). This is the slower
-#'but reliable R implementation.
+#'but more transparent (i.e. understandable by non-C++ users) R implementation.
 #'
 #'@param m Community data matrix with species as rows and sites as columns. Can
 #'contain either incidences (1/0) or abundances (natural numbers).
-
+#'@export
 
 step_CA_IT <- function(m)
 {
@@ -42,7 +42,7 @@ step_CA_IT <- function(m)
 # x <- data.Ulrich[[1]]
 # x <- matrix(c(1,10, 100, 0, 5, 0,0,1,0,0,0,0,
 #              6,12, 499, 0, 1000,0,0,0,10,0,0,0), byrow=TRUE, nrow=2)
-
+#
 # par(mfrow=c(1,3))
 # plot(colSums(x), colSums(step_CA_IT(x))); abline(a = 0, b=1)
 # plot(rowSums(x), rowSums(step_CA_IT(x))); abline(a = 0, b=1)
@@ -121,7 +121,6 @@ step_CA_rowrandom <- function(m)
 #' @param m Community data matrix with species as rows and sites as columns. Can
 #' contain either incidences (1/0) or abundances (natural numbers).
 
-
 step_C_sim2 <- function(m)
 {
   t(apply(X = m, MARGIN = 1, FUN = sample))
@@ -138,7 +137,7 @@ step_C_sim2 <- function(m)
 #' contain either incidences (1/0) or abundances (natural numbers).
 #' @param alrgorithm Character string. Name of the algorithm to be executed.
 #' @param metric Character string. Name of spasm's pairwise association metric function.
-#' @param N.sim Number of algirthm runs.
+#' @param N.sim Number of algorithm runs.
 #' @param ... Additional arguments to the `metric` function.
 #' @export
 #'
@@ -146,13 +145,16 @@ Z_score <- function(m, algorithm, N.sim, metric, ...)
 {
   # get the extra parameters to be passed to the metric function
   extra.pars <- as.list(match.call(Z_score, expand.dots = FALSE))$...
-  #print(extra.pars)
 
-  res <- array(dim=c(nrow(m), nrow(m), N.sim))
+  # observed metric
+  obs <- do.call(metric, c(list(m), extra.pars) )
+  N.obs <- nrow(as.matrix(obs))
+
+  res <- array(dim=c(N.obs, N.obs, N.sim))
 
   for(i in 1:N.sim)
   {
-    # radnomize using a given algorithm
+    # randomize using a given algorithm
     null.m <- do.call(algorithm, list(m))
     # calculate the metric
     null.metric <- as.matrix(do.call(metric, c(list(null.m), extra.pars)))
@@ -160,11 +162,8 @@ Z_score <- function(m, algorithm, N.sim, metric, ...)
   }
 
   # calculate the Z-score
-  obs <- do.call(metric, c(list(m), extra.pars) )
   mean.null <- as.dist(apply(X = res, MARGIN = c(1,2), FUN = mean))
   sd.null <- as.dist(apply(X = res, MARGIN = c(1,2), FUN = sd))
-
-  # the Z-score
   Z <- (obs - mean.null) / sd.null
   return(Z)
 }
@@ -172,11 +171,10 @@ Z_score <- function(m, algorithm, N.sim, metric, ...)
 # TESTING
 # m <- round( data.Ulrich[[3]])
 # m <- m[rowSums(m) > 0,]; m <- m[,colSums(m) > 0]
+# m[m > 1] <- 1
 # x <- Z_score(m,
-#             algorithm="step_CA_IT",
-#             metric="CA_cov_cor", N.sim = 100,
-#             correlation = FALSE,
-#             method = "pearson")
+#             algorithm="step_C_sim2",
+#             metric="C_jacc", N.sim = 100)
 # x
 
 

@@ -5,7 +5,7 @@
 \title{The classical 'C-score' (C_seg) seggregation metric of Stone & Roberts (1990),
 and its scaled version}
 \usage{
-C_seg(m, scale = TRUE)
+C_seg(m, scale = TRUE, clean = TRUE)
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can
@@ -13,6 +13,9 @@ contain either incidences (1/0) or abundances (natural numbers).}
 
 \item{scale}{Should the raw metric be scaled using the total number of possible
 site combinations?}
+
+\item{clean}{Logical. Do you want to remove zero-sum rows or columns? When the index needs
+the "d" fraction (sites where no species occurs), only zero-sum rows are removed.}
 }
 \value{
 A dist object with the pairwise association values.

@@ -4,11 +4,14 @@
 \alias{C_conn}
 \title{Network connectance}
 \usage{
-C_conn(m)
+C_conn(m, clean = TRUE)
 }
 \arguments{
 \item{m}{Community data matrix with species as rows and sites as columns. Can
 contain either incidences (1/0) or abundances (natural numbers).}
+
+\item{clean}{Logical. Do you want to remove zero-sum rows or columns? When the index needs
+the "d" fraction (sites where no species occurs), only zero-sum rows are removed.}
 }
 \value{
 A single number, network connectance.

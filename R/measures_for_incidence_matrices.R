@@ -4,6 +4,8 @@
 #'
 #' @param m Community data matrix with species as rows and sites as columns. Can
 #' contain either incidences (1/0) or abundances (natural numbers).
+#' @param clean Logical. Do you want to remove zero-sum rows or columns? When the index needs
+#' the "d" fraction (sites where no species occurs), only zero-sum rows are removed.
 #' @return A dist object with the pairwise association values.
 #' @import vegan
 #' @references Forbes S.A. (1907) On the local distribution of certain Illinois
@@ -13,10 +15,13 @@
 #' matrix-level approaches. Global Ecology and Biogeography, 25: 1397-1400.
 #' @export
 
-C_forbes <- function(m)
+C_forbes <- function(m, clean = TRUE)
 {
   # eliminate empty rows, but not columns, since the index uses d
-  m <- m[rowSums(m) != 0, ]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+  }
 
   D <- vegan::designdist(m,
                          method = "a / (((a+b)*(a+c))/(a+b+c+d))",
@@ -48,11 +53,14 @@ C_forbes <- function(m)
 #' @export
 #'
 
-C_alroy <- function(m)
+C_alroy <- function(m, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
 
   D <- vegan::designdist(m,
                          method = "a*( (a+b+c) + sqrt(a+b+c) )/( (a+b)*(a+c) + a*sqrt(a+b+c) + 0.5*(b*c) )",
@@ -90,11 +98,14 @@ C_alroy <- function(m)
 #' Oikos 122: 2-18.
 #' @export
 
-C_seg <- function(m, scale = TRUE)
+C_seg <- function(m, scale = TRUE, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
 
   D <- vegan::designdist(m,
                          method = "b*c",
@@ -141,10 +152,13 @@ C_seg <- function(m, scale = TRUE)
 #' analysis. Oikos 122: 2-18.
 #' @export
 
-C_tog <- function(m, scale = TRUE)
+C_tog <- function(m, scale = TRUE, clean = TRUE)
 {
   # eliminate empty rows (not columns, because we want the d fraction)
-  m <- m[rowSums(m) != 0, ]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+  }
 
   # convert to binary
   m[m>1] <- 1
@@ -188,11 +202,14 @@ C_tog <- function(m, scale = TRUE)
 #' @import vegan
 #' @export
 
-C_jacc <- function(m)
+C_jacc <- function(m, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
 
   D <- vegan::designdist(m,
                          method = "a/(a+b+c)",
@@ -201,12 +218,33 @@ C_jacc <- function(m)
   return(D)
 }
 
-#C_jacc(matrix(c(1,1,1,0,0,0,
-#                0,0,0,1,1,1), byrow=T, nrow=2))
-#C_jacc(matrix(c(1,1,1,1,0,0,
-#                0,0,1,1,1,1), byrow=T, nrow=2))
-#C_jacc(matrix(c(1,1,1,0,0,0,
-#                1,1,1,0,0,0), byrow=T, nrow=2))
+
+# ------------------------------------------------------------------------------
+#' Pairwise Jaccard beta diversity among sites in a community matrix
+#'
+#' Note: Before the calculation, species (rows) with zero occurrences, and sites (columns)
+#' with zero species are removed from m.
+#'
+#' @inheritParams C_forbes
+#' @return A dist or data.frame objects with the between-sites pairwise beta values.
+#' @import vegan
+#' @export
+
+B_jacc <- function(m, clean = TRUE)
+{
+  # eliminate empty rows and columns
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
+
+  D <- vegan::designdist(t(m), # the only difference between C_jacc is this transposition
+                         method = "a/(a+b+c)",
+                         abcd = TRUE,
+                         terms = "binary")
+  return(D)
+}
 
 
 # ------------------------------------------------------------------------------
@@ -223,10 +261,13 @@ C_jacc <- function(m)
 #' @import vegan
 #' @export
 
-C_pears <- function(m)
+C_pears <- function(m, clean = TRUE)
 {
   # eliminate empty rows (but not empty columns, because we want d)
-  m <- m[rowSums(m) != 0, ]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+  }
 
   D <- vegan::designdist(m,
                          method = "(a*d-b*c)/(((a+b)*(c+d)*(a+c)*(b+d))^0.5)",
@@ -257,10 +298,13 @@ C_pears <- function(m)
 #' @import vegan
 #' @export
 
-C_match <- function(m)
+C_match <- function(m, clean = TRUE)
 {
   # eliminate empty rows (but not empty columns, since we want d)
-  m <- m[rowSums(m) != 0, ]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+  }
 
   D <- vegan::designdist(m,
                          method = "(a + d)/(a + b + c + d)",
@@ -294,11 +338,14 @@ C_match <- function(m)
 #' @import vegan
 #' @export
 
-C_sor <- function(m)
+C_sor <- function(m, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
 
   D <- vegan::designdist(m,
                          method = "(2*a)/(2*a+b+c)",
@@ -327,11 +374,14 @@ C_sor <- function(m)
 #' @import vegan
 #' @export
 
-C_sim <- function(m)
+C_sim <- function(m, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
 
   D <- vegan::designdist(m,
                     # method = "a/(pmin(b,c)+a)", # the similarity version
@@ -366,11 +416,15 @@ C_sim <- function(m)
 #' co-occurrence and co-diversity. Ecography 40: 709-718.
 #' @export
 
-Whittaker <- function(m)
+Whittaker <- function(m, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
+
   # convert to binary matrix
   m[m > 0] <- 1
 
@@ -399,11 +453,15 @@ Whittaker <- function(m)
 #' with some example applications. Ecology 65: 998-1005.
 #' @export
 
-C_ratio <- function (m)
+C_ratio <- function (m, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
+
   # convert to binary matrix
   m[m > 0] <- 1
 
@@ -428,11 +486,15 @@ C_ratio <- function (m)
 #' bipartite ecological networks. The Open Ecology Journal, 2: 7-24.
 #' @export
 
-C_conn <- function (m)
+C_conn <- function (m, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
+
   # convert to binary matrix
   m[m > 0] <- 1
 
@@ -457,11 +519,14 @@ C_conn <- function (m)
 #' @return A single number, the number of unique species combinations.
 #' @export
 
-C_combo <- function (m)
+C_combo <- function (m, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
 
   # these two lines are adopted from the 'species_combo' function from EcoSimR:
   res <- ncol(unique(m, MARGIN = 2))
@@ -485,11 +550,14 @@ C_combo <- function (m)
 #' @return A single number, the number of checkerboard species pairs.
 #' @export
 
-C_checker <- function (m)
+C_checker <- function (m, clean = TRUE)
 {
   # eliminate empty rows and columns
-  m <- m[rowSums(m) != 0, ]
-  m <- m[, colSums(m) != 0]
+  if(clean)
+  {
+    m <- m[rowSums(m) != 0, ]
+    m <- m[, colSums(m) != 0]
+  }
 
   # the following code comes from the 'checker' function from EcoSimR:
   pairwise <- cbind(t(combn(nrow(m), 2)), 0)
